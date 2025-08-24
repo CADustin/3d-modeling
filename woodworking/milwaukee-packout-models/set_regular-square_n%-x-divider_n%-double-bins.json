@@ -1,0 +1,75 @@
+{
+    "parameterSets": {
+        "75% X-Divider, 25% Double Bin": {
+            "$binBottomThickness": "2",
+            "$binDepth": "86",
+            "$binHeightPct": "25",
+            "$binLeftChamfer": "12",
+            "$binLength": "86",
+            "$binRightChamfer": "12",
+            "$binWallThickness": "2",
+            "$chamferLength": "10",
+            "$dividerHeightPercentage": "75",
+            "$dividerLengthAtTop": "113.1",
+            "$dividerThickness": "2",
+            "$dividerWidthOfDividerEdge": "6"
+        },
+        "64% X-Divider, 33% Double Bin": {
+            "$binBottomThickness": "2",
+            "$binDepth": "86",
+            "$binHeightPct": "33",
+            "$binLeftChamfer": "12",
+            "$binLength": "86",
+            "$binRightChamfer": "12",
+            "$binWallThickness": "2",
+            "$chamferLength": "10",
+            "$dividerHeightPercentage": "64",
+            "$dividerLengthAtTop": "113.1",
+            "$dividerThickness": "2",
+            "$dividerWidthOfDividerEdge": "6"
+        },
+        "50% X-Divider, 50% Double Bin": {
+            "$binBottomThickness": "2",
+            "$binDepth": "86",
+            "$binHeightPct": "50",
+            "$binLeftChamfer": "12",
+            "$binLength": "86",
+            "$binRightChamfer": "12",
+            "$binWallThickness": "2",
+            "$chamferLength": "10",
+            "$dividerHeightPercentage": "50",
+            "$dividerLengthAtTop": "113.1",
+            "$dividerThickness": "2",
+            "$dividerWidthOfDividerEdge": "6"
+        },
+        "34% X-Divider, 66% Double Bin": {
+            "$binBottomThickness": "2",
+            "$binDepth": "86",
+            "$binHeightPct": "66",
+            "$binLeftChamfer": "12",
+            "$binLength": "86",
+            "$binRightChamfer": "12",
+            "$binWallThickness": "2",
+            "$chamferLength": "10",
+            "$dividerHeightPercentage": "34",
+            "$dividerLengthAtTop": "113.1",
+            "$dividerThickness": "2",
+            "$dividerWidthOfDividerEdge": "6"
+        },
+        "25% X-Divider, 75% Double Bin": {
+            "$binBottomThickness": "2",
+            "$binDepth": "86",
+            "$binHeightPct": "75",
+            "$binLeftChamfer": "12",
+            "$binLength": "86",
+            "$binRightChamfer": "12",
+            "$binWallThickness": "2",
+            "$chamferLength": "10",
+            "$dividerHeightPercentage": "25",
+            "$dividerLengthAtTop": "113.1",
+            "$dividerThickness": "2",
+            "$dividerWidthOfDividerEdge": "6"
+        }
+    },
+    "fileFormatVersion": "1"
+}
