@@ -11,15 +11,15 @@ module accessoryBaseWithPins(baseWidth, baseHeight, baseThickness) {
     $fn = 100;
     
     // Pin Parameters
-    pinDiameter = 10;
-    pinHeight = 10;
-    pinSpacingX = 22;
-    pinSpacingY = 34;
+    pinDiameter = pinDiameter();
+    pinHeight = pinHeight();
+    pinSpacingX = pinXSpacing();
+    pinSpacingY = pinYSpacing();
     cutoutThickness = 1.5;
 
     // Calculate number of pins
-    numPinsX = max(1, floor(baseWidth / pinSpacingX));
-    numPinsY = max(1, floor(baseHeight / pinSpacingY));
+    numPinsX = calculateColumnsOfPins(baseWidth);
+    numPinsY = calculateRowsOfPins(baseHeight);
 
     // Total span of pins
     totalSpanX = (numPinsX - 1) * pinSpacingX;
@@ -36,7 +36,7 @@ module accessoryBaseWithPins(baseWidth, baseHeight, baseThickness) {
                     difference() {
                         rotate([0, 180, 180])
                         color("orange")
-                        pin(pinDiameter, pinHeight, cutoutThickness);
+                        pin();
                     }
             }
     }
@@ -53,7 +53,7 @@ module accessoryBaseWithPins(baseWidth, baseHeight, baseThickness) {
 // - pinDiameter (number): The diameter of the pin.
 // - pinHeight (number): The height of the pin.
 // - cutoutThickness (number): The thickness of the washer-like cutout on the top of the pin.
-module pin(pinDiameter = 10, pinHeight = 10, cutoutThickness = 1.5) {
+module pin(pinDiameter = pinDiameter(), pinHeight = pinHeight(), cutoutThickness = pinCutoutThickness()) {
     $fn = 100;
     $innerD = 6;
     
@@ -74,3 +74,11 @@ module pin(pinDiameter = 10, pinHeight = 10, cutoutThickness = 1.5) {
         }
     }
 }
+
+function pinDiameter() = 10;
+function pinHeight() = 10;
+function pinXSpacing() = 22;
+function pinYSpacing() = 34;
+function pinCutoutThickness() = 1.5;
+function calculateRowsOfPins(distance) = max(1, ceil((distance-pinDiameter()) / pinYSpacing()));
+function calculateColumnsOfPins(distance) = max(1, ceil((distance-pinDiameter()) / pinXSpacing()));

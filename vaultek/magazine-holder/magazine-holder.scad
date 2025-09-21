@@ -1,5 +1,5 @@
 include <BOSL2/std.scad>
-include <functions.scad>
+include <../common/functions.scad>
 
 // The number of magazines wide that you want to store.
 $numberOfMagazinesWide = 4;
@@ -10,11 +10,14 @@ $numberOfMagazinesDeep = 2;
 // The height of the magazine holder (in mm).
 $holderHeight = 60; // [25:150]
 
-// The width of the magazine. (in mm)
-$magazineWidth = 15; // [7:150]
+// The thickness of the front, left, and right sides of the holder (in mm).
+$holderThickess = 3;
+
+// The width of the magazine (in mm).
+$magazineWidth = 15; // [7:200]
 
 // The magazine depth (in mm).
-$magazineDepth = 36; // [25:150]
+$magazineDepth = 36; // [7:200]
 
 // The amount og spacing between each magazine (in mm).
 $magazineSpacing = 4; // [2:12]
@@ -25,7 +28,7 @@ $magnetDepth = 2; // [0:3]
 // The diameter of the magnets.
 $magnetDiameter = 12; // [5:12]
 
-magazineHolder($numberOfMagazinesDeep, $numberOfMagazinesWide, $holderHeight, $magazineWidth, $magazineDepth, $magazineSpacing);
+magazineHolder($numberOfMagazinesDeep, $numberOfMagazinesWide, $holderHeight, $holderThickess, $magazineWidth, $magazineDepth, $magazineSpacing);
 
 // Module: magazineHolder
 // Creates a customizable magazine holder with slots for multiple magazines and optional magnet cutouts.
@@ -35,6 +38,7 @@ magazineHolder($numberOfMagazinesDeep, $numberOfMagazinesWide, $holderHeight, $m
 // - magazinesDeep (number): Number of magazines to store in depth (Y direction).
 // - magazinesWide (number): Number of magazines to store in width (X direction).
 // - holderHeight (number): Height of the magazine holder in mm.
+// - holderThickess (number): Thickness of the magazine holder in mm.
 // - magazineWidth (number): Width of each magazine in mm.
 // - magazineDepth (number): Depth of each magazine in mm.
 // - spacing (number): Space between magazines in mm.
@@ -44,16 +48,18 @@ magazineHolder($numberOfMagazinesDeep, $numberOfMagazinesWide, $holderHeight, $m
 // - Arranges magazine slots in a grid pattern.
 // - Adds rounded corners to the holder.
 // - Optionally creates cylindrical cutouts for magnets along the front edge.
-module magazineHolder(magazinesDeep, magazinesWide, holderHeight, magazineWidth, magazineDepth, spacing){
+module magazineHolder(magazinesDeep, magazinesWide, holderHeight, holderThickess, magazineWidth, magazineDepth, spacing){
     
     difference(){
         $totalWidth = magazinesWide * (magazineWidth + spacing) + spacing;
         $totalDepth = magazinesDeep * (magazineDepth + spacing) + spacing;
-    
+        
+        $cutoutDirection = $magazineWidth < $magazineDepth;
+        
         group(){
             color("blue")
             translate([0,-$totalDepth/2,0])
-            accessoryBaseWithPins($totalWidth-4, holderHeight + 8, 0);
+            accessoryBaseWithPins($totalWidth-4, holderHeight-4, 0);
 
             cuboid([$totalWidth, $totalDepth, holderHeight], rounding = 2, $fn = 50);
         }
@@ -66,15 +72,29 @@ module magazineHolder(magazinesDeep, magazinesWide, holderHeight, magazineWidth,
                 $newY = j * (magazineDepth + spacing);
                 translate([$newX, $startingY + $newY,-holderHeight/2+3])
                 #cube([magazineWidth,magazineDepth,holderHeight]);
+                
+                if(i == 1 && $cutoutDirection) {
+                    translate([-$startingX+spacing,$startingY + $newY + magazineDepth/6,-holderHeight/2+3])
+                    #cube([$totalWidth-spacing*2,magazineDepth*2/3,holderHeight]);
+                }
+                
+                if(j == 0 && !$cutoutDirection) {
+                    translate([$newX + magazineWidth/6,$startingY,-holderHeight/2+3])
+                    #cube([magazineWidth*2/3,$totalDepth-spacing*2,holderHeight]);
+                }
             }
         }
-        magnetCutouts = max(1, magazinesWide-1);
         
+        numPinsY = calculateRowsOfPins(holderHeight);
+        
+        magnetSpacingOffset = (numPinsY % 2)*pinDiameter();
+        
+        magnetCutouts = max(1, magazinesWide-1);
         $magnetSpacing = ($totalWidth - (magnetCutouts * $magnetDiameter))/(magnetCutouts+1);
         
         $startingCutoutX = -$totalWidth/2+$magnetDiameter/2 + $magnetSpacing;
         for(i = [0 : magnetCutouts-1]){
-            translate([i*($magnetSpacing+$magnetDiameter)+$startingCutoutX,-$totalDepth/2 + $magnetDepth/2,0])
+            translate([i*($magnetSpacing+$magnetDiameter)+$startingCutoutX,-$totalDepth/2 + $magnetDepth/2,magnetSpacingOffset])
             rotate([90,0,0])
             #cylinder(h = $magnetDepth, d = $magnetDiameter, center = true);
             

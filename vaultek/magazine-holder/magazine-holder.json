@@ -1,0 +1,135 @@
+{
+    "parameterSets": {
+        "design default values": {
+            "$holderHeight": "60",
+            "$magazineDepth": "34",
+            "$magazineSpacing": "7",
+            "$magazineWidth": "24",
+            "$magnetDepth": "2",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "4"
+        },
+        "glock-9mm-2x1": {
+            "$holderHeight": "60",
+            "$magazineDepth": "34",
+            "$magazineSpacing": "6",
+            "$magazineWidth": "24",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "1",
+            "$numberOfMagazinesWide": "2"
+        },
+        "glock-9mm-2x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "34",
+            "$magazineSpacing": "6",
+            "$magazineWidth": "24",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "2"
+        },
+        "glock-9mm-4x1": {
+            "$holderHeight": "60",
+            "$magazineDepth": "34",
+            "$magazineSpacing": "6",
+            "$magazineWidth": "24",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "1",
+            "$numberOfMagazinesWide": "4"
+        },
+        "glock-9mm-4x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "34",
+            "$magazineSpacing": "6",
+            "$magazineWidth": "24",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "4"
+        },
+        "glock-9mm-6x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "34",
+            "$magazineSpacing": "6",
+            "$magazineWidth": "24",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "6"
+        },
+        "1911-45acp-2x1": {
+            "$holderHeight": "60",
+            "$magazineDepth": "35",
+            "$magazineSpacing": "8",
+            "$magazineWidth": "14",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "1",
+            "$numberOfMagazinesWide": "2"
+        },
+        "1911-45acp-2x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "35",
+            "$magazineSpacing": "8",
+            "$magazineWidth": "14",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "2"
+        },
+        "1911-45acp-4x1": {
+            "$holderHeight": "60",
+            "$magazineDepth": "35",
+            "$magazineSpacing": "8",
+            "$magazineWidth": "14",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "1",
+            "$numberOfMagazinesWide": "4"
+        },
+        "1911-45acp-4x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "35",
+            "$magazineSpacing": "8",
+            "$magazineWidth": "14",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "4"
+        },
+        "1911-45acp-6x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "35",
+            "$magazineSpacing": "8",
+            "$magazineWidth": "14",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "6"
+        },
+        "ar15-.223-2x2": {
+            "$holderHeight": "60",
+            "$magazineDepth": "23",
+            "$magazineSpacing": "4",
+            "$magazineWidth": "65",
+            "$magnetDepth": "2",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "2"
+        },
+        "ar15-.223-2x1": {
+            "$holderHeight": "60",
+            "$magazineDepth": "23",
+            "$magazineSpacing": "4",
+            "$magazineWidth": "65",
+            "$magnetDepth": "2",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "2",
+            "$numberOfMagazinesWide": "1"
+        }
+    },
+    "fileFormatVersion": "1"
+}

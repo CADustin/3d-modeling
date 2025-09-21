@@ -1,4 +1,4 @@
-include <functions.scad>
+include <../common/functions.scad>
 
 // The Width of the accessory base
 $accessoryBaseWidth = 14; // [14:250]

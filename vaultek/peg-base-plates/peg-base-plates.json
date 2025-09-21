@@ -8,17 +8,17 @@
         "2x1-small": {
             "$accessoryBaseHeight": "14",
             "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "44"
+            "$accessoryBaseWidth": "34"
         },
         "4x2-small": {
-            "$accessoryBaseHeight": "68",
+            "$accessoryBaseHeight": "46",
             "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "88"
+            "$accessoryBaseWidth": "78"
         },
         "2x2-small": {
-            "$accessoryBaseHeight": "68",
+            "$accessoryBaseHeight": "46",
             "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "44"
+            "$accessoryBaseWidth": "34"
         }
     },
     "fileFormatVersion": "1"
