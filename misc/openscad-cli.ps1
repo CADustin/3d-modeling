@@ -24,6 +24,12 @@ else {
     $scadFiles | ForEach-Object { Write-Host $_.FullName }
 }
 
+# Record the start time of the entire script
+$scriptStartTime = Get-Date
+
+# Initialize a list to store summary information
+$summary = @()
+
 # Loop through each *.scad file and process its corresponding *.json file
 $scadFiles | ForEach-Object {
     $scadFile = $_.FullName
@@ -61,10 +67,11 @@ $scadFiles | ForEach-Object {
         $stlFileName = "${currentDate}_$($_.BaseName)_${presetName}.stl"
         $stlFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $stlFileName
 
+        # Measure the time taken to generate the STL file
+        $startTime = Get-Date
+
         # Call OpenSCAD to generate the STL file
         Write-Host "Generating STL for preset '$presetName'..."
-
-        # Use Start-Process to execute the command
 
         $openSCADPathClean = $openSCADPath -replace ' ', '` '
         $argList = @(
@@ -74,8 +81,31 @@ $scadFiles | ForEach-Object {
              $scadFile);
         Start-Process  -FilePath powershell.exe -ArgumentList $argList -NoNewWindow -Wait
 
-        Write-Host "STL file generated: $stlFilePath"
+        $endTime = Get-Date
+        $duration = ($endTime - $startTime).TotalSeconds
+
+        Write-Host "STL file generated: $stlFilePath in $duration seconds"
         Write-Host ""
+
+        # Add to summary
+        $summary += [PSCustomObject]@{
+            PresetName = $presetName
+            FilePath = $stlFilePath
+            DurationSeconds = [math]::Round($duration, 2)
+        }
     }
 }
+
+# Record the end time of the entire script
+$scriptEndTime = Get-Date
+$totalExecutionTime = ($scriptEndTime - $scriptStartTime).TotalSeconds
+
+# Output the summary
+Write-Host "Summary of Generated Files:"
+$summary | ForEach-Object {
+    Write-Host "Preset: $($_.PresetName), File: $($_.FilePath), Time: $($_.DurationSeconds) seconds"
+}
+
+# Output the total execution time
+Write-Host "Total Execution Time: $([math]::Round($totalExecutionTime, 2)) seconds"
 
