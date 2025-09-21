@@ -65,8 +65,9 @@ $scadFiles | ForEach-Object {
         }) -join " "
 
         # Construct the output STL file name
-        $currentDate = Get-Date -Format "yyyyMMdd"
-        $stlFileName = "${currentDate}_$($_.BaseName)_${presetName}.stl"
+        ##$currentDate = Get-Date -Format "yyyyMMdd"
+        ##$stlFileName = "${currentDate}_$($_.BaseName)_${presetName}.stl"
+        $stlFileName = "$($_.BaseName)_${presetName}.stl"
         $stlFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $stlFileName
 
         # Measure the time taken to generate the STL file
