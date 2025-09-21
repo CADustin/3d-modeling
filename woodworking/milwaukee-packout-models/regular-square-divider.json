@@ -41,6 +41,15 @@
             "$lengthAtTop": "88",
             "$thickness": "2",
             "$widthOfDividerEdge": "8"
+        },
+        "design default values": {
+            "$bottomNotchWidth": "40",
+            "$chamferLength": "10",
+            "$cutOutLocation": "1",
+            "$heightPercentage": "100",
+            "$lengthAtTop": "113.25",
+            "$thickness": "2",
+            "$widthOfDividerEdge": "6"
         }
     },
     "fileFormatVersion": "1",

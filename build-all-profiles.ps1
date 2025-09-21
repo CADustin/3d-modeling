@@ -1,11 +1,5 @@
-﻿# Define the folder containing the OpenSCAD files (current directory)
-$folderPath = Split-Path -Path $PSCommandPath
-
-# Get the current date
-$currentDate = Get-Date -Format "yyyyMMdd"
-
 # Find the path to openscad.exe
-$openSCADPath = Get-ChildItem -Path "C:\Program Files\OpenSCAD" -Recurse -Filter "openscad.exe" -ErrorAction SilentlyContinue -Force | Select-Object -First 1 -ExpandProperty FullName
+$openSCADPath = Get-ChildItem -Path "C:\Program Files\" -Recurse -Filter "openscad.com" -ErrorAction SilentlyContinue -Force | Select-Object -First 1 -ExpandProperty FullName
 
 if (-not $openSCADPath) {
     Write-Host "openscad.exe not found. Please ensure OpenSCAD is installed and the path is correct."
@@ -15,46 +9,109 @@ else {
     Write-Host "Found OpenSCAD at: $openSCADPath"
 }
 
-# Loop through each OpenSCAD file in the folder
-Get-ChildItem -Path $folderPath -Filter "*.scad" -Recurse | ForEach-Object {
-    $openSCADFile = $_.FullName
-    Write-Host "Processing: $openSCADFile"
+# Find all *.scad files in the current directory that also have a corresponding *.json file
+$scadFiles = Get-ChildItem -Path (Get-Location) -Filter "*.scad" -Recurse | Where-Object {
+    $jsonFile = Join-Path -Path $_.Directory.FullName -ChildPath "$($_.BaseName).json"
+    Test-Path $jsonFile
+}
 
-    $fileNameWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
+if (-not $scadFiles) {
+    Write-Host "No matching *.scad files with corresponding *.json files found."
+    exit
+}
+else {
+    Write-Host "Found matching *.scad files:"
+    $scadFiles | ForEach-Object { Write-Host $_.FullName }
+}
 
-    # Look for the corresponding JSON file for presets
-    $jsonFilePath = Join-Path -Path $_.Directory.FullName -ChildPath "$fileNameWithoutExtension.json"
-    if (-not (Test-Path $jsonFilePath)) {
-        Write-Host "No preset JSON file found for $openSCADFile. Skipping..."
-        return
-    }
+# Record the start time of the entire script
+$scriptStartTime = Get-Date
 
-    # Parse the JSON file to get the parameter sets
-    $jsonContent = Get-Content -Path $jsonFilePath -Raw | ConvertFrom-Json
+# Initialize a list to store summary information
+$summary = @()
+
+# Loop through each *.scad file and process its corresponding *.json file
+$scadFiles | ForEach-Object {
+    $scadFile = $_.FullName
+    $jsonFile = Join-Path -Path $_.Directory.FullName -ChildPath "$($_.BaseName).json"
+
+    # Output the name of the *.scad file being processed
+    Write-Host "Processing SCAD file: $scadFile"
+
+    # Read the JSON file
+    $jsonContent = Get-Content -Path $jsonFile -Raw | ConvertFrom-Json
     $parameterSets = $jsonContent.parameterSets
 
     if (-not $parameterSets) {
-        Write-Host "No parameter sets found in $jsonFilePath. Skipping..."
+        Write-Host "No parameter sets found in $jsonFile. Skipping..."
         return
     }
 
-    # Loop through each parameter set and generate the STL file
+    # Loop through each parameter set
     foreach ($presetName in $parameterSets.PSObject.Properties.Name) {
         $presetValues = $parameterSets.$presetName
 
+        # Skip parameter sets containing "design default values"
+        if ($presetName -like "*design default values*") {
+            Write-Host "Skipping preset '$presetName' (contains design default values)."
+            continue
+        }
+
         # Construct the -D arguments for all variables in the preset
         $dynamicArguments = ($presetValues.PSObject.Properties | ForEach-Object {
-            "-D $($_.Name)=$($presetValues.$($_.Name))"
+            if ($_.Value -ne "") {
+                "-D '$($_.Name)=`"$($presetValues.$($_.Name))`"'"
+            }
         }) -join " "
 
+        # Construct the output STL file name
+        $currentDate = Get-Date -Format "yyyyMMdd"
+        $stlFileName = "${currentDate}_$($_.BaseName)_${presetName}.stl"
+        $stlFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $stlFileName
+
+        # Measure the time taken to generate the STL file
+        $startTime = Get-Date
+
+        # Call OpenSCAD to generate the STL file
+        Write-Host "Generating STL for preset '$presetName'..."
+
+        # Debugging output
         Write-Host "Dynamic Arguments: $dynamicArguments"
 
-        $stlFileName = "${currentDate}_${fileNameWithoutExtension}_${presetName}.stl"
-        $stlFilePath = Join-Path -Path $folderPath -ChildPath $stlFileName
+        $openSCADPathClean = $openSCADPath -replace ' ', '` '
+        $argList = @(
+            ("&`"$openSCADPathClean`""), 
+            "-o $stlFilePath",
+             $dynamicArguments,
+             $scadFile);
+        Start-Process  -FilePath powershell.exe -ArgumentList $argList -NoNewWindow -Wait
 
-        # Generate the STL file using OpenSCAD
-        Write-Host "Exporting preset '$presetName' to $stlFilePath"
-        $scadArgs = @('-o', $stlFilePath) + $dynamicArguments.Split(' ') + $openSCADFile
-        & $openSCADPath @scadArgs
+        $endTime = Get-Date
+        $duration = ($endTime - $startTime).TotalSeconds
+
+        Write-Host "STL file generated: $stlFilePath in $duration seconds"
+        Write-Host ""
+
+        # Add to summary
+        $summary += [PSCustomObject]@{
+            PresetName = $presetName
+            FilePath = $stlFilePath
+            DurationSeconds = [math]::Round($duration, 2)
+        }
     }
 }
+
+# Record the end time of the entire script
+$scriptEndTime = Get-Date
+$totalExecutionTime = ($scriptEndTime - $scriptStartTime).TotalSeconds
+
+# Output the summary
+Write-Host "Summary of Generated Files:"
+$summary | ForEach-Object {
+    Write-Host "Preset: $($_.PresetName), File: $($_.FilePath), Time: $($_.DurationSeconds) seconds"
+}
+
+# Output the total execution time in minutes
+$totalExecutionTimeMinutes = ($totalExecutionTime / 60)
+Write-Host "Total Execution Time: $([math]::Round($totalExecutionTimeMinutes, 2)) minutes"
+

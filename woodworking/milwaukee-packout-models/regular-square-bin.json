@@ -1,6 +1,17 @@
 {
-    "parameterSets": "",
+    "parameterSets": {
+        "design default values": {
+            "$bottomThickness": "2",
+            "$depth": "86",
+            "$heightPct": "50",
+            "$leftChamfer": "12",
+            "$length": "86",
+            "$rightChamfer": "12",
+            "$wallThickness": "2"
+        }
+    },
     "fileFormatVersion": "1",
+    "parameterSets": "",
     "parameterSets": "",
     "parameterSets": ""
 }

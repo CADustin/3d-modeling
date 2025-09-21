@@ -61,7 +61,7 @@ module magazineHolder(magazinesDeep, magazinesWide, holderHeight, holderThickess
             translate([0,-$totalDepth/2,0])
             accessoryBaseWithPins($totalWidth-4, holderHeight-4, 0);
 
-            cuboid([$totalWidth, $totalDepth, holderHeight], rounding = 2, $fn = 50);
+            cuboid([$totalWidth, $totalDepth, holderHeight], rounding = 1, $fn = 50);
         }
         
         $startingX = $totalWidth/2 - magazineWidth - holderThickess;

@@ -69,6 +69,20 @@
             "$dividerLengthAtTop": "113.1",
             "$dividerThickness": "2",
             "$dividerWidthOfDividerEdge": "6"
+        },
+        "design default values": {
+            "$binBottomThickness": "2",
+            "$binDepth": "86",
+            "$binHeightPct": "50",
+            "$binLeftChamfer": "12",
+            "$binLength": "86",
+            "$binRightChamfer": "12",
+            "$binWallThickness": "2",
+            "$chamferLength": "10",
+            "$dividerHeightPercentage": "50",
+            "$dividerLengthAtTop": "113.1",
+            "$dividerThickness": "2",
+            "$dividerWidthOfDividerEdge": "6"
         }
     },
     "fileFormatVersion": "1"
