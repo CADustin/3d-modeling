@@ -51,8 +51,8 @@ magazineHolder($numberOfMagazinesDeep, $numberOfMagazinesWide, $holderHeight, $h
 module magazineHolder(magazinesDeep, magazinesWide, holderHeight, holderThickess, magazineWidth, magazineDepth, spacing){
     
     difference(){
-        $totalWidth = magazinesWide * (magazineWidth + spacing) + spacing;
-        $totalDepth = magazinesDeep * (magazineDepth + spacing) + spacing;
+        $totalWidth = (magazinesWide - 1) * (magazineWidth + spacing) + magazineWidth + holderThickess*2;
+        $totalDepth = magazinesDeep * (magazineDepth + spacing) + holderThickess;
         
         $cutoutDirection = $magazineWidth < $magazineDepth;
         
@@ -64,9 +64,9 @@ module magazineHolder(magazinesDeep, magazinesWide, holderHeight, holderThickess
             cuboid([$totalWidth, $totalDepth, holderHeight], rounding = 2, $fn = 50);
         }
         
-        $startingX = $totalWidth/2;
+        $startingX = $totalWidth/2 - magazineWidth - holderThickess;
         $startingY = -$totalDepth/2 + spacing;
-        for(i = [1 : magazinesWide]){
+        for(i = [0 : magazinesWide - 1]){
             for(j = [0 : magazinesDeep - 1]){
                 $newX = $startingX - i * (magazineWidth + spacing);
                 $newY = j * (magazineDepth + spacing);
@@ -74,13 +74,16 @@ module magazineHolder(magazinesDeep, magazinesWide, holderHeight, holderThickess
                 #cube([magazineWidth,magazineDepth,holderHeight]);
                 
                 if(i == 1 && $cutoutDirection) {
-                    translate([-$startingX+spacing,$startingY + $newY + magazineDepth/6,-holderHeight/2+3])
-                    #cube([$totalWidth-spacing*2,magazineDepth*2/3,holderHeight]);
+                    //translate([-$startingX+spacing,$startingY + $newY + magazineDepth/6,-holderHeight/2+3])
+                   
+                    translate([-$startingX - magazineWidth,$startingY + $newY + magazineDepth/6,-holderHeight/2+3])
+                    #cube([$totalWidth-holderThickess*2,magazineDepth*2/3,holderHeight]);
                 }
                 
                 if(j == 0 && !$cutoutDirection) {
+                   // translate([$newX + magazineWidth/6,$startingY,-holderHeight/2+3])
                     translate([$newX + magazineWidth/6,$startingY,-holderHeight/2+3])
-                    #cube([magazineWidth*2/3,$totalDepth-spacing*2,holderHeight]);
+                    #cube([magazineWidth*2/3,$totalDepth-holderThickess-spacing,holderHeight]);
                 }
             }
         }
