@@ -1,11 +1,11 @@
 {
     "parameterSets": {
-        "70 Sheet, 100mm Lint Roll": {
+        "70-Sheet_100mm-Lint-Roll": {
             "$rollerTubeDiameter": "38.2",
             "$rollerTubeLength": "100",
             "$rollerTubeOutterDiameter": "50"
         },
-        "120 Sheet, 100mm Lint Roll": {
+        "120-Sheet_100mm-Lint-Roll": {
             "$rollerTubeDiameter": "38.2",
             "$rollerTubeLength": "100",
             "$rollerTubeOutterDiameter": "70"
