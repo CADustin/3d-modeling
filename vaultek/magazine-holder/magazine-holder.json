@@ -129,6 +129,28 @@
             "$magnetDiameter": "12",
             "$numberOfMagazinesDeep": "2",
             "$numberOfMagazinesWide": "1"
+        },
+        "ar15-.223-1x2": {
+            "$holderHeight": "60",
+            "$holderThickess": "3",
+            "$magazineDepth": "65",
+            "$magazineSpacing": "4",
+            "$magazineWidth": "23",
+            "$magnetDepth": "2",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "1",
+            "$numberOfMagazinesWide": "2"
+        },
+        "ar15-.223-1x4": {
+            "$holderHeight": "60",
+            "$holderThickess": "3",
+            "$magazineDepth": "65",
+            "$magazineSpacing": "4",
+            "$magazineWidth": "23",
+            "$magnetDepth": "2",
+            "$magnetDiameter": "12",
+            "$numberOfMagazinesDeep": "1",
+            "$numberOfMagazinesWide": "4"
         }
     },
     "fileFormatVersion": "1"
