@@ -57,7 +57,7 @@ $scadFiles | ForEach-Object {
 
         $argumentsList = @(
             ($openSCADPath -replace ' ', '` '),
-            "-o", ($stlFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-'),
+            "-o", ($stlFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
             "-p", ($jsonFile -replace ' ', '` '),
             "-P", ($presetName -replace ' ', '` '),
             $scadFile
