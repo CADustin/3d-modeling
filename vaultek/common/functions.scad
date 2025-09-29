@@ -35,7 +35,6 @@ module accessoryBaseWithPins(baseWidth, baseHeight, baseThickness) {
                 translate([xOffset, zOffset, pinHeight / 2 + baseThickness / 2])
                     difference() {
                         rotate([0, 180, 180])
-                        color("orange")
                         pin();
                     }
             }
@@ -73,6 +72,29 @@ module pin(pinDiameter = pinDiameter(), pinHeight = pinHeight(), cutoutThickness
             cube([pinDiameter, pinDiameter / 2, cutoutThickness * 2]);
         }
     }
+}
+
+// Module: barrelHolderShelf
+// Creates a shelf designed to slip over the barrel holders.
+//
+// Parameters:
+// - shelfWidth (number): The total width of the shelf (in mm).
+// - shelfDepth (number): The depth of the shelf (in mm).
+// - shelfThickness (number): The thickness shelf (in mm).
+// - notchWidth (number): The width of the notch used to slip over the barrel holder.
+// - notchHeight (number): The height of the notch used to slip over the barrel holder.
+module barrelHolderShelf(shelfWidth, shelfDepth, shelfThickness, notchWidth, notchHeight) {
+linear_extrude(shelfDepth)
+polygon(points=[
+    [0,0], 
+    [shelfWidth,0], 
+    [shelfWidth,-shelfThickness], 
+    [shelfWidth/2+notchWidth/2,-notchHeight-shelfThickness],
+    [shelfWidth/2+notchWidth/2,-shelfThickness],
+    [shelfWidth/2-notchWidth/2,-shelfThickness],
+    [shelfWidth/2-notchWidth/2,-notchHeight-shelfThickness],
+    [0,-shelfThickness], 
+]);
 }
 
 function pinDiameter() = 10;

@@ -1,0 +1,65 @@
+{
+    "parameterSets": {
+        "20mm-barrel_20mm-spacing": {
+            "$barrelDiameter": "20",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "20"
+        },
+        "20mm-barrel_60mm-spacing": {
+            "$barrelDiameter": "20",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "60"
+        },
+        "20mm-barrel_95mm-spacing": {
+            "$barrelDiameter": "20",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "95"
+        },
+		"25mm-barrel_20mm-spacing": {
+            "$barrelDiameter": "25",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "20"
+        },
+        "25mm-barrel_60mm-spacing": {
+            "$barrelDiameter": "25",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "60"
+        },
+        "25mm-barrel_95mm-spacing": {
+            "$barrelDiameter": "25",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "95"
+        },
+        "30mm-barrel_20mm-spacing": {
+            "$barrelDiameter": "30",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "20"
+        },
+        "30mm-barrel_60mm-spacing": {
+            "$barrelDiameter": "30",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "60"
+        },
+        "30mm-barrel_95mm-spacing": {
+            "$barrelDiameter": "30",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "95"
+        },
+        "20mm-barreel_10mm-spacing": {
+            "$barrelDiameter": "20",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "10"
+        },
+        "20mm-barrel_10mm-spacing_short": {
+            "$barrelDiameter": "20",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "10"
+        },
+        "20mm-barrel_10mm-spacing": {
+            "$barrelDiameter": "20",
+            "$holderHeight": "46",
+            "$spacingToBarrel": "10"
+        }
+    },
+    "fileFormatVersion": "1"
+}

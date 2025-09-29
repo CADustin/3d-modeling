@@ -49,22 +49,55 @@ $scadFiles | ForEach-Object {
         # Construct the output STL file name
         ##$currentDate = Get-Date -Format "yyyyMMdd"
         ##$stlFileName = "${currentDate}_$($_.BaseName)_${presetName}.stl"
-        $stlFileName = "$($_.BaseName)_${presetName}.stl"
-        $stlFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $stlFileName
+        # # $stlFileName = "$($_.BaseName)_${presetName}.stl"
+        # # $stlFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $stlFileName
 
-        # Call OpenSCAD to generate the STL file
-        Write-Host "Generating STL for preset '$presetName'..."
+        # # # Call OpenSCAD to generate the STL file
+        # # Write-Host "Generating STL for preset '$presetName'..."
 
-        $argumentsList = @(
+        # # $stlArgumentsList = @(
+        # #     ($openSCADPath -replace ' ', '` '),
+        # #     "-o", ($stlFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
+        # #     "-p", ($jsonFile -replace ' ', '` '),
+        # #     "-P", ($presetName -replace ' ', '` '),
+        # #     $scadFile
+        # # )
+        # # Start-Process -FilePath powershell.exe -ArgumentList $stlArgumentsList -NoNewWindow -Wait
+
+        # # Write-Host "STL file generated: $stlFileName"
+		
+		# Call OpenSCAD to generate the 3MF file
+        Write-Host "Generating 3MF for preset '$presetName'..."
+		$3mfFileName = "$($_.BaseName)_${presetName}.3mf"
+        $3mfFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $3mfFileName
+
+        $3mfArgumentsList = @(
             ($openSCADPath -replace ' ', '` '),
-            "-o", ($stlFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
+            "-o", ($3mfFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
+			
             "-p", ($jsonFile -replace ' ', '` '),
             "-P", ($presetName -replace ' ', '` '),
             $scadFile
         )
-        Start-Process -FilePath powershell.exe -ArgumentList $argumentsList -NoNewWindow -Wait
+        Start-Process -FilePath powershell.exe -ArgumentList $3mfArgumentsList -NoNewWindow -Wait
 
-        Write-Host "STL file generated: $stlFilePath"
+        Write-Host "3MF file generated: $3mfFileName"
+		
+		# Call OpenSCAD to generate the PNG file
+		Write-Host "Generating PNG for preset '$presetName'..."
+		$pngFileName = "$($_.BaseName)_${presetName}.png"
+        $pngFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $pngFileName
+		
+        $pngArgumentsList = @(
+            ($openSCADPath -replace ' ', '` '),
+            "-o", ($pngFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
+            "-p", ($jsonFile -replace ' ', '` '),
+            "-P", ($presetName -replace ' ', '` '),
+            $scadFile
+        )
+        Start-Process -FilePath powershell.exe -ArgumentList $pngArgumentsList -NoNewWindow -Wait
+
+        Write-Host "PNG file generated: $pngFileName"
         Write-Host ""
     }
 }
