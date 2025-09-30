@@ -2,7 +2,7 @@
 thickness = 3; // [2:8]
 
 // The depth of the sides that will be on the outsides of the drawers (in mm).
-sideDepth = 5; // [5:25]
+sideDepth = 10; // [5:25]
 
 // The depth of the inside of the tray (in mm).
 trayDepth = 19; // [5:200]
@@ -11,12 +11,12 @@ trayDepth = 19; // [5:200]
 trayWidth = 40; // [20:200]
 
 // An offset applied to angle the bottom of the tray inwards, creating slight slopes on the left and right side (in mm).
-$offset = 0; // [0:10]
+offset = 0; // [0:10]
 
 {}
 
+// Parameters for the US General Series 2 Drawers
 $drawerID = 304;
-
 $drawerOD = 310;
 
 $metal = ($drawerOD - $drawerID) / 2;
@@ -24,8 +24,8 @@ $metal = ($drawerOD - $drawerID) / 2;
 $trayPoints=[
     [0,0],
     [thickness + $metal + thickness, 0],
-    [thickness + $metal + thickness + $offset, trayDepth],
-    [thickness + $metal + thickness + ($drawerID - thickness * 2 - $offset), trayDepth],
+    [thickness + $metal + thickness + offset, trayDepth],
+    [thickness + $metal + thickness + ($drawerID - thickness * 2 - offset), trayDepth],
     [thickness + $metal + thickness + ($drawerID - thickness * 2), 0],
 
     [(thickness + $metal + thickness)*2 + ($drawerID - thickness * 2), 0],
@@ -34,8 +34,8 @@ $trayPoints=[
     [thickness*2 + $metal*2 + thickness*1 + ($drawerID - thickness * 2), thickness],
     [thickness*2 + $metal*1 + thickness*1 + ($drawerID - thickness * 2), thickness],
 
-    [thickness + $metal + $drawerID- $offset, thickness + trayDepth],
-    [thickness + $metal + $offset, thickness + trayDepth],
+    [thickness + $metal + $drawerID- offset, thickness + trayDepth],
+    [thickness + $metal + offset, thickness + trayDepth],
     [thickness + $metal, thickness],
     [thickness, thickness], // 14
     [thickness, thickness+sideDepth], //15
@@ -49,8 +49,8 @@ polygon($trayPoints);
 $sides = [
     [0,0],
     [$drawerID,0],
-    [$drawerID-$offset,trayDepth+thickness],
-    [$offset,trayDepth+thickness],
+    [$drawerID-offset,trayDepth+thickness],
+    [offset,trayDepth+thickness],
 ];
 
 //color("green")
