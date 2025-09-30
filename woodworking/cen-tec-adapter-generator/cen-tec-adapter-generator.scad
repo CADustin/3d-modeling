@@ -1,3 +1,10 @@
+// The inner diameter of the adapter (in mm).
+innerDiameter = 30; // [15:60]
+
+{}
+
+centecHoseAdapter(innerDiameter);
+
 //
 // taperedHoseAdapter.scad
 //
@@ -14,7 +21,6 @@
 //   taperLength  : axial length of the topConnectionLengthoped (taper) section
 //   $fn            : resolution for rotate_extrude()
 //
-
 module taperedHoseAdapter(
     thickness     = 2,
     innerDiameter1      = 20,
@@ -89,8 +95,6 @@ module centecHoseAdapter(
         cylinder(h = 100, d = cutoutDia, center = true, $fn = 100);
     }
 }
-
-centecHoseAdapter(43);
 
 
 
