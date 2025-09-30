@@ -1,0 +1,26 @@
+{
+    "parameterSets": {
+        "19mm-deep_40mm-wide": {
+            "$offset": "0",
+            "sideDepth": "5",
+            "thickness": "3",
+            "trayDepth": "19",
+            "trayWidth": "40"
+        },
+        "95mm-deep_115mm-wide": {
+            "$offset": "0",
+            "sideDepth": "15",
+            "thickness": "5",
+            "trayDepth": "95",
+            "trayWidth": "115"
+        },
+        "19mm-deep_80mm-wide": {
+            "$offset": "0",
+            "sideDepth": "5",
+            "thickness": "3",
+            "trayDepth": "19",
+            "trayWidth": "80"
+        }
+    },
+    "fileFormatVersion": "1"
+}

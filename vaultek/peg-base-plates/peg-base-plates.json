@@ -1,24 +1,24 @@
 {
     "parameterSets": {
         "1x1-small": {
-            "$accessoryBaseHeight": "14",
-            "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "14"
+            "accessoryBaseHeight": "14",
+            "accessoryBaseThickness": "2",
+            "accessoryBaseWidth": "14"
         },
         "2x1-small": {
-            "$accessoryBaseHeight": "14",
-            "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "34"
+            "accessoryBaseHeight": "14",
+            "accessoryBaseThickness": "2",
+            "accessoryBaseWidth": "34"
         },
         "4x2-small": {
-            "$accessoryBaseHeight": "46",
-            "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "78"
+            "accessoryBaseHeight": "46",
+            "accessoryBaseThickness": "2",
+            "accessoryBaseWidth": "78"
         },
         "2x2-small": {
-            "$accessoryBaseHeight": "46",
-            "$accessoryBaseThickness": "2",
-            "$accessoryBaseWidth": "34"
+            "accessoryBaseHeight": "46",
+            "accessoryBaseThickness": "2",
+            "accessoryBaseWidth": "34"
         }
     },
     "fileFormatVersion": "1"

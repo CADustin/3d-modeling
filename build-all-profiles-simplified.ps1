@@ -66,10 +66,13 @@ $scadFiles | ForEach-Object {
 
         # # Write-Host "STL file generated: $stlFileName"
 		
+        $outputFolder = Join-Path -Path $_.Directory.FullName -ChildPath "output"
+        New-Item -Path $outputFolder -ItemType Directory -Force | Out-Null
+
 		# Call OpenSCAD to generate the 3MF file
         Write-Host "Generating 3MF for preset '$presetName'..."
 		$3mfFileName = "$($_.BaseName)_${presetName}.3mf"
-        $3mfFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $3mfFileName
+        $3mfFilePath = Join-Path -Path $outputFolder -ChildPath $3mfFileName
 
         $3mfArgumentsList = @(
             ($openSCADPath -replace ' ', '` '),
@@ -86,7 +89,7 @@ $scadFiles | ForEach-Object {
 		# Call OpenSCAD to generate the PNG file
 		Write-Host "Generating PNG for preset '$presetName'..."
 		$pngFileName = "$($_.BaseName)_${presetName}.png"
-        $pngFilePath = Join-Path -Path $_.Directory.FullName -ChildPath $pngFileName
+        $pngFilePath = Join-Path -Path $outputFolder -ChildPath $pngFileName
 		
         $pngArgumentsList = @(
             ($openSCADPath -replace ' ', '` '),

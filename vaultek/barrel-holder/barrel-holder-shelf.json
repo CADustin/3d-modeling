@@ -1,46 +1,46 @@
 {
     "parameterSets": {
         "20mm-barrel_shelf-80mmx95mm": {
-            "$barrelDiameter": "20",
-            "$notchHeight": "10",
-            "$shelfDepth": "95",
-            "$shelfThickness": "3",
-            "$shelfWidth": "80"
+            "barrelDiameter": "20",
+            "notchHeight": "10",
+            "shelfDepth": "95",
+            "shelfThickness": "3",
+            "shelfWidth": "80"
         },
         "20mm-barrel_shelf-80mmx60mm": {
-            "$barrelDiameter": "20",
-            "$notchHeight": "10",
-            "$shelfDepth": "60",
-            "$shelfThickness": "3",
-            "$shelfWidth": "80"
+            "barrelDiameter": "20",
+            "notchHeight": "10",
+            "shelfDepth": "60",
+            "shelfThickness": "3",
+            "shelfWidth": "80"
         },
 		"25mm-barrel_shelf-80mmx95mm": {
-            "$barrelDiameter": "25",
-            "$notchHeight": "10",
-            "$shelfDepth": "95",
-            "$shelfThickness": "3",
-            "$shelfWidth": "80"
+            "barrelDiameter": "25",
+            "notchHeight": "10",
+            "shelfDepth": "95",
+            "shelfThickness": "3",
+            "shelfWidth": "80"
         },
         "25mm-barrel_shelf-80mmx60mm": {
-            "$barrelDiameter": "25",
-            "$notchHeight": "10",
-            "$shelfDepth": "60",
-            "$shelfThickness": "3",
-            "$shelfWidth": "80"
+            "barrelDiameter": "25",
+            "notchHeight": "10",
+            "shelfDepth": "60",
+            "shelfThickness": "3",
+            "shelfWidth": "80"
         },
 		"30mm-barrel_shelf-80mmx95mm": {
-            "$barrelDiameter": "30",
-            "$notchHeight": "10",
-            "$shelfDepth": "95",
-            "$shelfThickness": "3",
-            "$shelfWidth": "80"
+            "barrelDiameter": "30",
+            "notchHeight": "10",
+            "shelfDepth": "95",
+            "shelfThickness": "3",
+            "shelfWidth": "80"
         },
         "30mm-barrel_shelf-80mmx60mm": {
-            "$barrelDiameter": "30",
-            "$notchHeight": "10",
-            "$shelfDepth": "60",
-            "$shelfThickness": "3",
-            "$shelfWidth": "80"
+            "barrelDiameter": "30",
+            "notchHeight": "10",
+            "shelfDepth": "60",
+            "shelfThickness": "3",
+            "shelfWidth": "80"
         }
     },
     "fileFormatVersion": "1"
