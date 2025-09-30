@@ -21,6 +21,7 @@ $drawerOD = 310;
 
 $metal = ($drawerOD - $drawerID) / 2;
 
+// The points that make up the tray's body/shape.
 $trayPoints=[
     [0,0],
     [thickness + $metal + thickness, 0],
@@ -28,37 +29,36 @@ $trayPoints=[
     [thickness + $metal + thickness + ($drawerID - thickness * 2 - offset), trayDepth],
     [thickness + $metal + thickness + ($drawerID - thickness * 2), 0],
 
-    [(thickness + $metal + thickness)*2 + ($drawerID - thickness * 2), 0],
-    [(thickness + $metal + thickness)*2 + ($drawerID - thickness * 2) , sideDepth],
-    [thickness*2 + $metal*2 + thickness*1 + ($drawerID - thickness * 2), sideDepth],
-    [thickness*2 + $metal*2 + thickness*1 + ($drawerID - thickness * 2), thickness],
-    [thickness*2 + $metal*1 + thickness*1 + ($drawerID - thickness * 2), thickness],
+    [(thickness + $metal + thickness) * 2 + ($drawerID - thickness * 2), 0],
+    [(thickness + $metal + thickness) * 2 + ($drawerID - thickness * 2), sideDepth],
+    [thickness * 2 + $metal * 2 + thickness + ($drawerID - thickness * 2), sideDepth],
+    [thickness * 2 + $metal * 2 + thickness + ($drawerID - thickness * 2), thickness],
+    [thickness * 2 + $metal + thickness + ($drawerID - thickness * 2), thickness],
 
-    [thickness + $metal + $drawerID- offset, thickness + trayDepth],
+    [thickness + $metal + $drawerID - offset, thickness + trayDepth],
     [thickness + $metal + offset, thickness + trayDepth],
     [thickness + $metal, thickness],
-    [thickness, thickness], // 14
-    [thickness, thickness+sideDepth], //15
+    [thickness, thickness],
+    [thickness, thickness+sideDepth],
 
     [0, thickness+sideDepth],
+];
+
+// The sides of the tray.
+$sides = [
+    [0, 0],
+    [$drawerID, 0],
+    [$drawerID - offset,trayDepth + thickness],
+    [offset, trayDepth + thickness],
 ];
 
 linear_extrude(trayWidth + thickness * 2)
 polygon($trayPoints);
 
-$sides = [
-    [0,0],
-    [$drawerID,0],
-    [$drawerID-offset,trayDepth+thickness],
-    [offset,trayDepth+thickness],
-];
-
-//color("green")
-translate([thickness + $metal,0,0])
+translate([thickness + $metal, 0, 0])
 linear_extrude(thickness)
 polygon($sides);
 
-//color("red")
-translate([thickness + $metal,0,trayWidth + thickness])
+translate([thickness + $metal, 0, trayWidth + thickness])
 linear_extrude(thickness)
 polygon($sides);
