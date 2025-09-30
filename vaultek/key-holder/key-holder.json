@@ -1,0 +1,23 @@
+{
+    "parameterSets": {
+        "4hooks-3pegs": {
+            "depth": "5",
+            "height": "10",
+            "pegsHigh": "3",
+            "thickness": "5"
+        },
+        "6hooks-5pegs": {
+            "depth": "5",
+            "height": "10",
+            "pegsHigh": "5",
+            "thickness": "5"
+        },
+        "1hook-1peg": {
+            "depth": "5",
+            "height": "10",
+            "pegsHigh": "1",
+            "thickness": "5"
+        }
+    },
+    "fileFormatVersion": "1"
+}
