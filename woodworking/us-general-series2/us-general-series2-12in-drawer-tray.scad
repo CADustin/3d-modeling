@@ -13,11 +13,14 @@ trayWidth = 40; // [20:200]
 // An offset applied to angle the bottom of the tray inwards, creating slight slopes on the left and right side (in mm).
 offset = 0; // [0:10]
 
+// Print with the bottom of the tray on the print bed (if possible).
+printBottomDown = true;
+
 {}
 
 // Parameters for the US General Series 2 Drawers
-$drawerID = 304;
-$drawerOD = 310;
+$drawerID = 304; // 20250930: 302-305mm
+$drawerOD = 310; // 20250930: 310-312mm ... Might need to take many more measurements if people have fit issues.
 
 $metal = ($drawerOD - $drawerID) / 2;
 
@@ -52,13 +55,19 @@ $sides = [
     [offset, trayDepth + thickness],
 ];
 
-linear_extrude(trayWidth + thickness * 2)
-polygon($trayPoints);
 
-translate([thickness + $metal, 0, 0])
-linear_extrude(thickness)
-polygon($sides);
+$finalRotation = printBottomDown ? -90 : 0;
 
-translate([thickness + $metal, 0, trayWidth + thickness])
-linear_extrude(thickness)
-polygon($sides);
+rotate([$finalRotation,0,0])
+group() {
+    linear_extrude(trayWidth + thickness * 2)
+    polygon($trayPoints);
+
+    translate([thickness + $metal, 0, 0])
+    linear_extrude(thickness)
+    polygon($sides);
+
+    translate([thickness + $metal, 0, trayWidth + thickness])
+    linear_extrude(thickness)
+    polygon($sides);
+}

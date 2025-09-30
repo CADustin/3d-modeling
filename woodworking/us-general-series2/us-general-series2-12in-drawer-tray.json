@@ -1,12 +1,5 @@
 {
     "parameterSets": {
-        "95mm-deep_115mm-wide": {
-            "$offset": "0",
-            "sideDepth": "15",
-            "thickness": "5",
-            "trayDepth": "95",
-            "trayWidth": "115"
-        },
         "19mm-deep_40mm-wide": {
             "offset": "0",
             "sideDepth": "10",
@@ -20,6 +13,37 @@
             "thickness": "3",
             "trayDepth": "19",
             "trayWidth": "80"
+        },
+        "95mm-deep_115mm-wide": {
+            "$offset": "0",
+            "sideDepth": "15",
+            "thickness": "5",
+            "trayDepth": "95",
+            "trayWidth": "115"
+        },
+        "95mm-deep_115mm-wide_onside": {
+            "offset": "0",
+            "printBottomDown": "false",
+            "sideDepth": "15",
+            "thickness": "5",
+            "trayDepth": "95",
+            "trayWidth": "115"
+        },
+        "19mm-deep_80mm-wide_onside": {
+            "offset": "0",
+            "printBottomDown": "false",
+            "sideDepth": "10",
+            "thickness": "3",
+            "trayDepth": "19",
+            "trayWidth": "80"
+        },
+        "19mm-deep_40mm-wide_onside": {
+            "offset": "0",
+            "printBottomDown": "false",
+            "sideDepth": "10",
+            "thickness": "3",
+            "trayDepth": "19",
+            "trayWidth": "40"
         }
     },
     "fileFormatVersion": "1"
