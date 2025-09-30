@@ -1,6 +1,6 @@
 {
     "parameterSets": {
-        "Square X-Divider, 100% Depth, Top Notched": {
+        "Square X-Divider, 100p Depth, Top Notched": {
             "$bottomNotchHeight": "2",
             "$bottomNotchWidth": "40",
             "$chamferLength": "10",
@@ -11,7 +11,7 @@
             "$thickness": "2",
             "$widthOfDividerEdge": "6"
         },
-        "Square X-Divider, 100% Depth, Bottom Notched": {
+        "Square X-Divider, 100p Depth, Bottom Notched": {
             "$bottomNotchHeight": "2",
             "$bottomNotchWidth": "40",
             "$chamferLength": "10",
@@ -22,7 +22,7 @@
             "$thickness": "2",
             "$widthOfDividerEdge": "6"
         },
-        "Square X Divider, 100 Depth, No Notch": {
+        "Square X-Divider 100p Depth, No Notch": {
             "$bottomNotchHeight": "2",
             "$bottomNotchWidth": "40",
             "$chamferLength": "10",
@@ -33,7 +33,7 @@
             "$thickness": "2",
             "$widthOfDividerEdge": "6"
         },
-        "Square Divider, 100% Depth, Top Notched": {
+        "Square X-Divider 100p Depth, Top Notched": {
             "$bottomNotchWidth": "30",
             "$chamferLength": "10",
             "$cutOutLocation": "-1",

@@ -1,6 +1,6 @@
 {
     "parameterSets": {
-        "75% X-Divider, 25% Double Bin": {
+        "75p X-Divider Double Bin": {
             "$binBottomThickness": "2",
             "$binDepth": "86",
             "$binHeightPct": "25",
@@ -14,7 +14,7 @@
             "$dividerThickness": "2",
             "$dividerWidthOfDividerEdge": "6"
         },
-        "64% X-Divider, 33% Double Bin": {
+        "66p X-Divider Double Bin": {
             "$binBottomThickness": "2",
             "$binDepth": "86",
             "$binHeightPct": "33",
@@ -28,7 +28,7 @@
             "$dividerThickness": "2",
             "$dividerWidthOfDividerEdge": "6"
         },
-        "50% X-Divider, 50% Double Bin": {
+        "500 X-Divider Double Bin": {
             "$binBottomThickness": "2",
             "$binDepth": "86",
             "$binHeightPct": "50",
@@ -42,7 +42,7 @@
             "$dividerThickness": "2",
             "$dividerWidthOfDividerEdge": "6"
         },
-        "34% X-Divider, 66% Double Bin": {
+        "34p X-Divider Double Bin": {
             "$binBottomThickness": "2",
             "$binDepth": "86",
             "$binHeightPct": "66",
@@ -56,7 +56,7 @@
             "$dividerThickness": "2",
             "$dividerWidthOfDividerEdge": "6"
         },
-        "25% X-Divider, 75% Double Bin": {
+        "25p X-Divider Double Bin": {
             "$binBottomThickness": "2",
             "$binDepth": "86",
             "$binHeightPct": "75",
