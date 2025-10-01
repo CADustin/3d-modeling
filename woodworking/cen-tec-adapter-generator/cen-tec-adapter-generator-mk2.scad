@@ -76,12 +76,12 @@ module cenTecHoseAdapter(
     }
     
     $ringThickness = 3;
-    $suctionRingHeight = $cutoutHeight - 0.2;
-    #color("green")
+    $suctionRingHeight = $cutoutHeight - 0.1;
+    color("green")
     rotate([0,0,15])
     translate([0,0,-$startingOfCutout - $suctionRingHeight/2 - 1])
     rotate_extrude(angle = 325)
-    polygon([[$br-thickness-0.5,thickness],[$br,thickness], [$br,$suctionRingHeight], [$br-thickness-0.5,$suctionRingHeight]]);
+    polygon([[$br-thickness-0.8,thickness],[$br,thickness], [$br,$suctionRingHeight], [$br-thickness-0.8,$suctionRingHeight]]);
 }
 
 
