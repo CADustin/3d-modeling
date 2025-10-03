@@ -1,3 +1,29 @@
+/*
+Module: cenTecHoseAdapter
+Purpose:
+- Generate a 3D printable adapter that connects to a Cen-tec hose and provides a top connection with optional inner/outer diameter interpretation,
+  a tapered section, and an airflow/suction adjustment cutout and ring.
+
+Parameters:
+- topDia (number, default 25) — Top diameter. Interpreted as inner or outer depending on `topDiaIsForOutter`.
+- topDiaIsForOutter (bool, default false) — If true, `topDia` is treated as the outer diameter and reduced by `thickness` to compute inner diameter.
+- topLen (number, default 30) — Length of the top section.
+- thickness (number, default 2) — Wall thickness used for offsets and the ring.
+- taperLength (number, default 15) — Length of the tapered transition between bottom and top.
+- printFlowRingInline (bool, default true) — If true, the suction/flow ring is printed inline; otherwise, positioned separately.
+- fn (number, default 100) — The $fn setting used for cylinder detail.
+
+Behavior / Notes:
+- Computes a profile polygon and uses `rotate_extrude()` to create the rotational body.
+- Adds a suction adjustment cutout and a connection cutout for accessories.
+- Optionally prints an airflow ring created by `rotate_extrude()` and a knurled pattern produced by `knurl()`.
+- Centers the adapter on origin and orients it using `rotate()` calls so the final part sits correctly when exported.
+- Uses internal constants: bottom diameter (`$bottomDia` = 45.1) and bottom length (`$bottomLen` = 30).
+
+Example:
+- cenTecHoseAdapter(topDia = topDiameter, topDiaIsForOutter = topDiameterIsForOutter, topLen = topLength, thickness = topThickness, taperLength = taperLength, printFlowRingInline = printAirFlowRingInline, fn = 100);
+*/
+
 module cenTecHoseAdapter(
     topDia       = 25,
     topDiaIsForOutter = false,
@@ -125,6 +151,24 @@ cenTecHoseAdapter(
     fn = 100);
 
 
+
+/*
+Module: knurl
+Purpose:
+- Create a simple knurled ring by placing small rectangular teeth around a given ring radius and ring height.
+
+Parameters:
+- tooth_width (number, default 1.5) — Width of each tooth.
+- tooth_height (number, default 1) — Height of each tooth.
+- ring_radius (number, default 30) — Radial distance from the center to place teeth.
+- ring_height (number, default 10) — Height of the knurled ring (Z size).
+
+Behavior / Notes:
+- Places teeth at angles from 15° to 285° in 10° steps.
+- Each tooth is a small rotated cube placed at `ring_radius` and offset up by half the ring height plus tooth height to sit on the ring.
+- The rotation on each tooth creates the angled knurl appearance.
+- Designed to be used by `cenTecHoseAdapter` to provide grip on the airflow ring.
+*/
 
 module knurl(tooth_width=1.5, tooth_height=1, ring_radius=30, ring_height=10) {
     for (angle = [15 : 10 : 285]) {
