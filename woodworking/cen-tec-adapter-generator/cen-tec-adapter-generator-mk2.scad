@@ -137,7 +137,7 @@ module cenTecHoseAdapter(
         rotate_extrude(angle = 300)
         polygon([[$br-thickness-0.8,thickness],[$br + $ringThickness,thickness], [$br+ $ringThickness,$suctionRingHeight], [$br-thickness-0.8,$suctionRingHeight]]);
         
-        knurl(tooth_width=0.6, tooth_height=0.8, ring_radius=$br + $ringThickness, ring_height=$suctionRingHeight);
+        knurl(0.6, 0.8, $br + $ringThickness, $suctionRingHeight, 15, 285, 10);
     }
 }
 
@@ -147,22 +147,25 @@ Purpose:
 - Create a simple knurled ring by placing small rectangular teeth around a given ring radius and ring height.
 
 Parameters:
-- tooth_width (number) — Width of each tooth.
-- tooth_height (number) — Height of each tooth.
-- ring_radius (number) — Radial distance from the center to place teeth.
-- ring_height (number) — Height of the knurled ring (Z size).
+- toothWidth (number) — Width of each tooth.
+- toothHeight (number) — Height of each tooth.
+- ringRadius (number) — Radial distance from the center to place teeth.
+- ringHeight (number) — Height of the knurled ring (Z size).
+- startAngle (number) - Starting angle (in degrees).
+- stopAngle (number) - Stopping angle (in degrees).
+- spacingInDegrees (number) - Spacing in degrees between each knurl.
 
 Behavior / Notes:
 - Places teeth at angles from 15° to 285° in 10° steps.
-- Each tooth is a small rotated cube placed at `ring_radius` and offset up by half the ring height plus tooth height to sit on the ring.
+- Each tooth is a small rotated cube placed at `ringRadius` and offset up by half the ring height plus tooth height to sit on the ring.
 - The rotation on each tooth creates the angled knurl appearance.
 - Designed to be used by `cenTecHoseAdapter` to provide grip on the airflow ring.
 */
-module knurl(tooth_width, tooth_height, ring_radius, ring_height) {
-    for (angle = [15 : 10 : 285]) {
+module knurl(toothWidth, toothHeight, ringRadius, ringHeight, startAngle, stopAngle, spacingInDegrees) {
+    for (angle = [startAngle : spacingInDegrees : stopAngle]) {
         rotate([0, 0, angle])
-        translate([ring_radius, 0, ring_height/2+tooth_height])
+        translate([ringRadius, 0, ringHeight/2+toothHeight])
         rotate([45, 0, 0])
-        cube([tooth_width, tooth_width, ring_height], center=true);
+        cube([toothWidth, toothWidth, ringHeight], center=true);
     }
 }
