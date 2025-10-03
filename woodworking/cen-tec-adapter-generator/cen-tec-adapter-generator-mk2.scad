@@ -1,3 +1,30 @@
+// The top diameter of the top dust adapter.
+topDiameter = 32; // [10:55]
+
+// True calculates the size assuming the "topDiameter" is the Outter Diameter -- otherwise, its treated as the Inner Diameter.
+topDiameterIsForOutter = false;
+
+// The top part of the adapter's length (in mm).
+topLength = 10; // [5:100]
+
+// The thickness of the top part of the adapter (in mm).
+topThickness = 2; // [1:8]
+
+// The length of the taper between the lower and upper part of the adapter (in mm).
+taperLength = 15; // [0:25]
+
+// True prints the Airflow control ring inline.
+printAirFlowRingInline = false;
+
+cenTecHoseAdapter(
+    topDia       = topDiameter,
+    topDiaIsForOutter = topDiameterIsForOutter,
+    topLen       = topLength,
+    thickness    = topThickness,
+    taperLength  = taperLength,
+    printFlowRingInline = printAirFlowRingInline,
+    fn = 100);
+
 /*
 Module: cenTecHoseAdapter
 Purpose:
@@ -13,17 +40,9 @@ Parameters:
 - printFlowRingInline (bool, default true) — If true, the suction/flow ring is printed inline; otherwise, positioned separately.
 - fn (number, default 100) — The $fn setting used for cylinder detail.
 
-Behavior / Notes:
-- Computes a profile polygon and uses `rotate_extrude()` to create the rotational body.
-- Adds a suction adjustment cutout and a connection cutout for accessories.
-- Optionally prints an airflow ring created by `rotate_extrude()` and a knurled pattern produced by `knurl()`.
-- Centers the adapter on origin and orients it using `rotate()` calls so the final part sits correctly when exported.
-- Uses internal constants: bottom diameter (`$bottomDia` = 45.1) and bottom length (`$bottomLen` = 30).
-
 Example:
 - cenTecHoseAdapter(topDia = topDiameter, topDiaIsForOutter = topDiameterIsForOutter, topLen = topLength, thickness = topThickness, taperLength = taperLength, printFlowRingInline = printAirFlowRingInline, fn = 100);
 */
-
 module cenTecHoseAdapter(
     topDia       = 25,
     topDiaIsForOutter = false,
@@ -34,7 +53,7 @@ module cenTecHoseAdapter(
     fn = 100
 ) {
     // If the inn
-    if(topDiaIsForOutter) {
+    if (topDiaIsForOutter) {
         topDia = topDia - thickness;
     }
     
@@ -103,8 +122,7 @@ module cenTecHoseAdapter(
         }
     }
     
-    
-
+    // Suction adjustment ring
     $ringThickness = 0;
     $suctionRingHeight = $cutoutHeight - 0.5;
     
@@ -123,35 +141,6 @@ module cenTecHoseAdapter(
     }
 }
 
-// The top diameter of the top dust adapter.
-topDiameter = 32; // [10:55]
-
-// True calculates the size assuming the "topDiameter" is the Outter Diameter -- otherwise, its treated as the Inner Diameter.
-topDiameterIsForOutter = false;
-
-// The top part of the adapter's length (in mm).
-topLength = 10; // [5:100]
-
-// The thickness of the top part of the adapter (in mm).
-topThickness = 2; // [1:8]
-
-// The length of the taper between the lower and upper part of the adapter (in mm).
-taperLength = 15; // [0:25]
-
-// True prints the Airflow control ring inline.
-printAirFlowRingInline = false;
-
-cenTecHoseAdapter(
-    topDia       = topDiameter,
-    topDiaIsForOutter = topDiameterIsForOutter,
-    topLen       = topLength,
-    thickness    = topThickness,
-    taperLength  = taperLength,
-    printFlowRingInline = printAirFlowRingInline,
-    fn = 100);
-
-
-
 /*
 Module: knurl
 Purpose:
@@ -169,7 +158,6 @@ Behavior / Notes:
 - The rotation on each tooth creates the angled knurl appearance.
 - Designed to be used by `cenTecHoseAdapter` to provide grip on the airflow ring.
 */
-
 module knurl(tooth_width=1.5, tooth_height=1, ring_radius=30, ring_height=10) {
     for (angle = [15 : 10 : 285]) {
         rotate([0, 0, angle])
@@ -178,7 +166,3 @@ module knurl(tooth_width=1.5, tooth_height=1, ring_radius=30, ring_height=10) {
         cube([tooth_width, tooth_width, ring_height], center=true);
     }
 }
-
-
-
-
