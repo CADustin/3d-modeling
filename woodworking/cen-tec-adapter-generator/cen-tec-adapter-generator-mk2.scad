@@ -32,24 +32,24 @@ Purpose:
   a tapered section, and an airflow/suction adjustment cutout and ring.
 
 Parameters:
-- topDia (number, default 25) — Top diameter. Interpreted as inner or outer depending on `topDiaIsForOutter`.
-- topDiaIsForOutter (bool, default false) — If true, `topDia` is treated as the outer diameter and reduced by `thickness` to compute inner diameter.
-- topLen (number, default 30) — Length of the top section.
-- thickness (number, default 2) — Wall thickness used for offsets and the ring.
-- taperLength (number, default 15) — Length of the tapered transition between bottom and top.
-- printFlowRingInline (bool, default true) — If true, the suction/flow ring is printed inline; otherwise, positioned separately.
+- topDia (number) — Top diameter. Interpreted as inner or outer depending on `topDiaIsForOutter`.
+- topDiaIsForOutter (bool) — If true, `topDia` is treated as the outer diameter and reduced by `thickness` to compute inner diameter.
+- topLen (number) — Length of the top section.
+- thickness (number) — Wall thickness used for offsets and the ring.
+- taperLength (number) — Length of the tapered transition between bottom and top.
+- printFlowRingInline (bool) — If true, the suction/flow ring is printed inline; otherwise, positioned separately.
 - fn (number, default 100) — The $fn setting used for cylinder detail.
 
 Example:
 - cenTecHoseAdapter(topDia = topDiameter, topDiaIsForOutter = topDiameterIsForOutter, topLen = topLength, thickness = topThickness, taperLength = taperLength, printFlowRingInline = printAirFlowRingInline, fn = 100);
 */
 module cenTecHoseAdapter(
-    topDia       = 25,
-    topDiaIsForOutter = false,
-    topLen       = 30,
-    thickness    = 2,
-    taperLength  = 15,
-    printFlowRingInline = true,
+    topDia,
+    topDiaIsForOutter,
+    topLen,
+    thickness,
+    taperLength,
+    printFlowRingInline,
     fn = 100
 ) {
     // If the inn
@@ -147,10 +147,10 @@ Purpose:
 - Create a simple knurled ring by placing small rectangular teeth around a given ring radius and ring height.
 
 Parameters:
-- tooth_width (number, default 1.5) — Width of each tooth.
-- tooth_height (number, default 1) — Height of each tooth.
-- ring_radius (number, default 30) — Radial distance from the center to place teeth.
-- ring_height (number, default 10) — Height of the knurled ring (Z size).
+- tooth_width (number) — Width of each tooth.
+- tooth_height (number) — Height of each tooth.
+- ring_radius (number) — Radial distance from the center to place teeth.
+- ring_height (number) — Height of the knurled ring (Z size).
 
 Behavior / Notes:
 - Places teeth at angles from 15° to 285° in 10° steps.
@@ -158,7 +158,7 @@ Behavior / Notes:
 - The rotation on each tooth creates the angled knurl appearance.
 - Designed to be used by `cenTecHoseAdapter` to provide grip on the airflow ring.
 */
-module knurl(tooth_width=1.5, tooth_height=1, ring_radius=30, ring_height=10) {
+module knurl(tooth_width, tooth_height, ring_radius, ring_height) {
     for (angle = [15 : 10 : 285]) {
         rotate([0, 0, angle])
         translate([ring_radius, 0, ring_height/2+tooth_height])
