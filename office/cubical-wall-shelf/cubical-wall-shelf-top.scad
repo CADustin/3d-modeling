@@ -1,30 +1,36 @@
 // Shelf Width (in mm)
-$shelfWidth = 400;
+shelfWidth = 200;
 
-// Shelf Width (in mm)
-$shelfDepth = 200;
+// Shelf Depth (in mm)
+shelfDepth = 120;
 
 // Shelf Thickness (in mm)
-$thickness = 3;
+thickness = 3;
 
 // Cublical Wall Thickness (in Inches)
-$cubicalWallSize = 3.75; // [2,2.25,2.5,2.75,3,3.25,3.5,3.75]
+cubicalWallSize = 3; // [2,2.25,2.5,2.75,3,3.25,3.5,3.75]
 
 {}
-$cubicalWallSizeInMM = $cubicalWallSize*25.4;
 
 include <BOSL2/std.scad>
 
-cuboid([$shelfWidth,$shelfDepth,$thickness], rounding=$thickness, edges="Z");
+cubicalWallSizeInMM = cubicalWallSize*25.4;
 
-$shelfSupportLength = $cubicalWallSizeInMM/2;
+$requiredShelfDepth = cubicalWallSizeInMM + thickness;
+$validWidth = shelfDepth > $requiredShelfDepth;
+$validWidthMessage = str("The shelf must be deeper than ", $requiredShelfDepth, "mm");
+assert($validWidth, $validWidthMessage);
 
-color("green")
-translate([0,$cubicalWallSizeInMM/2,$shelfSupportLength/2-$thickness*.5])
+cuboid([shelfWidth,shelfDepth,thickness], rounding=thickness*2, edges="Z");
+
+$shelfSupportLength = cubicalWallSizeInMM/2;
+
+$fn=30;
+
+translate([0,cubicalWallSizeInMM/2,$shelfSupportLength/2+thickness])
 rotate([90,0,0])
-cuboid([$shelfWidth*0.80,$shelfSupportLength,$thickness], rounding=$thickness, edges="Z");
+cuboid([shelfWidth*0.80,$shelfSupportLength+thickness,thickness], rounding=thickness, edges = "Z", except = FWD+RIGHT+LEFT);
 
-color("red")
-translate([0,-$cubicalWallSizeInMM/2,$shelfSupportLength/2-$thickness*.5])
+translate([0,-cubicalWallSizeInMM/2,$shelfSupportLength/2+thickness])
 rotate([90,0,0])
-cuboid([$shelfWidth*0.80,$shelfSupportLength,$thickness], rounding=$thickness, edges="Z");
+cuboid([shelfWidth*0.80,$shelfSupportLength+thickness,thickness], rounding=thickness, edges="Z", except = FWD+RIGHT+LEFT);
