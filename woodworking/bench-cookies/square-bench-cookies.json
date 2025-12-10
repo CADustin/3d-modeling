@@ -1,0 +1,17 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "20mm": {
+            "chamfer": "2",
+            "cutoutDepth": "0.5",
+            "diameter": "75",
+            "thickness": "20"
+        },
+        "5mm": {
+            "chamfer": "2",
+            "cutoutDepth": "0.5",
+            "diameter": "75",
+            "thickness": "5"
+        }
+    }
+}

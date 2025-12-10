@@ -1,0 +1,13 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "printAirFlowRingInline": "false",
+            "taperLength": "15",
+            "topDiameter": "32",
+            "topDiameterIsForOutter": "false",
+            "topLength": "10",
+            "topThickness": "2"
+        }
+    }
+}

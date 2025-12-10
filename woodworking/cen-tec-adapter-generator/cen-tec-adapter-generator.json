@@ -1,0 +1,17 @@
+{
+    "parameterSets": {
+        "30mm": {
+            "innerDiameter": "30"
+        },
+        "38mm": {
+            "innerDiameter": "38"
+        },
+        "42mm": {
+            "innerDiameter": "42"
+        },
+        "43mm": {
+            "innerDiameter": "43"
+        }
+    },
+    "fileFormatVersion": "1"
+}
