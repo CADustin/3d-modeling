@@ -1,5 +1,5 @@
 # Find the path to openscad.exe
-$openSCADPath = Get-ChildItem -Path "C:\Program Files\" -Recurse -Filter "openscad.com" -ErrorAction SilentlyContinue -Force | Select-Object -First 1 -ExpandProperty FullName
+$openSCADPath = Get-ChildItem -Path "C:\Program Files\" -Recurse -Filter "openscad.com" -ErrorAction SilentlyContinue -Force | Sort-Object LastWriteTime -Descending | Select-Object -First 1 -ExpandProperty FullName
 
 if (-not $openSCADPath) {
     Write-Host "openscad.exe not found. Please ensure OpenSCAD is installed and the path is correct."
@@ -74,15 +74,14 @@ $scadFiles | ForEach-Object {
 		$3mfFileName = "$($_.BaseName)_${presetName}.3mf"
         $3mfFilePath = Join-Path -Path $outputFolder -ChildPath $3mfFileName
 
-        $3mfArgumentsList = @(
-            ($openSCADPath -replace ' ', '` '),
-            "-o", ($3mfFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
-			
-            "-p", ($jsonFile -replace ' ', '` '),
-            "-P", ($presetName -replace ' ', '` '),
-            $scadFile
-        )
-        Start-Process -FilePath powershell.exe -ArgumentList $3mfArgumentsList -NoNewWindow -Wait
+		Start-Process -FilePath $openSCADPath -ArgumentList @(
+			"-o", $3mfFilePath,
+			"-p", $jsonFile,
+			"-P", $presetName,
+			"--enable", "textmetrics",
+			$scadFile
+		) -NoNewWindow -Wait
+
 
         Write-Host "3MF file generated: $3mfFileName"
 		
@@ -91,15 +90,14 @@ $scadFiles | ForEach-Object {
 		$pngFileName = "$($_.BaseName)_${presetName}.png"
         $pngFilePath = Join-Path -Path $outputFolder -ChildPath $pngFileName
 		
-        $pngArgumentsList = @(
-            ($openSCADPath -replace ' ', '` '),
-            "-o", ($pngFilePath -replace ' ', '` ' -replace '&', '-' -replace '%', '-' -replace ',', ''),
-            "-p", ($jsonFile -replace ' ', '` '),
-            "-P", ($presetName -replace ' ', '` '),
-            $scadFile
-        )
-        Start-Process -FilePath powershell.exe -ArgumentList $pngArgumentsList -NoNewWindow -Wait
-
+		Start-Process -FilePath $openSCADPath -ArgumentList @(
+			"-o", $pngFilePath,
+			"-p", $jsonFile,
+			"-P", $presetName,
+			"--enable", "textmetrics",
+			$scadFile
+		) -NoNewWindow -Wait
+		
         Write-Host "PNG file generated: $pngFileName"
         Write-Host ""
     }

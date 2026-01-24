@@ -1,0 +1,305 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "Pirate-Allen-Hex-Keys": {
+            "labelText": "Chest-Picks",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+		"Pirate-Drillbits": {
+            "labelText": "Barrel Tappars",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+		"Pirate-Hammers": {
+            "labelText": "Persuaders",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-MeasuringTools": {
+            "labelText": "True North",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-Pliers": {
+            "labelText": "Pinchers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-PowerTools": {
+            "labelText": "Thunderworks",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-Prybars": {
+            "labelText": "Plank-Poppers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-Ratchets": {
+            "labelText": "Gear-Spinners",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-ScrewDrivers": {
+            "labelText": "Twist Irons",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-SocketExtensions": {
+            "labelText": "Legs",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-14Sockets": {
+            "labelText": "Wee Bolt Booties",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-38Sockets": {
+            "labelText": "Bolt Booties",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-12Sockets": {
+            "labelText": "Great Bolt Booties",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Pirate-Wrenches": {
+            "labelText": "Bolt-Benders",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-Hammers": {
+            "labelText": "Hammers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-MeasuringTools": {
+            "labelText": "Measuring Tools",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-Pliers": {
+            "labelText": "Pliers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-PowerTools": {
+            "labelText": "Power Tools",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-Prybars": {
+            "labelText": "Prybars",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-ScrewDrivers": {
+            "labelText": "Screw Drivers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-Sockets": {
+            "labelText": "Sockets",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "Regular-Wrenches": {
+            "labelText": "Wrenches",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-Hammers": {
+            "labelText": "Impact Modules",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-Prybars": {
+            "labelText": "Hull Breachers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-Pliers": {
+            "labelText": "Grip Manipulators",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-Wrenches": {
+            "labelText": "Torque Calibrators",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-MeasuringTools": {
+            "labelText": "Precision Scanners",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-Sockets": {
+            "labelText": "Quantum Fit Adapaters",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-PowerTools": {
+            "labelText": "Auxiliary Thrusters",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        },
+        "SciFi-ScrewDrivers": {
+            "labelText": "Access Drivers",
+            "letterThickness": "1",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.2",
+            "margin": "2",
+            "plateThickness": "2.5",
+            "size": "14",
+            "totalMagnets": "3"
+        }
+    }
+}
