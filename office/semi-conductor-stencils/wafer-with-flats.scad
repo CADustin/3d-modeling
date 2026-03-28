@@ -2,19 +2,19 @@
 // Reference: https://www.topline.tv/drawings/pdf/wafers/wafer_flats_thickness.pdf
 
 // Inner Diameter of the resulting template
-templateDiameter = 76.2;
+templateDiameter = 76.2; // [50:460]
 
 // Wall thickness of the stencil ring (in mm)
-outlineThickness = 10;
+outlineThickness = 10; // [5:20]
 
 // Z height / depth of the stencil (in mm)
-stencilThickness = 4;
+stencilThickness = 4; // [3:12]
 
 // Diameter of each magnet (in mm)
-magnetDiameter = 5; 
+magnetDiameter = 5; // [3:12]
 
 // Depth of each magnet pocket, blind hole from bottom (in mm)
-magnetDepth = 2; 
+magnetDepth = 2; // [0:5]
 
 // Number of magnets evenly spaced around the ring
 magnetCount = 6; // [0:12]
