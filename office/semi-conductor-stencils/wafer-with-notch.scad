@@ -1,14 +1,23 @@
 // Semiconductor Wafer Stencil with Notch
 // Reference: https://www.topline.tv/drawings/pdf/wafers/wafer_flats_thickness.pdf
 
-templateDiameter = 200; // Diameter of the resulting template (in mm)
+// Inner Diameter of the resulting template (in mm)
+templateDiameter = 200; // [50:460]
 
-outlineThickness = 10; // Wall thickness of the stencil ring (in mm)
-stencilThickness = 4; // Z height / depth of the stencil (in mm)
+// Wall thickness of the stencil ring (in mm)
+outlineThickness = 10; // [5:20]
 
-magnetDiameter = 5; // Diameter of each magnet (in mm)
-magnetDepth = 3; // Depth of each magnet pocket, blind hole from bottom (in mm)
-magnetCount = 6; // Number of magnets evenly spaced around the ring
+// Z height / depth of the stencil (in mm)
+stencilThickness = 4; // [3:12]
+
+// Diameter of each magnet (in mm)
+magnetDiameter = 5; // [3:12]
+
+// Depth of each magnet pocket, blind hole from bottom (in mm)
+magnetDepth = 2; // [0:5]
+
+// Number of magnets evenly spaced around the ring
+magnetCount = 6; // [0:12]
 
 {}
 

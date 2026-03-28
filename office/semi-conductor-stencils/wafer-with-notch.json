@@ -1,0 +1,29 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "200mm-Wafer-1x-Scale": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "200"
+        },
+        "200mm-Wafer-1.5x-Scale": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "300"
+        },
+        "200mm-Wafer-0.39x-Scale": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "78"
+        }
+    }
+}

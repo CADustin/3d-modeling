@@ -1,0 +1,29 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "3in-Wafer-1x-Scale": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "76.200000000000003"
+        },
+        "3in-Wafer-Scaled-to-200mm": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "200"
+        },
+        "3in-Wafer-Scaled-to-300mm": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "300"
+        }
+    }
+}
