@@ -1,17 +1,25 @@
-// 3" Semiconductor Wafer Stencil with Major and Minor Flats
+// Semiconductor Wafer Stencil with Major and Minor Flats
 // Reference: https://www.topline.tv/drawings/pdf/wafers/wafer_flats_thickness.pdf
 
-waferDiameter    = 76.2;  // mm — 3" inner opening diameter
-majorFlatLength  = 25;    // mm — length of major flat
-minorFlatLength  = 12;    // mm — length of minor flat
-minorFlatAngle   = 90;    // degrees — angular position of minor flat relative to major flat
+templateDiameter = 200;  // Diameter of the resulting template
 
-outlineThickness = 10;    // mm — wall thickness of the stencil ring
-stencilThickness = 4;     // mm — Z height (depth) of the stencil
+outlineThickness = 10; // Wall thickness of the stencil ring (in mm)
+stencilThickness = 4; // Z height / depth of the stencil (in mm)
 
-magnetDiameter   = 5;     // mm — diameter of each magnet
-magnetDepth      = 3;     // mm — depth of each magnet pocket (blind hole from bottom)
-magnetCount      = 6;     // number of magnets evenly spaced around the ring
+magnetDiameter = 5; // Diameter of each magnet (in mm)
+magnetDepth = 3; // Depth of each magnet pocket, blind hole from bottom (in mm)
+magnetCount = 6; // Number of magnets evenly spaced around the ring
+
+{}
+
+// 3" (76.2mm) wafer is the base reference
+baseDiameter = 76.2;  // Reference wafer size all proportions are relative to (in mm)
+scale = templateDiameter / baseDiameter;
+
+// Scaled parameters (base values are for a 3" wafer)
+majorFlatLength = 25 * scale; // Length of major flat (in mm)
+minorFlatLength = 12 * scale; // Length of minor flat (in mm)
+minorFlatAngle = 90; // Angular position of minor flat (in degrees, not scaled)
 
 // Guard: stencilThickness must be at least magnetDepth + 1mm so there
 // is always at least 1mm of material above each magnet pocket.
@@ -20,23 +28,22 @@ assert(
     "stencilThickness must be at least magnetDepth + 1mm"
 );
 
-// Guard: outlineThickness must be at least 2× magnetDiameter so the
+// Guard: outlineThickness must be at least 1.5x magnetDiameter so the
 // magnet pocket fits within the ring wall with material on both sides.
 assert(
     outlineThickness >= 2 * magnetDiameter,
-    "outlineThickness must be at least 2× magnetDiameter"
+    "outlineThickness must be at least 1.5x magnetDiameter"
 );
 
 $fn = 360;
 
 module waferStencil() {
-    innerR         = waferDiameter / 2;
+    innerR         = templateDiameter / 2;
     outerR         = innerR + outlineThickness;
     magnetR        = magnetDiameter / 2;
     magnetCenterR  = innerR + outlineThickness / 2;  // mid-wall radius
 
     difference() {
-        // ── Stencil ring body ──────────────────────────────────────────
         linear_extrude(height = stencilThickness) {
             difference() {
                 // Outer boundary
@@ -62,7 +69,7 @@ module waferStencil() {
             }
         }
 
-        // ── Magnet pockets (blind holes opening from the bottom face) ──
+        // Magnet holes
         for (i = [0 : magnetCount - 1]) {
             rotate([0, 0, i * 360 / magnetCount])
                 translate([magnetCenterR, 0, 0])
