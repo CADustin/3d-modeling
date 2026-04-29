@@ -1,68 +1,73 @@
 $fn = 128;
 
-$lid_diameter = 80;
-$lid_height = 10;
+/* [Lid] */
+lidDiameter = 80; // [60:1:120]
+lidHeight = 10; // [5:0.5:20]
 
-$holder_diameter = 40;
-$holder_length = 70;
+/* [Holder] */
+holderDiameter = 40; // [20:1:60]
+holderLength = 70; // [50:1:120]
 
-$base_height = 2;
-$base_edge_radius = 1;
-$edge_radius = 1;
+/* [Base] */
+baseHeight = 2; // [1:0.5:6]
+baseEdgeRadius = 1; // [0.5:0.1:3]
+edgeRadius = 1; // [0.5:0.1:4]
 
-$slot_clearance = 0.6;
+/* [Fit] */
+slotClearance = 0.6; // [0:0.1:2]
 
-$clip_length = 12;
-$clip_inset = 0.8;
-$clip_height = 3.2;
+/* [Clip] */
+clipLength = 12; // [4:1:30]
+clipInset = 0.8; // [0.2:0.1:2]
+clipHeight = 3.2; // [1:0.1:8]
 
-holder_radius = $holder_diameter / 2;
-base_diameter = sqrt(($holder_length * $holder_length) + ($holder_diameter * $holder_diameter)) + 2;
-slot_width = $lid_height + $slot_clearance;
-groove_radius = $lid_diameter / 2;
-groove_center_z = groove_radius;
+holderRadius = holderDiameter / 2;
+baseDiameter = sqrt((holderLength * holderLength) + (holderDiameter * holderDiameter)) + 2;
+slotWidth = lidHeight + slotClearance;
+grooveRadius = lidDiameter / 2;
+grooveCenterZ = grooveRadius;
 
 module holder_base() {
-    base_radius = base_diameter / 2;
+    baseRadius = baseDiameter / 2;
 
     union() {
-        cylinder(h = $base_height, r = base_radius - $base_edge_radius);
-        cylinder(h = $base_height - $base_edge_radius, r = base_radius);
+        cylinder(h = baseHeight, r = baseRadius - baseEdgeRadius);
+        cylinder(h = baseHeight - baseEdgeRadius, r = baseRadius);
 
-        translate([0, 0, $base_height - $base_edge_radius])
+        translate([0, 0, baseHeight - baseEdgeRadius])
             rotate_extrude()
-                translate([base_radius - $base_edge_radius, 0, 0])
-                    circle(r = $base_edge_radius);
+                translate([baseRadius - baseEdgeRadius, 0, 0])
+                    circle(r = baseEdgeRadius);
     }
 }
 
 module holder_envelope() {
     minkowski() {
         intersection() {
-            translate([-$holder_length / 2 + $edge_radius, 0, 0])
+            translate([-holderLength / 2 + edgeRadius, 0, 0])
                 rotate([0, 90, 0])
-                    cylinder(h = $holder_length - (2 * $edge_radius), r = holder_radius - $edge_radius);
+                    cylinder(h = holderLength - (2 * edgeRadius), r = holderRadius - edgeRadius);
 
-            translate([-$holder_length / 2 + $edge_radius, -holder_radius + $edge_radius, $edge_radius])
+            translate([-holderLength / 2 + edgeRadius, -holderRadius + edgeRadius, edgeRadius])
                 cube([
-                    $holder_length - (2 * $edge_radius),
-                    $holder_diameter - (2 * $edge_radius),
-                    holder_radius - (2 * $edge_radius)
+                    holderLength - (2 * edgeRadius),
+                    holderDiameter - (2 * edgeRadius),
+                    holderRadius - (2 * edgeRadius)
                 ]);
         }
 
-        sphere(r = $edge_radius);
+        sphere(r = edgeRadius);
     }
 }
 
 module lid_groove() {
-    translate([0, -slot_width / 2, groove_center_z])
+    translate([0, -slotWidth / 2, grooveCenterZ])
         rotate([-90, 0, 0])
-            cylinder(h = slot_width, r = groove_radius);
+            cylinder(h = slotWidth, r = grooveRadius);
 }
 
 union() {
-    translate([0, 0, -$base_height])
+    translate([0, 0, -baseHeight])
         holder_base();
 
     difference() {
@@ -74,14 +79,14 @@ union() {
     intersection() {
         holder_envelope();
 
-        translate([-$clip_length / 2, -slot_width / 2, holder_radius - $clip_height])
-            cube([$clip_length, $clip_inset, $clip_height]);
+        translate([-clipLength / 2, -slotWidth / 2, holderRadius - clipHeight])
+            cube([clipLength, clipInset, clipHeight]);
     }
 
     intersection() {
         holder_envelope();
 
-        translate([-$clip_length / 2, slot_width / 2 - $clip_inset, holder_radius - $clip_height])
-            cube([$clip_length, $clip_inset, $clip_height]);
+        translate([-clipLength / 2, slotWidth / 2 - clipInset, holderRadius - clipHeight])
+            cube([clipLength, clipInset, clipHeight]);
     }
 }
