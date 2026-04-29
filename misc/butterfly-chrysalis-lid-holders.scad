@@ -8,8 +8,8 @@ lidDiameter = 80; // [60:1:120]
 lidHeight = 10; // [5:0.5:20]
 
 /* [Holder] */
-holderDiameter = 40; // [20:1:60]
-holderLength = 70; // [50:1:120]
+holderDiameter = 30; // [20:1:60]
+holderLength = 50; // [50:1:80]
 
 /* [Base] */
 baseHeight = 2; // [1:0.5:6]
@@ -26,6 +26,8 @@ clipHeight = 3.2; // [1:0.1:8]
 
 // Derived geometry used by the base, body envelope, and lid groove.
 holderRadius = holderDiameter / 2;
+
+// We need to calculate the base diameter so that there isn't overhang from the semi-cylinder ... we also add a little extra because it looks nicer.
 baseDiameter = sqrt((holderLength * holderLength) + (holderDiameter * holderDiameter)) + 2;
 slotWidth = lidHeight + slotClearance;
 grooveRadius = lidDiameter / 2;
