@@ -24,6 +24,14 @@
             "outlineThickness": "10",
             "stencilThickness": "4",
             "templateDiameter": "300"
+        },
+        "3in-Wafer-Scaled-to-100mm": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "10",
+            "stencilThickness": "4",
+            "templateDiameter": "100"
         }
     }
 }
