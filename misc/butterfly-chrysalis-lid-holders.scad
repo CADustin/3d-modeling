@@ -7,6 +7,7 @@ $holder_diameter = 40;
 $holder_length = 70;
 
 $base_height = 2;
+$edge_radius = 1;
 
 $slot_clearance = 0.6;
 
@@ -21,13 +22,21 @@ groove_radius = $lid_diameter / 2;
 groove_center_z = groove_radius;
 
 module holder_envelope() {
-    intersection() {
-        translate([-$holder_length / 2, 0, 0])
-            rotate([0, 90, 0])
-                cylinder(h = $holder_length, r = holder_radius);
+    minkowski() {
+        intersection() {
+            translate([-$holder_length / 2 + $edge_radius, 0, 0])
+                rotate([0, 90, 0])
+                    cylinder(h = $holder_length - (2 * $edge_radius), r = holder_radius - $edge_radius);
 
-        translate([-$holder_length / 2, -holder_radius, 0])
-            cube([$holder_length, $holder_diameter, holder_radius]);
+            translate([-$holder_length / 2 + $edge_radius, -holder_radius + $edge_radius, $edge_radius])
+                cube([
+                    $holder_length - (2 * $edge_radius),
+                    $holder_diameter - (2 * $edge_radius),
+                    holder_radius - (2 * $edge_radius)
+                ]);
+        }
+
+        sphere(r = $edge_radius);
     }
 }
 
