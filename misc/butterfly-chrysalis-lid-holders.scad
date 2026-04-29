@@ -7,6 +7,7 @@ $holder_diameter = 40;
 $holder_length = 70;
 
 $base_height = 2;
+$base_edge_radius = 1;
 $edge_radius = 1;
 
 $slot_clearance = 0.6;
@@ -20,6 +21,20 @@ base_diameter = sqrt(($holder_length * $holder_length) + ($holder_diameter * $ho
 slot_width = $lid_height + $slot_clearance;
 groove_radius = $lid_diameter / 2;
 groove_center_z = groove_radius;
+
+module holder_base() {
+    base_radius = base_diameter / 2;
+
+    union() {
+        cylinder(h = $base_height, r = base_radius - $base_edge_radius);
+        cylinder(h = $base_height - $base_edge_radius, r = base_radius);
+
+        translate([0, 0, $base_height - $base_edge_radius])
+            rotate_extrude()
+                translate([base_radius - $base_edge_radius, 0, 0])
+                    circle(r = $base_edge_radius);
+    }
+}
 
 module holder_envelope() {
     minkowski() {
@@ -48,7 +63,7 @@ module lid_groove() {
 
 union() {
     translate([0, 0, -$base_height])
-        cylinder(h = $base_height, d = base_diameter);
+        holder_base();
 
     difference() {
         holder_envelope();
