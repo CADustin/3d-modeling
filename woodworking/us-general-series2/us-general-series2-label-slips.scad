@@ -48,8 +48,8 @@ userLabelTexts = [
 //     "Hardware"
 // ];
 
-// Font name installed on your system.
-userFont = "Arial:style=Bold"; // ["Arial:style=Bold", "Bahnschrift:style=SemiBold", "Segoe UI:style=Semibold", "Verdana:style=Bold", "Trebuchet MS:style=Bold", "Tahoma:style=Bold", "Calibri:style=Bold"]
+// Font name installed on your system. Verdana is the recommended choice for readability.
+userFont = "Verdana:style=Bold"; // ["Verdana:style=Bold", "Arial:style=Bold", "Tahoma:style=Bold"]
 
 // Convert label text to uppercase before rendering.
 userAllCaps = false;
@@ -131,18 +131,33 @@ function upperAsciiText(inputText, index=0) =
 
 function displayLabelText(labelText, allCaps=false) = allCaps ? upperAsciiText(labelText) : labelText;
 
-function textWidthFactor(allCaps=false) = allCaps ? 0.72 : 0.64;
+function effectiveTextInset(lengthPadding=5, roundCorners=true, cornerRadius=1) =
+    max(lengthPadding, roundCorners ? cornerRadius + 1 : lengthPadding);
 
-function labelLengthFromText(labelText, textSize=10, lengthPadding=5, allCaps=false) =
-    let(renderedText = displayLabelText(labelText, allCaps))
-        max(20, len(renderedText) * textSize * textWidthFactor(allCaps) + lengthPadding * 2);
+function fontWidthFactor(font="Verdana:style=Bold", allCaps=false) =
+    font == "Verdana:style=Bold"
+        ? (allCaps ? 0.82 : 0.74)
+        : font == "Tahoma:style=Bold"
+            ? (allCaps ? 0.78 : 0.70)
+            : (allCaps ? 0.80 : 0.72);
 
-function labelPlacementState(labelTexts, index, printBedSize=256, textSize=10, lengthPadding=5, columnSpacing=6, allCaps=false) =
-    let(labelWidth = labelLengthFromText(labelTexts[index], textSize, lengthPadding, allCaps))
+function labelSafetyMargin(textSize=10) = max(1, textSize * 0.12);
+
+function labelLengthFromText(labelText, font="Verdana:style=Bold", textSize=10, lengthPadding=5, allCaps=false, roundCorners=true, cornerRadius=1) =
+    let(
+        renderedText = displayLabelText(labelText, allCaps),
+        textWidth = len(renderedText) * textSize * fontWidthFactor(font, allCaps),
+        textInset = effectiveTextInset(lengthPadding, roundCorners, cornerRadius),
+        safetyMargin = labelSafetyMargin(textSize)
+    )
+        max(20, textWidth + textInset * 2 + safetyMargin * 2);
+
+function labelPlacementState(labelTexts, index, printBedSize=256, font="Verdana:style=Bold", textSize=10, lengthPadding=5, columnSpacing=6, allCaps=false, roundCorners=true, cornerRadius=1) =
+    let(labelWidth = labelLengthFromText(labelTexts[index], font, textSize, lengthPadding, allCaps, roundCorners, cornerRadius))
         (index <= 0)
             ? [0, 0, labelWidth]
             : let(
-                previousState = labelPlacementState(labelTexts, index - 1, printBedSize, textSize, lengthPadding, columnSpacing, allCaps),
+                previousState = labelPlacementState(labelTexts, index - 1, printBedSize, font, textSize, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius),
                 nextWidth = previousState[2] + columnSpacing + labelWidth,
                 fitsOnRow = nextWidth <= printBedSize,
                 xOffset = fitsOnRow ? previousState[2] + columnSpacing : 0,
@@ -191,7 +206,7 @@ module labelBody(
 // Function to generate rectangular labels with text for the toolbox drawer
 module labelWithText(
     text="",
-    font="Arial",
+    font="Verdana:style=Bold",
     size=10,
     lengthPadding=5,
     allCaps=false,
@@ -204,11 +219,11 @@ module labelWithText(
     addEdgeBevel=true,
     edgeBevelSize=0.4
 ) {
-    // Approximate text width for auto-sizing, with a small minimum label length.
+    // Auto-size the label using a conservative width estimate for a few predictable fonts.
     renderedText = displayLabelText(text, allCaps);
-    textLength = labelLengthFromText(text, size, lengthPadding, allCaps);
-    textInset = max(lengthPadding, roundCorners ? cornerRadius + 1 : lengthPadding);
-    textX = textAlignment == "left" ? textInset : textLength / 2;
+    textLength = labelLengthFromText(text, font, size, lengthPadding, allCaps, roundCorners, cornerRadius);
+    textInset = effectiveTextInset(lengthPadding, roundCorners, cornerRadius);
+    textX = textAlignment == "left" ? textInset + labelSafetyMargin(size) : textLength / 2;
     horizontalAlign = textAlignment == "left" ? "left" : "center";
 
     if (separateParts) {
@@ -239,7 +254,7 @@ module labelsFromTextList(
     printBedSize=256,
     columnSpacing=6,
     rowSpacing=8,
-    font="Arial",
+    font="Verdana:style=Bold",
     size=10,
     lengthPadding=5,
     allCaps=false,
@@ -253,7 +268,7 @@ module labelsFromTextList(
     edgeBevelSize=0.4
 ) {
     for (i = [0 : len(labelTexts) - 1]) {
-        placementState = labelPlacementState(labelTexts, i, printBedSize, size, lengthPadding, columnSpacing, allCaps);
+        placementState = labelPlacementState(labelTexts, i, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
         xOffset = placementState[0];
         yOffset = -placementState[1] * (17 + rowSpacing);
 

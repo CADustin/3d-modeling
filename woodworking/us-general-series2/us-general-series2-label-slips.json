@@ -1,0 +1,21 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "printBedSize": "256",
+            "userAddEdgeBevel": "true",
+            "userAllCaps": "false",
+            "userBodyColor": "Blue",
+            "userColumnSpacing": "6",
+            "userCornerRadius": "1",
+            "userEdgeBevelSize": "0.40000000000000002",
+            "userFont": "Verdana:style=Bold",
+            "userLengthPadding": "5",
+            "userRoundCorners": "true",
+            "userRowSpacing": "8",
+            "userSeparateParts": "true",
+            "userTextColor": "White",
+            "userTextSize": "10"
+        }
+    }
+}
