@@ -136,7 +136,7 @@ function effectiveTextInset(lengthPadding=5, roundCorners=true, cornerRadius=1) 
 
 function fontWidthFactor(font="Verdana:style=Bold", allCaps=false) =
     font == "Verdana:style=Bold"
-        ? (allCaps ? 0.82 : 0.74)
+        ? (allCaps ? 0.82 : 0.92)
         : font == "Tahoma:style=Bold"
             ? (allCaps ? 0.78 : 0.70)
             : (allCaps ? 0.80 : 0.72);
