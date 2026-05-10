@@ -98,10 +98,10 @@ userSeparateParts = true;
 printBedSize = 256; // [180, 256, 320]
 
 // Space between labels in the same row.
-userColumnSpacing = 6; // [2:1:20]
+userColumnSpacing = 2; // [2:1:20]
 
 // Space between rows of labels.
-userRowSpacing = 8; // [2:1:20]
+userRowSpacing = 2; // [2:1:20]
 
 /* [Printer Reference] */
 
