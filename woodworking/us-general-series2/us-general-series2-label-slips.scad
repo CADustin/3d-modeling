@@ -1,52 +1,53 @@
 /* [Label Text] */
 
 // Enter one label per quoted item.
-userLabelTexts = [
-    "Sockets",
-    "Deep Sockets",
-    "Impact Sockets",
-    "Ratchets",
-    "Extensions",
-    "Adapters",
-    "Wrenches",
-    "Stubby Wrenches",
-    "Allen Keys",
-    "Torx Keys",
-    "Screwdrivers",
-    "Nut Drivers",
-    "Pliers",
-    "Needle Nose",
-    "Channel Locks",
-    "Vise Grips",
-    "Picks",
-    "Pry Bars",
-    "Hammers",
-    "Electrical"
-];
-
-// Woodworking-focused alternate list:
+// Mechanic-focused alternate list:
 // userLabelTexts = [
-//     "Chisels",
-//     "Hand Planes",
-//     "Block Plane",
-//     "Marking Tools",
-//     "Squares",
-//     "Measuring",
-//     "Layout Tools",
-//     "Router Bits",
-//     "Drill Bits",
-//     "Forstner Bits",
-//     "Countersinks",
-//     "Clamps",
-//     "Glue Supplies",
-//     "Sanding",
-//     "Files",
-//     "Rasps",
-//     "Carving Tools",
-//     "Sharpening",
-//     "Fasteners",
-//     "Hardware"
+//     "Sockets",
+//     "Deep Sockets",
+//     "Impact Sockets",
+//     "Ratchets",
+//     "Extensions",
+//     "Adapters",
+//     "Wrenches",
+//     "Stubby Wrenches",
+//     "Allen Keys",
+//     "Torx Keys",
+//     "Screwdrivers",
+//     "Nut Drivers",
+//     "Pliers",
+//     "Needle Nose",
+//     "Channel Locks",
+//     "Vise Grips",
+//     "Picks",
+//     "Pry Bars",
+//     "Hammers",
+//     "Electrical"
 // ];
+
+// Woodworking-focused list:
+userLabelTexts = [
+    "Chisels",
+    "Hand Planes",
+    "Block Plane",
+    "Marking Tools",
+    "Squares",
+    "Measuring",
+    "Layout Tools",
+    "Router Bits",
+    "Drill Bits",
+    "Forstner Bits",
+    "Countersinks",
+    "Clamps",
+    "Glue Supplies",
+    "Sanding",
+    "Files",
+    "Rasps",
+    "Carving Tools",
+    "Sharpening",
+    "Fasteners",
+    "Hardware"
+];
 
 // Font name installed on your system. Verdana is the recommended choice for readability.
 userFont = "Verdana:style=Bold"; // ["Verdana:style=Bold", "Arial:style=Bold", "Tahoma:style=Bold"]
@@ -59,6 +60,9 @@ userTextAlignment = "center"; // ["center", "left"]
 
 // Text size in mm.
 userTextSize = 10; // [6:0.5:14]
+
+// Height the text sticks up from the label surface in mm.
+userTextHeight = 0.8; // [0.2:0.1:3]
 
 // Extra blank space added to each end of the label.
 userLengthPadding = 5; // [2:0.5:12]
@@ -217,7 +221,8 @@ module labelWithText(
     roundCorners=true,
     cornerRadius=1,
     addEdgeBevel=true,
-    edgeBevelSize=0.4
+    edgeBevelSize=0.4,
+    textHeight=0.8
 ) {
     // Auto-size the label using a conservative width estimate for a few predictable fonts.
     renderedText = displayLabelText(text, allCaps);
@@ -233,7 +238,7 @@ module labelWithText(
 
         color(textColor)
             translate([textX, 17 / 2, 2])
-                linear_extrude(height=1)
+                linear_extrude(height=textHeight)
                     text(text=renderedText, size=size, font=font, halign=horizontalAlign, valign="center");
     } else {
         // Single-body workflow: combine geometry into one solid.
@@ -243,7 +248,7 @@ module labelWithText(
 
             color(textColor)
                 translate([textX, 17 / 2, 2])
-                    linear_extrude(height=1)
+                    linear_extrude(height=textHeight)
                         text(text=renderedText, size=size, font=font, halign=horizontalAlign, valign="center");
         }
     }
@@ -265,7 +270,8 @@ module labelsFromTextList(
     roundCorners=true,
     cornerRadius=1,
     addEdgeBevel=true,
-    edgeBevelSize=0.4
+    edgeBevelSize=0.4,
+    textHeight=0.8
 ) {
     for (i = [0 : len(labelTexts) - 1]) {
         placementState = labelPlacementState(labelTexts, i, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
@@ -286,7 +292,8 @@ module labelsFromTextList(
                 roundCorners=roundCorners,
                 cornerRadius=cornerRadius,
                 addEdgeBevel=addEdgeBevel,
-                edgeBevelSize=edgeBevelSize
+                edgeBevelSize=edgeBevelSize,
+                textHeight=textHeight
             );
     }
 }
@@ -298,6 +305,7 @@ labelsFromTextList(
     columnSpacing=userColumnSpacing,
     rowSpacing=userRowSpacing,
     font=userFont,
+    textHeight=userTextHeight,
     size=userTextSize,
     lengthPadding=userLengthPadding,
     allCaps=userAllCaps,
