@@ -2,7 +2,7 @@
     "fileFormatVersion": "1",
     "parameterSets": {
         "Woodworking_Tools": {
-            "printBedSize": "180",
+            "printBedSize": "256",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
@@ -16,7 +16,7 @@
             "userTextSize": "10"
         },
         "Mechanic_Tools": {
-            "printBedSize": "180",
+            "printBedSize": "256",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
