@@ -1,8 +1,8 @@
 {
     "fileFormatVersion": "1",
     "parameterSets": {
-        "Sockets": {
-            "userLabelText": "Sockets",
+        "Default": {
+            "printBedSize": "256",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
@@ -10,35 +10,24 @@
             "userLabelHeight": "17",
             "userLabelThickness": "2",
             "userLengthPadding": "5",
+            "userMultiLabelSpacing": "2",
             "userRoundCorners": "true",
             "userTextHeight": "0.8",
             "userTextSize": "10"
         },
-        "Wrenches": {
-            "userLabelText": "Wrenches",
+        "Large Labels": {
+            "printBedSize": "256",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
             "userEdgeBevelSize": "0.4",
-            "userLabelHeight": "17",
+            "userLabelHeight": "20",
             "userLabelThickness": "2",
             "userLengthPadding": "5",
+            "userMultiLabelSpacing": "2",
             "userRoundCorners": "true",
             "userTextHeight": "0.8",
-            "userTextSize": "10"
-        },
-        "Screwdrivers": {
-            "userLabelText": "Screwdrivers",
-            "userAddEdgeBevel": "true",
-            "userAllCaps": "false",
-            "userCornerRadius": "1",
-            "userEdgeBevelSize": "0.4",
-            "userLabelHeight": "17",
-            "userLabelThickness": "2",
-            "userLengthPadding": "5",
-            "userRoundCorners": "true",
-            "userTextHeight": "0.8",
-            "userTextSize": "10"
+            "userTextSize": "12"
         }
     }
 }

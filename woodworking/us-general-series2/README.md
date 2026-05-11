@@ -33,8 +33,9 @@ The file currently includes a woodworking list as the active set and a mechanic 
 
 After importing the model into Bambu Studio:
 
-1. Use the color tool to assign the second color by height so the raised text prints in a different color. Bambu Studio may ignore the preview colors defined in OpenSCAD.
-2. Split the imported model so the body and text can be handled as separate parts.
+1. Bambu Studio may ignore the preview colors defined in OpenSCAD. If this happens, use the color tool to assign the second color by height so the raised text prints in a different color. I normally use the "Place input box of bottom near mouse" and enter `2.05` for 2mm thick labels.
+
+2. **Optional:** Split the imported model so that the labels can be reorganized on the build plate.
 
 ## Notes
 

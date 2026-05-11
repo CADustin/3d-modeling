@@ -1,53 +1,7 @@
 /* [Label Text] */
 
-// Enter one label per quoted item.
-// Mechanic-focused alternate list:
-// userLabelTexts = [
-//     "Adapters",
-//     "Allen Keys",
-//     "Channel Locks",
-//     "Deep Sockets",
-//     "Electrical",
-//     "Extensions",
-//     "Hammers",
-//     "Impact Sockets",
-//     "Needle Nose",
-//     "Nut Drivers",
-//     "Picks",
-//     "Pliers",
-//     "Pry Bars",
-//     "Ratchets",
-//     "Screwdrivers",
-//     "Sockets",
-//     "Stubby Wrenches",
-//     "Torx Keys",
-//     "Vise Grips",
-//     "Wrenches"
-// ];
-
-// Woodworking-focused list:
-userLabelTexts = [
-    "Block Plane",
-    "Carving Tools",
-    "Chisels",
-    "Countersinks",
-    "Clamps",
-    "Drill Bits",
-    "Fasteners",
-    "Files",
-    "Forstner Bits",
-    "Glue Supplies",
-    "Hand Planes",
-    "Hardware",
-    "Layout Tools",
-    "Marking Tools",
-    "Measuring",
-    "Rasps",
-    "Router Bits",
-    "Sanding",
-    "Sharpening",
-    "Squares"
-];
+// Enter label text for a single label.
+userLabelText = "Sockets";
 
 // Convert label text to uppercase before rendering.
 userAllCaps = false;
@@ -299,14 +253,10 @@ module labelsFromTextList(
     }
 }
 
-// Generate one label for each text entry using the user settings above.
-labelsFromTextList(
-    labelTexts=userLabelTexts,
-    printBedSize=printBedSize,
-    columnSpacing=userMultiLabelSpacing,
-    rowSpacing=userMultiLabelSpacing,
+// Generate a single label using the user settings above.
+labelWithText(
+    text=userLabelText,
     font=internalFont,
-    textHeight=userTextHeight,
     size=userTextSize,
     labelHeight=userLabelHeight,
     labelThickness=userLabelThickness,
@@ -319,5 +269,6 @@ labelsFromTextList(
     roundCorners=userRoundCorners,
     cornerRadius=userCornerRadius,
     addEdgeBevel=userAddEdgeBevel,
-    edgeBevelSize=userEdgeBevelSize
+    edgeBevelSize=userEdgeBevelSize,
+    textHeight=userTextHeight
 );
