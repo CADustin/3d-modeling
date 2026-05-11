@@ -84,7 +84,7 @@ userEdgeBevelSize = 0.4; // [0:0.05:1]
 /* [Layout] */
 
 // Print bed size in mm.
-printBedSize = 180; // [180, 256, 320]
+printBedSize = 256; // [180, 256, 320]
 
 // Space between labels in both directions when printing multiple labels.
 userMultiLabelSpacing = 2; // [2:1:20]
