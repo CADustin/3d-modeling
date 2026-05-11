@@ -1,3 +1,7 @@
+param(
+    [switch]$changedLast24Hours
+)
+
 # Find the path to openscad.exe
 $openSCADPath = Get-ChildItem -Path "C:\Program Files\" -Recurse -Filter "openscad.com" -ErrorAction SilentlyContinue -Force | Sort-Object LastWriteTime -Descending | Select-Object -First 1 -ExpandProperty FullName
 
@@ -10,9 +14,24 @@ else {
 }
 
 # Find all *.scad files in the current directory that also have a corresponding *.json file
+$cutoffTime = (Get-Date).AddHours(-24)
+
+if ($changedLast24Hours) {
+    Write-Host "Filtering to SCAD/JSON pairs changed since: $cutoffTime"
+}
+
 $scadFiles = Get-ChildItem -Path (Get-Location) -Filter "*.scad" -Recurse | Where-Object {
     $jsonFile = Join-Path -Path $_.Directory.FullName -ChildPath "$($_.BaseName).json"
-    Test-Path $jsonFile
+
+    if (-not (Test-Path $jsonFile)) {
+        return $false
+    }
+
+    if (-not $changedLast24Hours) {
+        return $true
+    }
+
+    ($_.LastWriteTime -ge $cutoffTime) -or ((Get-Item -Path $jsonFile).LastWriteTime -ge $cutoffTime)
 }
 
 if (-not $scadFiles) {
