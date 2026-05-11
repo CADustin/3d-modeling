@@ -95,7 +95,7 @@ userMultiLabelSpacing = 2; // [2:1:20]
 // 256 = Bambu A1, P1P, P1S, X1C
 // 320 = Bambu H2D, H2S
 
-/* [{}] */
+{}
 
 // Internal fixed settings (not user-editable in Customizer).
 internalFont = "Verdana:style=Bold";
