@@ -22,7 +22,7 @@ faceRadius = 0.4; // [0:0.1:1]
 /* [Wedge] */
 
 // Maximum height of the wedge (mm).
-wedgeHeight = 17; // [16:0.1:18]
+wedgeHeight = 17.2; // [16:0.1:18]
 
 // Width of the retaining wedge (mm).
 wedgeWidth = 2.1; // [1.5:0.1:2.4]
