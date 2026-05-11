@@ -1,0 +1,15 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "Default": {
+            "capLength": "19.5",
+            "capWidth": "4",
+            "capThick": "1",
+            "cornerRadius": "0.5",
+            "faceRadius": "0.4",
+            "wedgeHeight": "17.2",
+            "wedgeWidth": "2.1",
+            "wedgeLength": "6"
+        }
+    }
+}
