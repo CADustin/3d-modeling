@@ -63,22 +63,17 @@ difference() {
         }
 
         // The Text
+        color("blue")
         group() {
             translate([0,0,$thickness]) {
-                // Line 1 Text
-                color("red") {
-                    linear_extrude($textThickness) {
-                        translate([0, 11, 0])
-                        text($line1Text, size = $line1Size, halign="center", valign="center", font = $font1);
-                    }
+                linear_extrude($textThickness) {
+                    translate([0, 11, 0])
+                    text($line1Text, size = $line1Size, halign="center", valign="center", font = $font1);
                 }
-                
-                // Line 2 Text
-                color("blue") {
-                    linear_extrude($textThickness) {
-                        translate([0, -15, 0])
-                        text($line2Text, size = $line2Size, halign="center", valign="center", font = $font2);
-                    }
+
+                linear_extrude($textThickness) {
+                    translate([0, -15, 0])
+                    text($line2Text, size = $line2Size, halign="center", valign="center", font = $font2);
                 }
             }
         }

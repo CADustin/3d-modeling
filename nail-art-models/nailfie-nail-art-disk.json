@@ -1,6 +1,7 @@
 {
+    "fileFormatVersion": "1",
     "parameterSets": {
-        "Blank Left Hand": {
+        "Blank_Left_Hand": {
             "$fingerDiameter": "19",
             "$hand": "0",
             "$line1Size": "12",
@@ -12,7 +13,7 @@
             "$thickness": "4",
             "$thumbDiameter": "25"
         },
-        "Blank Right Hand": {
+        "Blank_Right_Hand": {
             "$fingerDiameter": "19",
             "$hand": "90",
             "$line1Size": "12",
@@ -24,7 +25,7 @@
             "$thickness": "4",
             "$thumbDiameter": "25"
         },
-        "Blank Ambidextrous": {
+        "Blank_Ambidextrous": {
             "$fingerDiameter": "19",
             "$hand": "0",
             "$includeHandLabel": "0",
@@ -37,6 +38,5 @@
             "$thickness": "4",
             "$thumbDiameter": "25"
         }
-    },
-    "fileFormatVersion": "1"
+    }
 }
