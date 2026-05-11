@@ -3,60 +3,54 @@
 // Enter one label per quoted item.
 // Mechanic-focused alternate list:
 // userLabelTexts = [
-//     "Sockets",
-//     "Deep Sockets",
-//     "Impact Sockets",
-//     "Ratchets",
-//     "Extensions",
 //     "Adapters",
-//     "Wrenches",
-//     "Stubby Wrenches",
 //     "Allen Keys",
-//     "Torx Keys",
-//     "Screwdrivers",
-//     "Nut Drivers",
-//     "Pliers",
-//     "Needle Nose",
 //     "Channel Locks",
-//     "Vise Grips",
-//     "Picks",
-//     "Pry Bars",
+//     "Deep Sockets",
+//     "Electrical",
+//     "Extensions",
 //     "Hammers",
-//     "Electrical"
+//     "Impact Sockets",
+//     "Needle Nose",
+//     "Nut Drivers",
+//     "Picks",
+//     "Pliers",
+//     "Pry Bars",
+//     "Ratchets",
+//     "Screwdrivers",
+//     "Sockets",
+//     "Stubby Wrenches",
+//     "Torx Keys",
+//     "Vise Grips",
+//     "Wrenches"
 // ];
 
 // Woodworking-focused list:
 userLabelTexts = [
-    "Chisels",
-    "Hand Planes",
     "Block Plane",
-    "Marking Tools",
-    "Squares",
-    "Measuring",
-    "Layout Tools",
-    "Router Bits",
-    "Drill Bits",
-    "Forstner Bits",
+    "Carving Tools",
+    "Chisels",
     "Countersinks",
     "Clamps",
-    "Glue Supplies",
-    "Sanding",
-    "Files",
-    "Rasps",
-    "Carving Tools",
-    "Sharpening",
+    "Drill Bits",
     "Fasteners",
-    "Hardware"
+    "Files",
+    "Forstner Bits",
+    "Glue Supplies",
+    "Hand Planes",
+    "Hardware",
+    "Layout Tools",
+    "Marking Tools",
+    "Measuring",
+    "Rasps",
+    "Router Bits",
+    "Sanding",
+    "Sharpening",
+    "Squares"
 ];
-
-// Font name installed on your system. Verdana is the recommended choice for readability.
-userFont = "Verdana:style=Bold"; // ["Verdana:style=Bold", "Arial:style=Bold", "Tahoma:style=Bold"]
 
 // Convert label text to uppercase before rendering.
 userAllCaps = false;
-
-// Text alignment inside the label.
-userTextAlignment = "center"; // ["center", "left"]
 
 // Text size in mm.
 userTextSize = 10; // [6:0.5:14]
@@ -66,6 +60,12 @@ userTextHeight = 0.8; // [0.2:0.1:3]
 
 // Extra blank space added to each end of the label.
 userLengthPadding = 5; // [2:0.5:12]
+
+// Label body height in mm.
+userLabelHeight = 17; // [10:0.2:30]
+
+// Label body thickness in mm.
+userLabelThickness = 2; // [0.8:0.2:5]
 
 /* [Shape] */
 
@@ -81,33 +81,28 @@ userAddEdgeBevel = true;
 // Top edge bevel size in mm.
 userEdgeBevelSize = 0.4; // [0:0.05:1]
 
-/* [Colors] */
-
-// Preview color for the main label body.
-userBodyColor = "Blue"; // [Blue, White, Black, Gray, LightGray, Red, Orange, Yellow, Green, Teal, Cyan, Purple, Brown]
-
-// Preview color for the raised text.
-userTextColor = "White"; // [White, Black, Blue, Gray, LightGray, Red, Orange, Yellow, Green, Teal, Cyan, Purple, Brown]
-
-// Keep body and text as separate parts for multicolor printing.
-userSeparateParts = true;
-
 /* [Layout] */
 
 // Print bed size in mm.
 printBedSize = 256; // [180, 256, 320]
 
-// Space between labels in the same row.
-userColumnSpacing = 2; // [2:1:20]
-
-// Space between rows of labels.
-userRowSpacing = 2; // [2:1:20]
+// Space between labels in both directions when printing multiple labels.
+userMultiLabelSpacing = 2; // [2:1:20]
 
 /* [Printer Reference] */
 
 // 180 = Bambu A1 Mini
 // 256 = Bambu A1, P1P, P1S, X1C
 // 320 = Bambu H2D, H2S
+
+/* [{}] */
+
+// Internal fixed settings (not user-editable in Customizer).
+internalFont = "Verdana:style=Bold";
+internalTextAlignment = "center";
+internalBodyColor = "Blue";
+internalTextColor = "White";
+internalSeparateParts = true;
 
 // 2D label footprint with optional rounded corners.
 module labelProfile2D(length, height=17, roundCorners=true, cornerRadius=1) {
@@ -170,7 +165,7 @@ function labelPlacementState(labelTexts, index, printBedSize=256, font="Verdana:
             )
                 [xOffset, rowIndex, rowWidth];
 
-// 3D body: fixed 17mm tall and 2mm thick, with optional top perimeter bevel.
+// 3D body with optional top perimeter bevel.
 module labelBody(
     length,
     height=17,
@@ -212,6 +207,8 @@ module labelWithText(
     text="",
     font="Verdana:style=Bold",
     size=10,
+    labelHeight=17,
+    labelThickness=2,
     lengthPadding=5,
     allCaps=false,
     textAlignment="center",
@@ -234,20 +231,20 @@ module labelWithText(
     if (separateParts) {
         // Multicolor workflow: keep body and text as separate solids for slicer part colors.
         color(bodyColor)
-            labelBody(textLength, 17, 2, roundCorners, cornerRadius, addEdgeBevel, edgeBevelSize);
+            labelBody(textLength, labelHeight, labelThickness, roundCorners, cornerRadius, addEdgeBevel, edgeBevelSize);
 
         color(textColor)
-            translate([textX, 17 / 2, 2])
+            translate([textX, labelHeight / 2, labelThickness])
                 linear_extrude(height=textHeight)
                     text(text=renderedText, size=size, font=font, halign=horizontalAlign, valign="center");
     } else {
         // Single-body workflow: combine geometry into one solid.
         union() {
             color(bodyColor)
-                labelBody(textLength, 17, 2, roundCorners, cornerRadius, addEdgeBevel, edgeBevelSize);
+                labelBody(textLength, labelHeight, labelThickness, roundCorners, cornerRadius, addEdgeBevel, edgeBevelSize);
 
             color(textColor)
-                translate([textX, 17 / 2, 2])
+                translate([textX, labelHeight / 2, labelThickness])
                     linear_extrude(height=textHeight)
                         text(text=renderedText, size=size, font=font, halign=horizontalAlign, valign="center");
         }
@@ -261,6 +258,8 @@ module labelsFromTextList(
     rowSpacing=8,
     font="Verdana:style=Bold",
     size=10,
+    labelHeight=17,
+    labelThickness=2,
     lengthPadding=5,
     allCaps=false,
     textAlignment="center",
@@ -276,13 +275,15 @@ module labelsFromTextList(
     for (i = [0 : len(labelTexts) - 1]) {
         placementState = labelPlacementState(labelTexts, i, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
         xOffset = placementState[0];
-        yOffset = -placementState[1] * (17 + rowSpacing);
+        yOffset = -placementState[1] * (labelHeight + rowSpacing);
 
         translate([xOffset, yOffset, 0])
             labelWithText(
                 text=labelTexts[i],
                 font=font,
                 size=size,
+                labelHeight=labelHeight,
+                labelThickness=labelThickness,
                 lengthPadding=lengthPadding,
                 allCaps=allCaps,
                 textAlignment=textAlignment,
@@ -302,17 +303,19 @@ module labelsFromTextList(
 labelsFromTextList(
     labelTexts=userLabelTexts,
     printBedSize=printBedSize,
-    columnSpacing=userColumnSpacing,
-    rowSpacing=userRowSpacing,
-    font=userFont,
+    columnSpacing=userMultiLabelSpacing,
+    rowSpacing=userMultiLabelSpacing,
+    font=internalFont,
     textHeight=userTextHeight,
     size=userTextSize,
+    labelHeight=userLabelHeight,
+    labelThickness=userLabelThickness,
     lengthPadding=userLengthPadding,
     allCaps=userAllCaps,
-    textAlignment=userTextAlignment,
-    bodyColor=userBodyColor,
-    textColor=userTextColor,
-    separateParts=userSeparateParts,
+    textAlignment=internalTextAlignment,
+    bodyColor=internalBodyColor,
+    textColor=internalTextColor,
+    separateParts=internalSeparateParts,
     roundCorners=userRoundCorners,
     cornerRadius=userCornerRadius,
     addEdgeBevel=userAddEdgeBevel,

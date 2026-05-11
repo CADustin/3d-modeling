@@ -1,20 +1,34 @@
 {
     "fileFormatVersion": "1",
     "parameterSets": {
-        "New set 1": {
+        "Woodworking Tools": {
             "printBedSize": "256",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
-            "userBodyColor": "Blue",
-            "userColumnSpacing": "2",
             "userCornerRadius": "1",
             "userEdgeBevelSize": "0.40000000000000002",
-            "userFont": "Verdana:style=Bold",
+            "userLabelHeight": "17",
+            "userLabelThickness": "2",
+            "userLabelTexts": "[\"Block Plane\", \"Carving Tools\", \"Chisels\", \"Clamps\", \"Countersinks\", \"Drill Bits\", \"Fasteners\", \"Files\", \"Forstner Bits\", \"Glue Supplies\", \"Hand Planes\", \"Hardware\", \"Layout Tools\", \"Marking Tools\", \"Measuring\", \"Rasps\", \"Router Bits\", \"Sanding\", \"Sharpening\", \"Squares\"]",
             "userLengthPadding": "5",
+            "userMultiLabelSpacing": "2",
             "userRoundCorners": "true",
-            "userRowSpacing": "2",
-            "userSeparateParts": "true",
-            "userTextColor": "White",
+            "userTextHeight": "0.80000000000000004",
+            "userTextSize": "10"
+        },
+        "Mechanic Tools": {
+            "printBedSize": "256",
+            "userAddEdgeBevel": "true",
+            "userAllCaps": "false",
+            "userCornerRadius": "1",
+            "userEdgeBevelSize": "0.40000000000000002",
+            "userLabelHeight": "17",
+            "userLabelThickness": "2",
+            "userLabelTexts": "[\"Adapters\", \"Allen Keys\", \"Channel Locks\", \"Deep Sockets\", \"Electrical\", \"Extensions\", \"Hammers\", \"Impact Sockets\", \"Needle Nose\", \"Nut Drivers\", \"Picks\", \"Pliers\", \"Pry Bars\", \"Ratchets\", \"Screwdrivers\", \"Sockets\", \"Stubby Wrenches\", \"Torx Keys\", \"Vise Grips\", \"Wrenches\"]",
+            "userLengthPadding": "5",
+            "userMultiLabelSpacing": "2",
+            "userRoundCorners": "true",
+            "userTextHeight": "0.80000000000000004",
             "userTextSize": "10"
         }
     }
