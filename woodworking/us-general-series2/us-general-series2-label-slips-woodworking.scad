@@ -1,6 +1,7 @@
 // Woodworking-specific label set for US General Series 2 toolbox
 // This file uses the modules defined in us-general-series2-label-slips.scad
 
+renderDefaultSingleLabel = false;
 include <us-general-series2-label-slips.scad>
 
 /* [Woodworking Labels] */
