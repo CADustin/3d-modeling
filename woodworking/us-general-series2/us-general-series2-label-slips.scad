@@ -57,6 +57,7 @@ internalTextAlignment = "center";
 internalBodyColor = "Blue";
 internalTextColor = "White";
 internalSeparateParts = true;
+internalRenderDefaultSingleLabel = is_undef(renderDefaultSingleLabel) ? true : renderDefaultSingleLabel;
 
 // 2D label footprint with optional rounded corners.
 module labelProfile2D(length, height=17, roundCorners=true, cornerRadius=1) {
@@ -118,6 +119,20 @@ function labelPlacementState(labelTexts, index, printBedSize=256, font="Verdana:
                 rowWidth = fitsOnRow ? nextWidth : labelWidth
             )
                 [xOffset, rowIndex, rowWidth];
+
+function layoutRowCount(labelTexts, printBedSize=256, font="Verdana:style=Bold", textSize=10, lengthPadding=5, columnSpacing=6, allCaps=false, roundCorners=true, cornerRadius=1) =
+    len(labelTexts) == 0
+        ? 0
+        : labelPlacementState(labelTexts, len(labelTexts) - 1, printBedSize, font, textSize, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius)[1] + 1;
+
+function layoutMaxRowWidth(labelTexts, index=0, currentMax=0, printBedSize=256, font="Verdana:style=Bold", textSize=10, lengthPadding=5, columnSpacing=6, allCaps=false, roundCorners=true, cornerRadius=1) =
+    index >= len(labelTexts)
+        ? currentMax
+        : let(
+            rowWidth = labelPlacementState(labelTexts, index, printBedSize, font, textSize, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius)[2],
+            nextMax = max(currentMax, rowWidth)
+        )
+            layoutMaxRowWidth(labelTexts, index + 1, nextMax, printBedSize, font, textSize, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
 
 // 3D body with optional top perimeter bevel.
 module labelBody(
@@ -226,49 +241,62 @@ module labelsFromTextList(
     edgeBevelSize=0.4,
     textHeight=0.8
 ) {
-    for (i = [0 : len(labelTexts) - 1]) {
-        placementState = labelPlacementState(labelTexts, i, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
-        xOffset = placementState[0];
-        yOffset = -placementState[1] * (labelHeight + rowSpacing);
+    rowCount = layoutRowCount(labelTexts, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
+    maxRowWidth = layoutMaxRowWidth(labelTexts, 0, 0, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
 
-        translate([xOffset, yOffset, 0])
-            labelWithText(
-                text=labelTexts[i],
-                font=font,
-                size=size,
-                labelHeight=labelHeight,
-                labelThickness=labelThickness,
-                lengthPadding=lengthPadding,
-                allCaps=allCaps,
-                textAlignment=textAlignment,
-                bodyColor=bodyColor,
-                textColor=textColor,
-                separateParts=separateParts,
-                roundCorners=roundCorners,
-                cornerRadius=cornerRadius,
-                addEdgeBevel=addEdgeBevel,
-                edgeBevelSize=edgeBevelSize,
-                textHeight=textHeight
-            );
+    // Center the entire generated label layout around the origin as a final step.
+    yMin = rowCount > 0 ? -(rowCount - 1) * (labelHeight + rowSpacing) : 0;
+    layoutCenterY = (labelHeight + yMin) / 2;
+
+    translate([-maxRowWidth / 2, -layoutCenterY, 0]) {
+        for (i = [0 : len(labelTexts) - 1]) {
+            placementState = labelPlacementState(labelTexts, i, printBedSize, font, size, lengthPadding, columnSpacing, allCaps, roundCorners, cornerRadius);
+            xOffset = placementState[0];
+            yOffset = -placementState[1] * (labelHeight + rowSpacing);
+
+            translate([xOffset, yOffset, 0])
+                labelWithText(
+                    text=labelTexts[i],
+                    font=font,
+                    size=size,
+                    labelHeight=labelHeight,
+                    labelThickness=labelThickness,
+                    lengthPadding=lengthPadding,
+                    allCaps=allCaps,
+                    textAlignment=textAlignment,
+                    bodyColor=bodyColor,
+                    textColor=textColor,
+                    separateParts=separateParts,
+                    roundCorners=roundCorners,
+                    cornerRadius=cornerRadius,
+                    addEdgeBevel=addEdgeBevel,
+                    edgeBevelSize=edgeBevelSize,
+                    textHeight=textHeight
+                );
+        }
     }
 }
 
 // Generate a single label using the user settings above.
-labelWithText(
-    text=userLabelText,
-    font=internalFont,
-    size=userTextSize,
-    labelHeight=userLabelHeight,
-    labelThickness=userLabelThickness,
-    lengthPadding=userLengthPadding,
-    allCaps=userAllCaps,
-    textAlignment=internalTextAlignment,
-    bodyColor=internalBodyColor,
-    textColor=internalTextColor,
-    separateParts=internalSeparateParts,
-    roundCorners=userRoundCorners,
-    cornerRadius=userCornerRadius,
-    addEdgeBevel=userAddEdgeBevel,
-    edgeBevelSize=userEdgeBevelSize,
-    textHeight=userTextHeight
-);
+singleLabelLength = labelLengthFromText(userLabelText, internalFont, userTextSize, userLengthPadding, userAllCaps, userRoundCorners, userCornerRadius);
+
+if (internalRenderDefaultSingleLabel)
+    translate([-singleLabelLength / 2, -userLabelHeight / 2, 0])
+        labelWithText(
+            text=userLabelText,
+            font=internalFont,
+            size=userTextSize,
+            labelHeight=userLabelHeight,
+            labelThickness=userLabelThickness,
+            lengthPadding=userLengthPadding,
+            allCaps=userAllCaps,
+            textAlignment=internalTextAlignment,
+            bodyColor=internalBodyColor,
+            textColor=internalTextColor,
+            separateParts=internalSeparateParts,
+            roundCorners=userRoundCorners,
+            cornerRadius=userCornerRadius,
+            addEdgeBevel=userAddEdgeBevel,
+            edgeBevelSize=userEdgeBevelSize,
+            textHeight=userTextHeight
+        );
