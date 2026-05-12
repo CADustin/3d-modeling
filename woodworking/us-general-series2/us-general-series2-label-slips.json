@@ -2,12 +2,12 @@
     "fileFormatVersion": "1",
     "parameterSets": {
         "Sockets": {
-            "userLabelText": "Sockets",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
             "userEdgeBevelSize": "0.4",
             "userLabelHeight": "17",
+            "userLabelText": "Sockets",
             "userLabelThickness": "2",
             "userLengthPadding": "5",
             "userRoundCorners": "true",
@@ -15,12 +15,12 @@
             "userTextSize": "10"
         },
         "Wrenches": {
-            "userLabelText": "Wrenches",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
             "userEdgeBevelSize": "0.4",
             "userLabelHeight": "17",
+            "userLabelText": "Wrenches",
             "userLabelThickness": "2",
             "userLengthPadding": "5",
             "userRoundCorners": "true",
@@ -28,16 +28,31 @@
             "userTextSize": "10"
         },
         "Screwdrivers": {
-            "userLabelText": "Screwdrivers",
             "userAddEdgeBevel": "true",
             "userAllCaps": "false",
             "userCornerRadius": "1",
             "userEdgeBevelSize": "0.4",
             "userLabelHeight": "17",
+            "userLabelText": "Screwdrivers",
             "userLabelThickness": "2",
             "userLengthPadding": "5",
             "userRoundCorners": "true",
             "userTextHeight": "0.8",
+            "userTextSize": "10"
+        },
+        "New set 1": {
+            "printBedSize": "256",
+            "userAddEdgeBevel": "true",
+            "userAllCaps": "true",
+            "userCornerRadius": "1",
+            "userEdgeBevelSize": "0.40000000000000002",
+            "userLabelHeight": "17",
+            "userLabelText": "SOCKETS",
+            "userLabelThickness": "2",
+            "userLengthPadding": "5",
+            "userMultiLabelSpacing": "2",
+            "userRoundCorners": "true",
+            "userTextHeight": "0.80000000000000004",
             "userTextSize": "10"
         }
     }

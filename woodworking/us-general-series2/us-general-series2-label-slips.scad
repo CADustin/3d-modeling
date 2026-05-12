@@ -88,19 +88,20 @@ function displayLabelText(labelText, allCaps=false) = allCaps ? upperAsciiText(l
 function effectiveTextInset(lengthPadding=5, roundCorners=true, cornerRadius=1) =
     max(lengthPadding, roundCorners ? cornerRadius + 1 : lengthPadding);
 
-function fontWidthFactor(font="Verdana:style=Bold", allCaps=false) =
+function fontWidthFactor(font="Verdana:style=Bold") =
+    // Use conservative fixed estimates so allCaps only changes string casing.
     font == "Verdana:style=Bold"
-        ? (allCaps ? 0.82 : 0.92)
+        ? 0.92
         : font == "Tahoma:style=Bold"
-            ? (allCaps ? 0.78 : 0.70)
-            : (allCaps ? 0.80 : 0.72);
+            ? 0.78
+            : 0.80;
 
 function labelSafetyMargin(textSize=10) = max(1, textSize * 0.12);
 
 function labelLengthFromText(labelText, font="Verdana:style=Bold", textSize=10, lengthPadding=5, allCaps=false, roundCorners=true, cornerRadius=1) =
     let(
         renderedText = displayLabelText(labelText, allCaps),
-        textWidth = len(renderedText) * textSize * fontWidthFactor(font, allCaps),
+        textWidth = len(renderedText) * textSize * fontWidthFactor(font),
         textInset = effectiveTextInset(lengthPadding, roundCorners, cornerRadius),
         safetyMargin = labelSafetyMargin(textSize)
     )
