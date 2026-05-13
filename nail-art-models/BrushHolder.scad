@@ -7,6 +7,7 @@ $topThickness = 6;
 $topHeight = 75;
 
 $sideWallThickness = 3;
+$topSideWallGap = 0.4;
 $pinDiameter = 10;
 $pinLength = 5;
 $pinSocketClearance = 0.6;
@@ -79,11 +80,11 @@ module topPiece(){
 		}
 
 		// Top, Side 1
-		translate([$baseWidth/2 - $sideWallThickness/2,0,$topHeight/2 - $topThickness/2])
+		translate([$baseWidth/2 + $sideWallThickness/2 + $topSideWallGap,0,$topHeight/2 - $topThickness/2])
 		cube([$sideWallThickness, $topDepth, $topHeight], center=true);
 
 		translate([
-			$baseWidth/2 - $sideWallThickness - $pinLength/2,
+			$baseWidth/2 + $sideWallThickness/2 + $topSideWallGap - $pinLength/2,
 			$topPinY,
 			$topPinZ
 		])
@@ -91,11 +92,11 @@ module topPiece(){
 		cylinder($fn=50, h=$pinLength, d=$pinDiameter, center=true);
 
 		// Top, Side 2
-		translate([-($baseWidth/2 - $sideWallThickness/2),0,$topHeight/2 - $topThickness/2])
+		translate([-($baseWidth/2 + $sideWallThickness/2 + $topSideWallGap),0,$topHeight/2 - $topThickness/2])
 		cube([$sideWallThickness, $topDepth, $topHeight], center=true);
 
 		translate([
-			-($baseWidth/2 - $sideWallThickness) + $pinLength/2,
+			-($baseWidth/2 + $sideWallThickness/2 + $topSideWallGap) + $pinLength/2,
 			$topPinY,
 			$topPinZ
 		])
