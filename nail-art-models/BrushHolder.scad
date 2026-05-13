@@ -8,11 +8,10 @@ viewMode = "separated"; // [separated, assembledUp, assembledFolded]
 {}
 
 topThickness = 6;
-topHeight = 75;
+foldClearance = -2;
 
 sideWallThickness = 3;
-topSideWallGap = 0.4;
-pinDiameter = 10;
+topSideWallGap = 0.2;
 pinLength = 5;
 pinSocketClearance = 0.6;
 socketInsetFromNegativeY = 4;
@@ -25,12 +24,14 @@ assembledUpYAngle = 0;
 assembledFoldedYAngle = 0;
 
 // Internal Calculations
-topHoleDiameter = baseThickness - 4;
+pinDiameter = baseThickness - 4;
 pinSocketDiameter = pinDiameter + pinSocketClearance;
+pinSocketY = -(baseDepth/2 - pinSocketDiameter/2 - socketInsetFromNegativeY);
+topHeight = baseDepth - foldClearance;
+topHoleDiameter = baseThickness - 4;
 pinSocketDepth = pinLength + 0.6;
 pinLeadInDepth = 2;
 pinLeadInDiameter = pinSocketDiameter + 2;
-pinSocketY = -(baseDepth/2 - pinSocketDiameter/2 - socketInsetFromNegativeY);
 topPinZ = topHeight - sideWallThickness/2 - sideWallThickness*2;
 pinSocketZ = 0;
 
