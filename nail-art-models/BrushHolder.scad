@@ -2,6 +2,8 @@ $baseWidth = 90;
 $baseDepth = 70;
 $baseThickness = 9;
 
+{}
+
 $topDepth = 20;
 $topThickness = 6;
 $topHeight = 75;
@@ -15,7 +17,7 @@ $pinSocketDiameter = $pinDiameter + $pinSocketClearance;
 $pinSocketDepth = $pinLength + 0.6;
 $pinLeadInDepth = 2;
 $pinLeadInDiameter = $pinSocketDiameter + 2;
-$topPinY = -4;
+topPinY = 0;
 $socketInsetFromNegativeY = 4;
 $pinSocketY = -($baseDepth/2 - $pinSocketDiameter/2 - $socketInsetFromNegativeY);
 $topPinZ = $topHeight - $sideWallThickness/2 - $sideWallThickness*2;
@@ -85,7 +87,7 @@ module topPiece(){
 
 		translate([
 			$baseWidth/2 + $sideWallThickness/2 + $topSideWallGap - $pinLength/2,
-			$topPinY,
+			topPinY,
 			$topPinZ
 		])
 		rotate([0,90,0])
@@ -97,7 +99,7 @@ module topPiece(){
 
 		translate([
 			-($baseWidth/2 + $sideWallThickness/2 + $topSideWallGap) + $pinLength/2,
-			$topPinY,
+			topPinY,
 			$topPinZ
 		])
 		rotate([0,90,0])
@@ -108,7 +110,7 @@ module topPiece(){
 module topPieceAssembled(xAngle=0, yAngle=0){
 	translate([0, $pinSocketY, $pinSocketZ])
 	rotate([xAngle,yAngle,0])
-	translate([0, -$topPinY, -$topPinZ])
+	translate([0, -topPinY, -$topPinZ])
 	topPiece();
 }
 
