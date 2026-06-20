@@ -1,0 +1,21 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "6Slot_72mm-Box-Tray_60pct-Height": {
+            "$boxHeight": "18",
+            "$boxLength": "72",
+            "$boxWidth": "72",
+            "$slots": "6",
+            "$trayHeightPct": "60",
+            "$trayWalls": "2"
+        },
+        "10Slot_72mm-Box-Tray_60pct-Height": {
+            "$boxHeight": "18",
+            "$boxLength": "72",
+            "$boxWidth": "72",
+            "$slots": "10",
+            "$trayHeightPct": "60",
+            "$trayWalls": "2"
+        }
+    }
+}

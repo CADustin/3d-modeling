@@ -1,7 +1,7 @@
 // Tray Parameters
-$slots = 10;
+$slots = 6;
 $trayWalls = 2; // [2:0.5:8]
-$trayHeightPct = 50; // [20:5:80]
+$trayHeightPct = 60; // [20:5:80]
 
 // Magnet Box Size
 $boxWidth = 72;
@@ -35,7 +35,7 @@ difference() {
     }
     
     translate([0,-$oad/2,0])
-    #cylinder(h = $oah, d = $oad/1.5, center = true);
+    cylinder(h = $oah, d = $oad/1.5, center = true);
 }
 
 
