@@ -1,12 +1,17 @@
 {
+    "fileFormatVersion": "1",
     "parameterSets": {
         "3.75in_300mmX165mm_4mm-thick": {
-            "$cubicalWallSize": "3.75",
-            "$shelfDepth": "165",
-            "$shelfWidth": "300",
-            "$thickness": "4"
+            "cubicalWallSize": "3.25",
+            "shelfDepth": "165",
+            "shelfWidth": "300",
+            "thickness": "4"
+        },
+        "2.25in_300x165mm_4mm-thick": {
+            "cubicalWallSize": "2.25",
+            "shelfDepth": "165",
+            "shelfWidth": "300",
+            "thickness": "4"
         }
-    },
-    "parameterSets": "",
-    "fileFormatVersion": "1"
+    }
 }
