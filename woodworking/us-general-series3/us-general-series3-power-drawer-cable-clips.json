@@ -1,0 +1,23 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "standard": {
+            "$clipOpening": "6",
+            "clipDepth": "15",
+            "sideDepth": "8",
+            "thickness": "2"
+        },
+        "deep": {
+            "$clipOpening": "6",
+            "clipDepth": "30",
+            "sideDepth": "8",
+            "thickness": "2"
+        },
+        "extra-large": {
+            "$clipOpening": "12",
+            "clipDepth": "30",
+            "sideDepth": "8",
+            "thickness": "2"
+        }
+    }
+}
