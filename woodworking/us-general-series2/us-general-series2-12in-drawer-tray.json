@@ -1,4 +1,5 @@
 {
+    "fileFormatVersion": "1",
     "parameterSets": {
         "19mm-deep_40mm-wide": {
             "offset": "0",
@@ -15,7 +16,6 @@
             "trayWidth": "80"
         },
         "95mm-deep_115mm-wide": {
-            "$offset": "0",
             "sideDepth": "15",
             "thickness": "5",
             "trayDepth": "95",
@@ -45,6 +45,5 @@
             "trayDepth": "19",
             "trayWidth": "40"
         }
-    },
-    "fileFormatVersion": "1"
+    }
 }
