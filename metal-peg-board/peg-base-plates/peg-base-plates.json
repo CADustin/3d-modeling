@@ -1,0 +1,25 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "1x1-small": {
+            "columns": "1",
+            "plateThickness": "2",
+            "rows": "1"
+        },
+        "2x1-small": {
+            "columns": "2",
+            "plateThickness": "2",
+            "rows": "1"
+        },
+        "2x2-small": {
+            "columns": "2",
+            "plateThickness": "2",
+            "rows": "2"
+        },
+        "4x2-small": {
+            "columns": "4",
+            "plateThickness": "2",
+            "rows": "2"
+        }
+    }
+}
