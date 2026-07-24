@@ -1,0 +1,20 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "1hook-1peg": {
+            "hookCount": "1",
+            "pegCount": "1",
+            "plateThickness": "2"
+        },
+        "4hooks-3pegs": {
+            "hookCount": "4",
+            "pegCount": "3",
+            "plateThickness": "2"
+        },
+        "6hooks-5pegs": {
+            "hookCount": "6",
+            "pegCount": "5",
+            "plateThickness": "2"
+        }
+    }
+}
