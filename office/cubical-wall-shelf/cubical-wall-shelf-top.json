@@ -12,6 +12,12 @@
             "shelfDepth": "165",
             "shelfWidth": "300",
             "thickness": "4"
+        },
+        "1.875in_300x165mm_4mm-thick": {
+            "cubicalWallSize": "1.875",
+            "shelfDepth": "165",
+            "shelfWidth": "300",
+            "thickness": "4"
         }
     }
 }

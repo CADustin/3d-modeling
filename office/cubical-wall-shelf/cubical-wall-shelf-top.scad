@@ -8,7 +8,7 @@ shelfDepth = 120;
 thickness = 3;
 
 // Cublical Wall Thickness (in Inches)
-cubicalWallSize = 3; // [2,2.25,2.5,2.75,3,3.25,3.5,3.75]
+cubicalWallSize = 3; // [1.75,1.875,2,2.25,2.5,2.75,3,3.25,3.5,3.75]
 
 {}
 
@@ -23,14 +23,14 @@ assert($validWidth, $validWidthMessage);
 
 cuboid([shelfWidth,shelfDepth,thickness], rounding=thickness*2, edges="Z");
 
-$shelfSupportLength = cubicalWallSizeInMM/2;
+$shelfSupportLength = cubicalWallSizeInMM/1.5;
 
 $fn=30;
 
-translate([0,cubicalWallSizeInMM/2,$shelfSupportLength/2+thickness])
+translate([0,(cubicalWallSizeInMM+thickness)/2,$shelfSupportLength/2+thickness])
 rotate([90,0,0])
 cuboid([shelfWidth*0.80,$shelfSupportLength+thickness,thickness], rounding=thickness, edges = "Z", except = FWD+RIGHT+LEFT);
 
-translate([0,-cubicalWallSizeInMM/2,$shelfSupportLength/2+thickness])
+translate([0,-(cubicalWallSizeInMM+thickness)/2,$shelfSupportLength/2+thickness])
 rotate([90,0,0])
 cuboid([shelfWidth*0.80,$shelfSupportLength+thickness,thickness], rounding=thickness, edges="Z", except = FWD+RIGHT+LEFT);
