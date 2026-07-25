@@ -25,10 +25,10 @@ plateThickness = 2; // [1:0.1:5]
 pegDiameter = 10;
 notchDiameter = 6;
 pegLength = 10;
-notchHeight = 1.49;
+notchHeight = 1.8;
 
 columnPitch = 22;
-rowPitch = 32;
+rowPitch = 34;
 
 pegSegments = 32;
 plateSingleSpan = 14;
