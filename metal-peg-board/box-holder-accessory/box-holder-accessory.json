@@ -1,0 +1,18 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "$boxColumnSpacing": "8",
+            "$boxDepth": "35",
+            "$boxRowSpacing": "8",
+            "$boxWidth": "13",
+            "$boxsDeep": "2",
+            "$boxsWide": "4",
+            "$pegPlateColumns": "4",
+            "$pegPlateMode": "back",
+            "$pegPlateRows": "2",
+            "$totalHeight": "50",
+            "$wallThickness": "2"
+        }
+    }
+}
