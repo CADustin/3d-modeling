@@ -3,7 +3,7 @@ use <../peg-base-plates/peg-base-plates.scad>
 
 /* [Box/Slot Sizes] */
 // The width of the slot (in mm).
-$boxWidth = 13;
+$boxWidth = 14;
 
 // The depth of the slot (in mm).
 $boxDepth = 35;
@@ -68,7 +68,7 @@ difference() {
 				$slotStartY + (row * $slotPitchY),
 				$wallThickness
 			])
-				roundedCube([$boxWidth, $boxDepth, $totalHeight], 1, center = true);
+				cube([$boxWidth, $boxDepth, $totalHeight], center = true);
 		}
         
         translate([0,$slotStartY + (row * $slotPitchY),$wallThickness])
