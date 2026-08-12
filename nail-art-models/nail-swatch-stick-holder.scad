@@ -5,11 +5,11 @@ $swatchSpacing = 10;
 
 $width = 150;
 $depth = 50;
-$height = 8;
+$height = 6;
 $slotCount = floor($width / ($swatchSpacing + $swatchWidth));
 $edgeRadius = .25; // [0:0.1:2]
 $magnetDiameter = 5.2;
-$magnetDepth = 3.1;
+$magnetDepth = 10.1;
 $magnetMargin = 3;
 
 module roundedCube(width, depth, height, radius) {
