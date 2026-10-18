@@ -98,7 +98,7 @@ module taperedTexture() {
 	cylinder(d1 = $diameter, d2 = $taperTopDiameter, h = $height, $fn = $fn);
 }
 
-difference() {
+module texturedBody() {
 	if ($texture == "Smooth") {
 		plainCylinder();
 	} else if ($texture == "Dimples") {
@@ -114,6 +114,11 @@ difference() {
 	} else {
 		plainCylinder();
 	}
+}
+
+
+difference() {
+	texturedBody();
 
 	translate([0, 0, -0.1])
 		cylinder(d = $bottomHoleDiameter, h = $bottomHoleDepth + 0.1, $fn = $fn);
@@ -132,3 +137,14 @@ difference() {
 			$bottomSlotHeight + 0.1
 		]);
 }
+
+translate([50, 0, 0])
+	let($diameter = 40, $height = 6)
+		texturedBody();
+
+translate([50, 0, 6])
+	cylinder(
+		d = $bottomHoleDiameter - $bottomSlotWidth - 1,
+		h = $bottomHoleDepth / 3,
+		$fn = $fn
+	);
