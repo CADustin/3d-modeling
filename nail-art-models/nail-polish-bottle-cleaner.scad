@@ -2,6 +2,7 @@ $diameter = 20; // [10:1:40]
 $height = 60; // [20:1:100]
 $bottomHoleDiameter = 14; // [4:1:18]
 $bottomHoleDepth = 25; // [5:1:50]
+$topCylinderHeight = 8; // [1:1:50]
 $bottomSlotHeight = 10; // [2:1:20]
 $bottomSlotWidth = 5; // [2:0.5:10]
 $texture = "Smooth"; // [Smooth, Tapered, Scales, Honeycomb, Wave ribs, Dimples]
@@ -122,34 +123,41 @@ module texturedBody() {
 }
 
 
-difference() {
-	texturedBody();
-
-	translate([0, 0, -0.1])
-		cylinder(d = $bottomHoleDiameter, h = $bottomHoleDepth + 0.1, $fn = $fn);
-
-	translate([-1.5 * $diameter / 2, -$bottomSlotWidth / 2, -0.1])
-		cube([
-			1.5 * $diameter,
-			$bottomSlotWidth,
-			$bottomSlotHeight + 0.1
-		]);
-
-	translate([- $bottomSlotWidth / 2, -1.5 * $diameter / 2, -0.1])
-		cube([
-			$bottomSlotWidth,
-			1.5 * $diameter,
-			$bottomSlotHeight + 0.1
-		]);
-}
-
-translate([50, 0, 0])
-	let($diameter = 40, $height = 6)
+module cleaner() {
+	difference() {
 		texturedBody();
 
-translate([50, 0, 6])
-	cylinder(
-		d = $bottomHoleDiameter - $bottomSlotWidth - 1,
-		h = $bottomHoleDepth / 3,
-		$fn = $fn
-	);
+		translate([0, 0, -0.1])
+			cylinder(d = $bottomHoleDiameter, h = $bottomHoleDepth + 0.1, $fn = $fn);
+
+		translate([-1.5 * $diameter / 2, -$bottomSlotWidth / 2, -0.1])
+			cube([
+				1.5 * $diameter,
+				$bottomSlotWidth,
+				$bottomSlotHeight + 0.1
+			]);
+
+		translate([- $bottomSlotWidth / 2, -1.5 * $diameter / 2, -0.1])
+			cube([
+				$bottomSlotWidth,
+				1.5 * $diameter,
+				$bottomSlotHeight + 0.1
+			]);
+	}
+}
+
+module base() {
+	translate([50, 0, 0])
+		let($diameter = 40, $height = 6)
+			texturedBody();
+
+	translate([50, 0, 6])
+		cylinder(
+			d = $bottomHoleDiameter - $bottomSlotWidth - 1,
+			h = min($topCylinderHeight, $bottomHoleDepth),
+			$fn = $fn
+		);
+}
+
+cleaner();
+base();
