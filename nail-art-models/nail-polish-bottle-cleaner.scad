@@ -54,9 +54,9 @@ $taperTopDiameter = 16; // [8:1:32]
 
 /* [Quality] */
 // Facet count used to render circular surfaces; higher values look smoother but render more slowly.
-$fn = 64;
+$fn = 100;
 // Radius used to soften the outside top and bottom edges of straight-sided cylinders; set to 0 for sharp edges.
-$edgeRadius = 0.5; // [0:0.1:2]
+$edgeRadius = 1; // [0:0.1:2]
 
 // Internal reference used to preserve circumferential texture spacing between the differently sized models.
 textureReferenceDiameter = $diameter;
