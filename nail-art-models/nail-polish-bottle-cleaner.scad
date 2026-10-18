@@ -212,7 +212,7 @@ module base() {
 	cleaningNubInset = 2; // How far this top cylinder/nub gets inset (to compensate for the rounding)
 	translate([50, 0, baseHeight-cleaningNubInset])
 		roundedCylinder(
-			d = $bottomHoleDiameter - $bottomSlotWidth - 1,
+			d = $bottomHoleDiameter - $bottomSlotWidth/2,
 			h = min($topCylinderHeight, $bottomHoleDepth) + cleaningNubInset,
 			sides = $fn
 		);

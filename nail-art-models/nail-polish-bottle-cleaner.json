@@ -9,7 +9,7 @@
             "$dimpleDiameter": "1.6000000000000001",
             "$dimpleSpacing": "5",
             "$edgeRadius": "1",
-            "$fn": "64",
+            "$fn": "100",
             "$height": "30",
             "$honeycombSize": "3.5",
             "$scaleSpacing": "4",
