@@ -55,12 +55,36 @@ $taperTopDiameter = 16; // [8:1:32]
 /* [Quality] */
 // Facet count used to render circular surfaces; higher values look smoother but render more slowly.
 $fn = 64;
+// Radius used to soften the outside top and bottom edges of straight-sided cylinders; set to 0 for sharp edges.
+$edgeRadius = 0.5; // [0:0.1:2]
 
 // Internal reference used to preserve circumferential texture spacing between the differently sized models.
 textureReferenceDiameter = $diameter;
 
+module roundedCylinder(d, h, r = $edgeRadius, sides = $fn) {
+	filletRadius = min(max(r, 0), min(d / 2, h / 2));
+	arcSteps = max(4, ceil(sides / 4));
+	if (filletRadius == 0) {
+		cylinder(d = d, h = h, $fn = sides);
+	} else {
+		rotate_extrude($fn = sides)
+			polygon(points = concat(
+				[[0, 0], [d / 2 - filletRadius, 0]],
+				[for (step = [0:arcSteps]) [
+					d / 2 - filletRadius + filletRadius * cos(-90 + 90 * step / arcSteps),
+					filletRadius + filletRadius * sin(-90 + 90 * step / arcSteps)
+				]],
+				[for (step = [0:arcSteps]) [
+					d / 2 - filletRadius + filletRadius * cos(90 * step / arcSteps),
+					h - filletRadius + filletRadius * sin(90 * step / arcSteps)
+				]],
+				[[0, h]]
+			));
+	}
+}
+
 module plainCylinder(sides = $fn) {
-	cylinder(d = $diameter, h = $height, $fn = sides);
+	roundedCylinder(d = $diameter, h = $height, sides = sides);
 }
 
 module dimpleTexture() {
@@ -180,15 +204,17 @@ module cleaner() {
 }
 
 module base() {
+	baseHeight = 6;
 	translate([50, 0, 0])
-		let($diameter = $baseDiameter, $height = 6)
+		let($diameter = $baseDiameter, $height = baseHeight)
 			texturedBody();
 
-	translate([50, 0, 6])
-		cylinder(
+	cleaningNubInset = 2; // How far this top cylinder/nub gets inset (to compensate for the rounding)
+	translate([50, 0, baseHeight-cleaningNubInset])
+		roundedCylinder(
 			d = $bottomHoleDiameter - $bottomSlotWidth - 1,
-			h = min($topCylinderHeight, $bottomHoleDepth),
-			$fn = $fn
+			h = min($topCylinderHeight, $bottomHoleDepth) + cleaningNubInset,
+			sides = $fn
 		);
 }
 
