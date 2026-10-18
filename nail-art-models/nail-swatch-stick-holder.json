@@ -1,0 +1,29 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "Standard Height Swatches": {
+            "$depth": "50",
+            "$edgeRadius": "0.25",
+            "$height": "6",
+            "$magnetDepth": "10.1",
+            "$magnetDiameter": "5.2000000000000002",
+            "$magnetMargin": "3",
+            "$swatchHeight": "2",
+            "$swatchSpacing": "10",
+            "$swatchWidth": "12",
+            "$width": "150"
+        },
+        "Tall Swatches": {
+            "$depth": "50",
+            "$edgeRadius": "0.30000000000000004",
+            "$height": "10",
+            "$magnetDepth": "3",
+            "$magnetDiameter": "5.2000000000000002",
+            "$magnetMargin": "3",
+            "$swatchHeight": "6",
+            "$swatchSpacing": "10",
+            "$swatchWidth": "12",
+            "$width": "150"
+        }
+    }
+}

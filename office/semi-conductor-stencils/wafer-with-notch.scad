@@ -17,7 +17,7 @@ magnetDiameter = 5; // [3:12]
 magnetDepth = 2; // [0:5]
 
 // Number of magnets evenly spaced around the ring
-magnetCount = 6; // [0:12]
+magnetCount = 12; // [0:12]
 
 {}
 

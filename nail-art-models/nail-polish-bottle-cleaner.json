@@ -1,0 +1,19 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "$bottomHoleDiameter": "15",
+            "$bottomSlotWidth": "4",
+            "$diameter": "20",
+            "$dimpleCount": "16",
+            "$dimpleDiameter": "1.6000000000000001",
+            "$dimpleSpacing": "5",
+            "$fn": "64",
+            "$height": "60",
+            "$honeycombSize": "3.5",
+            "$scaleSpacing": "4",
+            "$texture": "Wave ribs",
+            "$waveAmplitude": "14"
+        }
+    }
+}

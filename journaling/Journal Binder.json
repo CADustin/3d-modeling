@@ -1,0 +1,29 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "Standard Size": {
+            "$cutoutWidth": "28",
+            "$donutSqushFactor": "0.5",
+            "$donutThickness": "8",
+            "$edgeGapBetweenHoles": "9",
+            "$fn": "50",
+            "$holeDiameter": "3.5",
+            "$lipHeight": "2",
+            "$overallLength": "292",
+            "$punchSlotWidth": "4",
+            "$width": "32"
+        },
+        "XL": {
+            "$cutoutWidth": "28",
+            "$donutSqushFactor": "0.5",
+            "$donutThickness": "8",
+            "$edgeGapBetweenHoles": "9",
+            "$fn": "50",
+            "$holeDiameter": "3.5",
+            "$lipHeight": "2",
+            "$overallLength": "520",
+            "$punchSlotWidth": "4",
+            "$width": "32"
+        }
+    }
+}
