@@ -1,29 +1,62 @@
+/* [Cleaner] */
+// Outer diameter of the Cleaner body, in millimeters.
 $diameter = 20; // [10:1:40]
+// Overall height of the Cleaner body, in millimeters.
 $height = 60; // [20:1:100]
+// Diameter of the axial opening at the bottom of the Cleaner, in millimeters.
 $bottomHoleDiameter = 14; // [4:1:18]
+// Depth of the Cleaner’s bottom opening; also limits the Base’s top cylinder height.
 $bottomHoleDepth = 25; // [5:1:50]
-$topCylinderHeight = 8; // [1:1:50]
+// Height of each cross-shaped slot cut into the Cleaner’s bottom, in millimeters.
 $bottomSlotHeight = 10; // [2:1:20]
+// Width of each cross-shaped slot cut into the Cleaner’s bottom, in millimeters.
 $bottomSlotWidth = 5; // [2:0.5:10]
-$texture = "Smooth"; // [Smooth, Tapered, Scales, Honeycomb, Wave ribs, Dimples]
 
+/* [Base] */
+// Outer diameter of the Base's lower textured cylinder, in millimeters.
+$baseDiameter = 40; // [10:1:80]
+// Height of the Base’s centered top cylinder; automatically capped at Bottom Hole Depth.
+$topCylinderHeight = 8; // [1:1:50]
+
+/* [Texture] */
+// Surface treatment used on the Cleaner and the cylindrical body of the Base.
+$texture = "Smooth"; // [Smooth, Tapered, Scales, Honeycomb, Wave ribs, Dimples]
+// Vertical distance between dimple rows, in millimeters (Dimples texture only).
 $dimpleSpacing = 5; // [3:1:10]
+// Number of dimples around the Cleaner; adjusted proportionally for the wider Base (Dimples only).
 $dimpleCount = 16; // [8:2:32]
+// Diameter of each dimple, in millimeters (Dimples texture only).
 $dimpleDiameter = 1.6; // [0.8:0.2:3]
+// Number of spiral ribs around the Cleaner; adjusted proportionally for the wider Base (Wave ribs only).
 $waveRibCount = 8; // [4:1:16]
+// Side-to-side angular sweep of each rib, in degrees (Wave ribs texture only).
 $waveAmplitude = 14; // [0:2:30]
+// Vertical repeat length of the rib wave, in millimeters (Wave ribs texture only).
 $wavePeriod = 18; // [8:2:40]
+// Thickness of each raised rib, in millimeters (Wave ribs texture only).
 $waveWidth = 1.8; // [0.8:0.2:3]
+// Vertical distance between honeycomb rows, in millimeters (Honeycomb texture only).
 $honeycombSpacing = 5; // [3:1:10]
+// Number of cells around the Cleaner; adjusted proportionally for the wider Base (Honeycomb only).
 $honeycombCount = 16; // [8:2:32]
+// Width of each hexagonal cell, in millimeters (Honeycomb texture only).
 $honeycombSize = 2.6; // [1.5:0.5:4]
+// Radial depth of the honeycomb surface cut, in millimeters (Honeycomb texture only).
 $honeycombDepth = 2.5; // [1:0.5:5]
+// Vertical distance between scale rows, in millimeters (Scales texture only).
 $scaleSpacing = 3; // [2:0.5:8]
+// Number of scales around the Cleaner; adjusted proportionally for the wider Base (Scales only).
 $scaleCount = 16; // [8:2:32]
+// Diameter of each scale impression, in millimeters (Scales texture only).
 $scaleDiameter = 3.5; // [2:0.5:6]
+// Top diameter of the tapered body, in millimeters (Tapered texture only).
 $taperTopDiameter = 16; // [8:1:32]
 
+/* [Quality] */
+// Facet count used to render circular surfaces; higher values look smoother but render more slowly.
 $fn = 64;
+
+// Internal reference used to preserve circumferential texture spacing between the differently sized models.
 textureReferenceDiameter = $diameter;
 
 module plainCylinder(sides = $fn) {
@@ -148,7 +181,7 @@ module cleaner() {
 
 module base() {
 	translate([50, 0, 0])
-		let($diameter = 40, $height = 6)
+		let($diameter = $baseDiameter, $height = 6)
 			texturedBody();
 
 	translate([50, 0, 6])
