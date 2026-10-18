@@ -1,0 +1,135 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "holder-20mm-10mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "20",
+            "spacingMm": "10",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-20mm-10mm-spacing-short": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "20",
+            "spacingMm": "10",
+            "shelfDepthMm": "60",
+            "useShortHolder": "true"
+        },
+        "holder-20mm-20mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "20",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-20mm-60mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "20",
+            "spacingMm": "60",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-20mm-95mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "20",
+            "spacingMm": "95",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+
+        "holder-25mm-20mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "25",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-25mm-60mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "25",
+            "spacingMm": "60",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-25mm-95mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "25",
+            "spacingMm": "95",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+
+        "holder-30mm-20mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "30",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-30mm-60mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "30",
+            "spacingMm": "60",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "holder-30mm-95mm-spacing": {
+            "accessoryType": "0",
+            "barrelDiameterMm": "30",
+            "spacingMm": "95",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+
+        "shelf-20mm-80x60": {
+            "accessoryType": "1",
+            "barrelDiameterMm": "20",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "shelf-20mm-80x95": {
+            "accessoryType": "1",
+            "barrelDiameterMm": "20",
+            "spacingMm": "20",
+            "shelfDepthMm": "95",
+            "useShortHolder": "false"
+        },
+        "shelf-25mm-80x60": {
+            "accessoryType": "1",
+            "barrelDiameterMm": "25",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "shelf-25mm-80x95": {
+            "accessoryType": "1",
+            "barrelDiameterMm": "25",
+            "spacingMm": "20",
+            "shelfDepthMm": "95",
+            "useShortHolder": "false"
+        },
+        "shelf-30mm-80x60": {
+            "accessoryType": "1",
+            "barrelDiameterMm": "30",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        },
+        "shelf-30mm-80x95": {
+            "accessoryType": "1",
+            "barrelDiameterMm": "30",
+            "spacingMm": "20",
+            "shelfDepthMm": "95",
+            "useShortHolder": "false"
+        },
+
+        "holder-magnetic-20mm-20mm-spacing": {
+            "accessoryType": "2",
+            "barrelDiameterMm": "20",
+            "spacingMm": "20",
+            "shelfDepthMm": "60",
+            "useShortHolder": "false"
+        }
+    }
+}

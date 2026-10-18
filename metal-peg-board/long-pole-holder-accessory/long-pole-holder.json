@@ -1,0 +1,77 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "20mm-10mm-spacing": {
+            "barrelDiameterMm": "20",
+            "spacingMm": "10",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "20mm-10mm-spacing-short": {
+            "barrelDiameterMm": "20",
+            "spacingMm": "10",
+            "useMagneticHolder": "false",
+            "useShortHolder": "true"
+        },
+        "20mm-20mm-spacing": {
+            "barrelDiameterMm": "20",
+            "spacingMm": "20",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "20mm-60mm-spacing": {
+            "barrelDiameterMm": "20",
+            "spacingMm": "60",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "20mm-95mm-spacing": {
+            "barrelDiameterMm": "20",
+            "spacingMm": "95",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "25mm-20mm-spacing": {
+            "barrelDiameterMm": "25",
+            "spacingMm": "20",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "25mm-60mm-spacing": {
+            "barrelDiameterMm": "25",
+            "spacingMm": "60",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "25mm-95mm-spacing": {
+            "barrelDiameterMm": "25",
+            "spacingMm": "95",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "30mm-20mm-spacing": {
+            "barrelDiameterMm": "30",
+            "spacingMm": "20",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "30mm-60mm-spacing": {
+            "barrelDiameterMm": "30",
+            "spacingMm": "60",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "30mm-95mm-spacing": {
+            "barrelDiameterMm": "30",
+            "spacingMm": "95",
+            "useMagneticHolder": "false",
+            "useShortHolder": "false"
+        },
+        "magnetic-20mm-20mm-spacing": {
+            "barrelDiameterMm": "20",
+            "spacingMm": "20",
+            "useMagneticHolder": "true",
+            "useShortHolder": "false"
+        }
+    }
+}

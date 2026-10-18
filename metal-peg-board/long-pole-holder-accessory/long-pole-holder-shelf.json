@@ -1,0 +1,29 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "20mm-80x60": {
+            "barrelDiameterMm": "20",
+            "shelfDepthMm": "60"
+        },
+        "20mm-80x95": {
+            "barrelDiameterMm": "20",
+            "shelfDepthMm": "95"
+        },
+        "25mm-80x60": {
+            "barrelDiameterMm": "25",
+            "shelfDepthMm": "60"
+        },
+        "25mm-80x95": {
+            "barrelDiameterMm": "25",
+            "shelfDepthMm": "95"
+        },
+        "30mm-80x60": {
+            "barrelDiameterMm": "30",
+            "shelfDepthMm": "60"
+        },
+        "30mm-80x95": {
+            "barrelDiameterMm": "30",
+            "shelfDepthMm": "95"
+        }
+    }
+}
