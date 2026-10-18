@@ -23,19 +23,21 @@ $scaleDiameter = 3.5; // [2:0.5:6]
 $taperTopDiameter = 16; // [8:1:32]
 
 $fn = 64;
+textureReferenceDiameter = $diameter;
 
 module plainCylinder(sides = $fn) {
 	cylinder(d = $diameter, h = $height, $fn = sides);
 }
 
 module dimpleTexture() {
+	dimpleCount = ceil($dimpleCount * $diameter / textureReferenceDiameter);
 	difference() {
 		plainCylinder();
 		for (row = [0:floor($height / $dimpleSpacing) - 1]) {
 			z = 3 + row * $dimpleSpacing;
-			for (column = [0:$dimpleCount - 1]) {
-				stagger = (row % 2) * 180 / $dimpleCount;
-				rotate([0, 0, column * 360 / $dimpleCount + stagger])
+			for (column = [0:dimpleCount - 1]) {
+				stagger = (row % 2) * 180 / dimpleCount;
+				rotate([0, 0, column * 360 / dimpleCount + stagger])
 					translate([$diameter / 2 - 0.2, 0, z])
 						sphere(d = $dimpleDiameter, $fn = 16);
 			}
@@ -44,14 +46,15 @@ module dimpleTexture() {
 }
 
 module waveRibTexture() {
+	waveRibCount = ceil($waveRibCount * $diameter / textureReferenceDiameter);
 	difference() {
 		plainCylinder();
-		for (rib = [0:$waveRibCount - 1]) {
+		for (rib = [0:waveRibCount - 1]) {
 			for (segment = [0:ceil($height / 2) - 1]) {
 				z1 = segment * 2;
 				z2 = min(z1 + 2, $height);
-				angle1 = rib * 360 / $waveRibCount + $waveAmplitude * sin(z1 * 360 / $wavePeriod);
-				angle2 = rib * 360 / $waveRibCount + $waveAmplitude * sin(z2 * 360 / $wavePeriod);
+				angle1 = rib * 360 / waveRibCount + $waveAmplitude * sin(z1 * 360 / $wavePeriod);
+				angle2 = rib * 360 / waveRibCount + $waveAmplitude * sin(z2 * 360 / $wavePeriod);
 				point1 = [($diameter / 2 - 0.25) * cos(angle1), ($diameter / 2 - 0.25) * sin(angle1), z1];
 				point2 = [($diameter / 2 - 0.25) * cos(angle2), ($diameter / 2 - 0.25) * sin(angle2), z2];
 				hull() {
@@ -64,13 +67,14 @@ module waveRibTexture() {
 }
 
 module honeycombTexture() {
+	honeycombCount = ceil($honeycombCount * $diameter / textureReferenceDiameter);
 	difference() {
 		plainCylinder();
 		for (row = [0:ceil($height / $honeycombSpacing) - 1]) {
 			z = 3 + row * $honeycombSpacing;
-			stagger = (row % 2) * 180 / $honeycombCount;
-			for (column = [0:$honeycombCount - 1]) {
-				rotate([0, 0, column * 360 / $honeycombCount + stagger])
+			stagger = (row % 2) * 180 / honeycombCount;
+			for (column = [0:honeycombCount - 1]) {
+				rotate([0, 0, column * 360 / honeycombCount + stagger])
 					translate([$diameter / 2 - $honeycombDepth / 2 + 0.1, 0, z])
 						rotate([0, 90, 0])
 							cylinder(d = $honeycombSize, h = $honeycombDepth + 0.2, center = true, $fn = 6);
@@ -80,13 +84,14 @@ module honeycombTexture() {
 }
 
 module scaleTexture() {
+	scaleCount = ceil($scaleCount * $diameter / textureReferenceDiameter);
 	difference() {
 		plainCylinder();
 		for (row = [0:ceil($height / $scaleSpacing) - 1]) {
 			z = 2 + row * $scaleSpacing;
-			stagger = (row % 2) * 180 / $scaleCount;
-			for (column = [0:$scaleCount - 1]) {
-				rotate([0, 0, column * 360 / $scaleCount + stagger])
+			stagger = (row % 2) * 180 / scaleCount;
+			for (column = [0:scaleCount - 1]) {
+				rotate([0, 0, column * 360 / scaleCount + stagger])
 					translate([$diameter / 2 - 0.2, 0, z])
 						sphere(d = $scaleDiameter, $fn = 20);
 			}
