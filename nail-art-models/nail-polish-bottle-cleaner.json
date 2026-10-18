@@ -15,6 +15,34 @@
             "$scaleSpacing": "4",
             "$texture": "Wave ribs",
             "$waveAmplitude": "14"
+        },
+        "New set 2": {
+            "$baseDiameter": "40",
+            "$bottomHoleDepth": "25",
+            "$bottomHoleDiameter": "15",
+            "$bottomSlotHeight": "10",
+            "$bottomSlotWidth": "2",
+            "$diameter": "22",
+            "$dimpleCount": "16",
+            "$dimpleDiameter": "1.6000000000000001",
+            "$dimpleSpacing": "5",
+            "$edgeRadius": "1",
+            "$fn": "100",
+            "$height": "40",
+            "$honeycombCount": "16",
+            "$honeycombDepth": "2.5",
+            "$honeycombSize": "2.5",
+            "$honeycombSpacing": "5",
+            "$scaleCount": "16",
+            "$scaleDiameter": "3.5",
+            "$scaleSpacing": "3",
+            "$taperTopDiameter": "16",
+            "$texture": "Wave ribs",
+            "$topCylinderHeight": "12",
+            "$waveAmplitude": "14",
+            "$wavePeriod": "18",
+            "$waveRibCount": "8",
+            "$waveWidth": "1.8"
         }
     }
 }

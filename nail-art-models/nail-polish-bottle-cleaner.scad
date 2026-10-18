@@ -1,22 +1,22 @@
 /* [Cleaner] */
 // Outer diameter of the Cleaner body, in millimeters.
-$diameter = 20; // [10:1:40]
+$diameter = 22; // [10:1:40]
 // Overall height of the Cleaner body, in millimeters.
-$height = 60; // [20:1:100]
+$height = 35; // [20:1:100]
 // Diameter of the axial opening at the bottom of the Cleaner, in millimeters.
-$bottomHoleDiameter = 14; // [4:1:18]
+$bottomHoleDiameter = 15; // [4:1:18]
 // Depth of the Cleaner’s bottom opening; also limits the Base’s top cylinder height.
 $bottomHoleDepth = 25; // [5:1:50]
 // Height of each cross-shaped slot cut into the Cleaner’s bottom, in millimeters.
 $bottomSlotHeight = 10; // [2:1:20]
 // Width of each cross-shaped slot cut into the Cleaner’s bottom, in millimeters.
-$bottomSlotWidth = 5; // [2:0.5:10]
+$bottomSlotWidth = 2; // [2:0.5:10]
 
 /* [Base] */
 // Outer diameter of the Base's lower textured cylinder, in millimeters.
-$baseDiameter = 40; // [10:1:80]
+$baseDiameter = 30; // [10:1:80]
 // Height of the Base’s centered top cylinder; automatically capped at Bottom Hole Depth.
-$topCylinderHeight = 8; // [1:1:50]
+$topCylinderHeight = 12; // [1:1:50]
 
 /* [Texture] */
 // Surface treatment used on the Cleaner and the cylindrical body of the Base.
