@@ -10,11 +10,11 @@ $bottomHoleDepth = 25; // [5:1:50]
 // Height of each cross-shaped slot cut into the Cleaner’s bottom, in millimeters.
 $bottomSlotHeight = 10; // [2:1:20]
 // Width of each cross-shaped slot cut into the Cleaner’s bottom, in millimeters.
-$bottomSlotWidth = 2; // [2:0.5:10]
+$bottomSlotWidth = 3; // [2:0.5:10]
 
 /* [Base] */
 // Outer diameter of the Base's lower textured cylinder, in millimeters.
-$baseDiameter = 30; // [10:1:80]
+$baseDiameter = 35; // [10:1:80]
 // Height of the Base’s centered top cylinder; automatically capped at Bottom Hole Depth.
 $topCylinderHeight = 12; // [1:1:50]
 
