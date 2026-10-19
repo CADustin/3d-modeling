@@ -13,7 +13,7 @@ $fn=128;
 difference() {
 	cylinder(d1 = baseDiameter, d2 = topDiameter, h = 60);
 
-	// Through-hole, extended slightly past both ends for a clean cut.
+	// Through-hole intended to help press the magnet (in case it needs to be removed)
 	translate([0, 0, -0.1])
 		cylinder(d = 5, h = 60.2);
 
