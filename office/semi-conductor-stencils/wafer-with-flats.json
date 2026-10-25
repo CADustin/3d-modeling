@@ -32,6 +32,14 @@
             "outlineThickness": "10",
             "stencilThickness": "4",
             "templateDiameter": "100"
+        },
+        "2in-Wafer-1x-Scale": {
+            "magnetCount": "6",
+            "magnetDepth": "2",
+            "magnetDiameter": "5",
+            "outlineThickness": "7",
+            "stencilThickness": "4",
+            "templateDiameter": "50.799999999999997"
         }
     }
 }
