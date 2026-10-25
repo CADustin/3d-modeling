@@ -2,7 +2,10 @@
     "fileFormatVersion": "1",
     "parameterSets": {
         "New set 1": {
-            "topDiameter": "24.5"
+            "baseDiameter": "39.900000000000006",
+            "magnetDepth": "3",
+            "magnetDiameter": "12.1",
+            "topDiameter": "40"
         }
     }
 }

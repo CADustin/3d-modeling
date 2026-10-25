@@ -1,6 +1,6 @@
 /* [Main Dimensions] */
 baseDiameter = 40; // [10:0.1:60]
-topDiameter = 40; // [10:0.1:40]
+topDiameter = 30; // [10:0.1:40]
 
 /* [Magnet Dimensions] */
 magnetDiameter = 12.1; // [5:0.1:20]
