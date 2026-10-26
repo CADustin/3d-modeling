@@ -1,0 +1,26 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "New set 1": {
+            "baseHeight": "4.75",
+            "binClearance": "0.5",
+            "compartmentsX": "2",
+            "compartmentsY": "1",
+            "dividerThickness": "1.2",
+            "floorThickness": "0.80000000000000004",
+            "gridPitch": "42",
+            "gridX": "1",
+            "gridY": "1",
+            "heightUnit": "7",
+            "heightUnits": "3",
+            "lipHeight": "4.4000000000000004",
+            "magnetDepth": "2.3999999999999999",
+            "magnetDiameter": "6.5",
+            "magnetHoles": "false",
+            "outerRadius": "3.75",
+            "scoopRadius": "5",
+            "stackingLip": "true",
+            "wallThickness": "1.2"
+        }
+    }
+}

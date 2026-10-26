@@ -1,0 +1,21 @@
+{
+    "fileFormatVersion": "1",
+    "parameterSets": {
+        "default-drawer": {
+            "drawerWidth": "400",
+            "drawerDepth": "300",
+            "spacerPlacement": "center",
+            "splitForBed": "true",
+            "bedWidth": "180",
+            "bedDepth": "180"
+        },
+        "small-bed-200": {
+            "drawerWidth": "500",
+            "drawerDepth": "400",
+            "spacerPlacement": "start",
+            "splitForBed": "true",
+            "bedWidth": "200",
+            "bedDepth": "200"
+        }
+    }
+}
