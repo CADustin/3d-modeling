@@ -25,6 +25,27 @@ wallThickness = 1.2;
 floorThickness = 0.8;
 dividerThickness = 1.2;
 
+
+/* [Label Accessory] */
+// bin = bin only, label = printable label bar only, both = bar shown snapped into the bin
+part = "bin"; // [bin, label, both]
+// Cut the snap dimples in the bin's side walls (always on when part = both)
+labelSlots = false;
+// Front-to-back width of the label bar
+labelWidth = 12; // [6:1:30]
+// Distance from the front outer wall to the front edge of the bar
+labelY = 4; // [3:1:60]
+// Thickness of the bar
+labelThickness = 1.5;
+// Gap at each end of the bar; larger is looser
+labelClearance = 0.1;
+// Depth of the sticker recess on the top face
+labelRecess = 0.4;
+// Snap bump radius and how far it protrudes
+detentRadius = 0.7;
+detentDepth = 0.4;
+
+
 /* [Gridfinity Standard] */
 gridPitch = 42;
 heightUnit = 7;
@@ -157,6 +178,7 @@ module gridfinityBin() {
             outerShell();
         }
         cavity();
+        if (labelSlots || part == "both") labelGrooves();
         if (magnetHoles) magnetCutouts();
     }
     intersection() {
@@ -167,5 +189,48 @@ module gridfinityBin() {
         outerShell();
     }
 }
+// Label bar spans the bin along X inside the stacking lip, readable from above.
+// It sits in the vertical band of the lip profile (inset 1.4 mm), held by bumps in side-wall dimples.
+labelInset = stackingLip ? 1.4 : wallThickness;
+labelBottomZ = topHeight - (stackingLip ? 2.5 : 2 * labelThickness);
+labelLength = binWidth - 2 * labelInset - 2 * labelClearance;
+detentZ = labelBottomZ + labelThickness / 2;
+detentYs = [labelWidth * 0.2, labelWidth * 0.8];
 
-gridfinityBin();
+module labelGrooves() {
+    for (side = [0, 1], dy = detentYs)
+        translate([
+            side == 0 ? labelInset + detentRadius - detentDepth
+                      : binWidth - labelInset - detentRadius + detentDepth,
+            labelY + dy,
+            detentZ])
+            sphere(r = detentRadius + 0.1, $fn = 24);
+}
+
+module labelBar() {
+    difference() {
+        union() {
+            cube([labelLength, labelWidth, labelThickness]);
+            for (end = [0, 1], dy = detentYs)
+                translate([
+                    end == 0 ? detentRadius - detentDepth : labelLength - detentRadius + detentDepth,
+                    dy,
+                    labelThickness / 2])
+                    sphere(r = detentRadius, $fn = 24);
+        }
+        translate([2, 1, labelThickness - labelRecess])
+            cube([labelLength - 4, labelWidth - 2, labelRecess + eps]);
+    }
+}
+
+module labelBarInBin() {
+    translate([labelInset + labelClearance, labelY, labelBottomZ])
+        labelBar();
+}
+
+if (part == "bin") gridfinityBin();
+else if (part == "label") labelBar();
+else {
+    gridfinityBin();
+    color("orange") labelBarInBin();
+}

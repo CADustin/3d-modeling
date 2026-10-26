@@ -21,6 +21,31 @@
             "scoopRadius": "5",
             "stackingLip": "true",
             "wallThickness": "1.2"
+        },
+        "New set 2": {
+            "baseHeight": "4.75",
+            "binClearance": "0.5",
+            "compartmentsX": "1",
+            "compartmentsY": "1",
+            "dividerThickness": "1.2",
+            "floorThickness": "0.80000000000000004",
+            "gridPitch": "42",
+            "gridX": "1",
+            "gridY": "1",
+            "heightUnit": "7",
+            "heightUnits": "4",
+            "labelClearance": "-0.10000000000000001",
+            "labelRecess": "0.40000000000000002",
+            "labelSlots": "true",
+            "lipHeight": "4.4000000000000004",
+            "magnetDepth": "2.3999999999999999",
+            "magnetDiameter": "6.5",
+            "magnetHoles": "false",
+            "outerRadius": "3.75",
+            "part": "bin",
+            "scoopRadius": "0",
+            "stackingLip": "true",
+            "wallThickness": "1.2"
         }
     }
 }
