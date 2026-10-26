@@ -35,11 +35,11 @@ assert(
     "stencilThickness must be at least magnetDepth + 1mm"
 );
 
-// Guard: outlineThickness must be at least 2x magnetDiameter so the
+// Guard: outlineThickness must be at least 2 + magnetDiameter so the
 // magnet pocket fits within the ring wall with material on both sides.
 assert(
-    outlineThickness >= 2 * magnetDiameter,
-    "outlineThickness must be at least 2x magnetDiameter"
+    outlineThickness >= 2 + magnetDiameter,
+    "outlineThickness must be at least 2 + magnetDiameter"
 );
 
 $fn = 360;
