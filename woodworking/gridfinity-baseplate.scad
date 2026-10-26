@@ -26,7 +26,7 @@ bedWidth = 180;
 bedDepth = 180;
 
 /* [Plate] */
-// Solid floor under the cells (0 = open grid, lighter and faster)
+// Solid floor under the cells (0 = open grid, lighter and faster; raised automatically when magnet holes are on)
 bottomThickness = 0;
 magnetHoles = false;
 magnetDiameter = 6.5;
@@ -49,7 +49,9 @@ pocketRadius = 4;
 $fn = 48;
 eps = 0.01;
 
-plateHeight = plateProfileHeight + bottomThickness;
+// Magnet holes need material under them, so force a minimum floor when enabled
+floorThickness = magnetHoles ? max(bottomThickness, magnetDepth + 0.6) : bottomThickness;
+plateHeight = plateProfileHeight + floorThickness;
 usableWidth = drawerWidth - fitClearance;
 usableDepth = drawerDepth - fitClearance;
 cellsX = floor(usableWidth / gridPitch);
@@ -117,7 +119,7 @@ module pocketSlab(inset, z) {
 
 module pocket() {
     top = plateHeight;
-    profile = [[top + eps, -eps], [top - 0.7, 0.7], [top - 2.5, 0.7], [bottomThickness, 2.85]];
+    profile = [[top + eps, -eps], [top - 0.7, 0.7], [top - 2.5, 0.7], [floorThickness, 2.85]];
     for (i = [0:len(profile) - 2])
         hull() {
             pocketSlab(max(profile[i][1], 0), profile[i][0]);
@@ -127,7 +129,7 @@ module pocket() {
 
 module magnetCutouts() {
     for (mx = [-1, 1], my = [-1, 1])
-        translate([gridPitch / 2 + mx * 13, gridPitch / 2 + my * 13, bottomThickness - magnetDepth])
+        translate([gridPitch / 2 + mx * 13, gridPitch / 2 + my * 13, floorThickness - magnetDepth])
             cylinder(d = magnetDiameter, h = magnetDepth + eps);
 }
 
@@ -137,7 +139,7 @@ module platePiece(w, d, cx, cy) {
         for (x = [0:cx - 1], y = [0:cy - 1])
             translate([x * gridPitch, y * gridPitch, 0]) {
                 pocket();
-                if (magnetHoles && bottomThickness >= magnetDepth) magnetCutouts();
+                if (magnetHoles) magnetCutouts();
             }
     }
 }
@@ -153,6 +155,9 @@ module showPiece(p) {
 
 echo(str("Grid: ", cellsX, " x ", cellsY, " cells; spacer gaps X=", gapX, " Y=", gapY,
     "; pieces: ", len(pieces), " (use pieceIndex 1..", len(pieces), ")"));
+
+for (i = [0:len(pieces) - 1])
+    echo(str("pieceIndex ", i + 1, ": ", pieces[i][0], " ", pieces[i][3], " x ", pieces[i][4], " mm"));
 
 if (pieceIndex == 0) {
     for (p = pieces)

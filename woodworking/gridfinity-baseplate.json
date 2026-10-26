@@ -2,20 +2,40 @@
     "fileFormatVersion": "1",
     "parameterSets": {
         "default-drawer": {
-            "drawerWidth": "400",
-            "drawerDepth": "300",
-            "spacerPlacement": "center",
-            "splitForBed": "true",
+            "bedDepth": "180",
             "bedWidth": "180",
-            "bedDepth": "180"
+            "drawerDepth": "300",
+            "drawerWidth": "400",
+            "spacerPlacement": "center",
+            "splitForBed": "true"
         },
         "small-bed-200": {
-            "drawerWidth": "500",
-            "drawerDepth": "400",
-            "spacerPlacement": "start",
-            "splitForBed": "true",
+            "bedDepth": "200",
             "bedWidth": "200",
-            "bedDepth": "200"
+            "drawerDepth": "400",
+            "drawerWidth": "500",
+            "spacerPlacement": "start",
+            "splitForBed": "true"
+        },
+        "New set 1": {
+            "bedDepth": "180",
+            "bedWidth": "180",
+            "bottomThickness": "0",
+            "drawerDepth": "300",
+            "drawerWidth": "400",
+            "fitClearance": "0.5",
+            "gridPitch": "42",
+            "magnetDepth": "2",
+            "magnetDiameter": "6.0999999999999996",
+            "magnetHoles": "false",
+            "minSpacerWidth": "2",
+            "pieceGap": "5",
+            "pieceIndex": "0",
+            "plateProfileHeight": "4.6500000000000004",
+            "pocketRadius": "4",
+            "separatePieces": "true",
+            "spacerPlacement": "center",
+            "splitForBed": "true"
         }
     }
 }
