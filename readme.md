@@ -38,6 +38,12 @@ To only build SCAD/JSON pairs changed in the last 24 hours:
 
 The 24-hour filter checks both the `.scad` file and its matching `.json` file.
 
+## Build Log
+
+Each run writes the console transcript, including OpenSCAD output, to
+`build-all-profiles.log` next to the script. The log is replaced at the start
+of each run.
+
 ## Future Automation Ideas
 
 Here are some practical automation ideas to evolve this workflow over time.
