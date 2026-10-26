@@ -1,3 +1,5 @@
-[Oo]utput/
-tmp/*
+**/[Oo]utput/
+**/[Uu]pload/
+**/tmp/
 .vscode/
+*.log
