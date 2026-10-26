@@ -42,7 +42,7 @@
             "magnetDiameter": "6.5",
             "magnetHoles": "false",
             "outerRadius": "3.75",
-            "part": "bin",
+            "part": "disassembled",
             "scoopRadius": "0",
             "stackingLip": "true",
             "wallThickness": "1.2"

@@ -27,9 +27,9 @@ dividerThickness = 1.2;
 
 
 /* [Label Accessory] */
-// bin = bin only, label = printable label bar only, both = bar shown snapped into the bin
-part = "bin"; // [bin, label, both]
-// Cut the snap dimples in the bin's side walls (always on when part = both)
+// bin = bin only, label = label bar only, assembled = bar snapped into the bin, disassembled = bin and bar side by side for printing
+part = "bin"; // [bin, label, assembled, disassembled]
+// Cut the snap dimples in the bin's side walls (always on for assembled and disassembled)
 labelSlots = false;
 // Front-to-back width of the label bar
 labelWidth = 12; // [6:1:30]
@@ -178,7 +178,7 @@ module gridfinityBin() {
             outerShell();
         }
         cavity();
-        if (labelSlots || part == "both") labelGrooves();
+        if (labelSlots || part == "assembled" || part == "disassembled") labelGrooves();
         if (magnetHoles) magnetCutouts();
     }
     intersection() {
@@ -230,7 +230,10 @@ module labelBarInBin() {
 
 if (part == "bin") gridfinityBin();
 else if (part == "label") labelBar();
-else {
+else if (part == "disassembled") {
+    gridfinityBin();
+    translate([0, binDepth + 10, 0]) labelBar();
+} else {
     gridfinityBin();
     color("orange") labelBarInBin();
 }
