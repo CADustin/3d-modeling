@@ -47,7 +47,7 @@
             "baseHeight": "4.75",
             "binClearance": "0.5",
             "compartmentsX": "2",
-            "compartmentsY": "2",
+            "compartmentsY": "1",
             "dividerThickness": "1.2",
             "floorThickness": "0.80000000000000004",
             "gridPitch": "42",
