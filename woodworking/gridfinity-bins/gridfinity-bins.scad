@@ -26,25 +26,13 @@ floorThickness = 0.8;
 dividerThickness = 1.2;
 
 
-/* [Label Accessory] */
-// bin = bin only, label = label bar only, assembled = bar snapped into the bin, disassembled = bin and bar side by side for printing
-part = "bin"; // [bin, label, assembled, disassembled]
-// Cut the snap dimples in the bin's side walls (always on for assembled and disassembled)
-labelSlots = false;
-// Front-to-back width of the label bar
-labelWidth = 12; // [6:1:30]
-// Distance from the front outer wall to the front edge of the bar
-labelY = 4; // [3:1:60]
-// Thickness of the bar
-labelThickness = 1.5;
-// Gap at each end of the bar; larger is looser
-labelClearance = 0.1;
-// Depth of the sticker recess on the top face
-labelRecess = 0.4;
-// Snap bump radius and how far it protrudes
-detentRadius = 0.7;
-detentDepth = 0.4;
-
+/* [Label Shelf] */
+// Fixed label shelf built into the inside of the front wall, visible from above
+labelShelf = false;
+// How far the shelf reaches into the bin
+labelShelfDepth = 8; // [4:1:15]
+// Gap between the shelf top and the base of the stacking lip; 0 lets the next bin's foot rest on the shelf
+labelShelfGap = 0;
 
 /* [Gridfinity Standard] */
 gridPitch = 42;
@@ -171,6 +159,25 @@ module scoops() {
     }
 }
 
+// Shelf top sits at the base of the stacking lip, where the next bin's foot rests
+shelfTopZ = bodyHeight - labelShelfGap;
+// The lip thickens the wall toward shelfTopZ (1.2 to 3.3 mm over the last 2.1 mm), so measure the depth from the wall surface at that height
+shelfWallY = stackingLip
+    ? wallThickness + (3.3 - wallThickness) * min(max((shelfTopZ - (bodyHeight - 2.1)) / 2.1, 0), 1)
+    : wallThickness;
+shelfFaceY = shelfWallY + labelShelfDepth;
+
+module labelShelfBlock() {
+    translate([wallThickness - eps, 0, 0])
+        rotate([90, 0, 90])
+            linear_extrude(binWidth - 2 * wallThickness + 2 * eps)
+                polygon([
+                    [wallThickness - eps, shelfTopZ],
+                    [wallThickness - eps, shelfTopZ - (shelfFaceY - wallThickness)],
+                    [shelfFaceY, shelfTopZ]
+                ]);
+}
+
 module gridfinityBin() {
     difference() {
         union() {
@@ -178,62 +185,16 @@ module gridfinityBin() {
             outerShell();
         }
         cavity();
-        if (labelSlots || part == "assembled" || part == "disassembled") labelGrooves();
         if (magnetHoles) magnetCutouts();
     }
     intersection() {
         union() {
             dividers();
             scoops();
+            if (labelShelf) labelShelfBlock();
         }
         outerShell();
     }
 }
-// Label bar spans the bin along X inside the stacking lip, readable from above.
-// It sits in the vertical band of the lip profile (inset 1.4 mm), held by bumps in side-wall dimples.
-labelInset = stackingLip ? 1.4 : wallThickness;
-labelBottomZ = topHeight - (stackingLip ? 2.5 : 2 * labelThickness);
-labelLength = binWidth - 2 * labelInset - 2 * labelClearance;
-detentZ = labelBottomZ + labelThickness / 2;
-detentYs = [labelWidth * 0.2, labelWidth * 0.8];
 
-module labelGrooves() {
-    for (side = [0, 1], dy = detentYs)
-        translate([
-            side == 0 ? labelInset + detentRadius - detentDepth
-                      : binWidth - labelInset - detentRadius + detentDepth,
-            labelY + dy,
-            detentZ])
-            sphere(r = detentRadius + 0.1, $fn = 24);
-}
-
-module labelBar() {
-    difference() {
-        union() {
-            cube([labelLength, labelWidth, labelThickness]);
-            for (end = [0, 1], dy = detentYs)
-                translate([
-                    end == 0 ? detentRadius - detentDepth : labelLength - detentRadius + detentDepth,
-                    dy,
-                    labelThickness / 2])
-                    sphere(r = detentRadius, $fn = 24);
-        }
-        translate([2, 1, labelThickness - labelRecess])
-            cube([labelLength - 4, labelWidth - 2, labelRecess + eps]);
-    }
-}
-
-module labelBarInBin() {
-    translate([labelInset + labelClearance, labelY, labelBottomZ])
-        labelBar();
-}
-
-if (part == "bin") gridfinityBin();
-else if (part == "label") labelBar();
-else if (part == "disassembled") {
-    gridfinityBin();
-    translate([0, binDepth + 10, 0]) labelBar();
-} else {
-    gridfinityBin();
-    color("orange") labelBarInBin();
-}
+gridfinityBin();
