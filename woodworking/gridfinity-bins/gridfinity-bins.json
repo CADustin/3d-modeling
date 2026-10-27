@@ -57,12 +57,13 @@
             "heightUnits": "3",
             "labelShelf": "true",
             "labelShelfDepth": "7",
+            "labelShelfGap": "0",
             "lipHeight": "4.4000000000000004",
             "magnetDepth": "2.3999999999999999",
             "magnetDiameter": "6.5",
             "magnetHoles": "false",
             "outerRadius": "3.75",
-            "scoopRadius": "0",
+            "scoopRadius": "5",
             "stackingLip": "true",
             "wallThickness": "1.2"
         }

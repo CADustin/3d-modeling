@@ -14,7 +14,7 @@ stackingLip = true;
 compartmentsX = 1; // [1:1:10]
 // Number of compartments along Y
 compartmentsY = 1; // [1:1:10]
-// Scoop radius at the front of each compartment (0 = none)
+// Scoop radius at the back of each compartment (0 = none)
 scoopRadius = 0; // [0:1:20]
 // Magnet holes in the base
 magnetHoles = false;
@@ -143,16 +143,16 @@ module dividers() {
             cube([innerW, dividerThickness, bodyHeight - baseHeight]);
 }
 
-// Quarter-round scoop against the front wall of each compartment column
+// Quarter-round scoop against the back wall of each compartment column (opposite the label shelf)
 module scoops() {
     if (scoopRadius > 0) {
         innerW = binWidth - 2 * wallThickness;
         columnW = innerW / compartmentsX;
         for (i = [0:compartmentsX - 1])
-            translate([wallThickness + i * columnW, wallThickness, baseHeight + floorThickness])
+            translate([wallThickness + i * columnW, binDepth - wallThickness - scoopRadius, baseHeight + floorThickness])
                 difference() {
-                    cube([columnW, scoopRadius, scoopRadius]);
-                    translate([-eps, scoopRadius, scoopRadius])
+                    cube([columnW, scoopRadius + eps, scoopRadius]);
+                    translate([-eps, 0, scoopRadius])
                         rotate([0, 90, 0])
                             cylinder(r = scoopRadius, h = columnW + 2 * eps);
                 }
