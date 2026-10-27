@@ -46,8 +46,8 @@
         "New set 3": {
             "baseHeight": "4.75",
             "binClearance": "0.5",
-            "compartmentsX": "1",
-            "compartmentsY": "1",
+            "compartmentsX": "2",
+            "compartmentsY": "2",
             "dividerThickness": "1.2",
             "floorThickness": "0.80000000000000004",
             "gridPitch": "42",
@@ -64,7 +64,7 @@
             "magnetDiameter": "6.5",
             "magnetHoles": "false",
             "outerRadius": "3.75",
-            "scoopRadius": "5",
+            "scoopRadius": "3",
             "stackingLip": "true",
             "wallThickness": "1.2"
         }

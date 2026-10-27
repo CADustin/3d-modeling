@@ -145,13 +145,18 @@ module dividers() {
             cube([innerW, dividerThickness, bodyHeight - baseHeight]);
 }
 
-// Quarter-round scoop against the back wall of each compartment column (opposite the label shelf)
+// Quarter-round scoop against the back of each compartment (back wall or the next Y divider)
 module scoops() {
     if (scoopRadius > 0) {
         innerW = binWidth - 2 * wallThickness;
+        innerD = binDepth - 2 * wallThickness;
         columnW = innerW / compartmentsX;
-        for (i = [0:compartmentsX - 1])
-            translate([wallThickness + i * columnW, binDepth - wallThickness - scoopRadius, baseHeight + floorThickness])
+        rowD = innerD / compartmentsY;
+        for (i = [0:compartmentsX - 1], j = [0:compartmentsY - 1])
+            translate([
+                wallThickness + i * columnW,
+                wallThickness + (j + 1) * rowD - (j < compartmentsY - 1 ? dividerThickness / 2 : 0) - scoopRadius,
+                baseHeight + floorThickness])
                 difference() {
                     cube([columnW, scoopRadius + eps, scoopRadius]);
                     translate([-eps, 0, scoopRadius])
