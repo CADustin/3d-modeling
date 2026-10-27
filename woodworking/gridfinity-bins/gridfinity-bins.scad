@@ -31,6 +31,8 @@ dividerThickness = 1.2;
 labelShelf = false;
 // How far the shelf reaches into the bin
 labelShelfDepth = 8; // [4:1:15]
+// Angle of the shelf underside measured from horizontal
+labelShelfUndersideAngle = 32; // [20:1:45]
 // Gap between the shelf top and the base of the stacking lip; 0 lets the next bin's foot rest on the shelf
 labelShelfGap = 0;
 
@@ -168,14 +170,16 @@ shelfWallY = stackingLip
 shelfFaceY = shelfWallY + labelShelfDepth;
 
 module labelShelfBlock() {
+    undersideAngle = min(max(labelShelfUndersideAngle, 20), 45);
+    shelfBottomZ = shelfTopZ - (shelfFaceY - wallThickness + eps) * tan(undersideAngle);
     translate([wallThickness - eps, 0, 0])
         rotate([90, 0, 90])
             linear_extrude(binWidth - 2 * wallThickness + 2 * eps)
-                polygon([
-                    [wallThickness - eps, shelfTopZ],
-                    [wallThickness - eps, shelfTopZ - (shelfFaceY - wallThickness)],
-                    [shelfFaceY, shelfTopZ]
-                ]);
+            polygon([
+                [wallThickness - eps, shelfTopZ],
+                [wallThickness - eps, shelfBottomZ],
+                [shelfFaceY, shelfTopZ]
+            ]);
 }
 
 module gridfinityBin() {

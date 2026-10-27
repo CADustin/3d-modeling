@@ -58,6 +58,7 @@
             "labelShelf": "true",
             "labelShelfDepth": "7",
             "labelShelfGap": "0",
+            "labelShelfUndersideAngle": "32",
             "lipHeight": "4.4000000000000004",
             "magnetDepth": "2.3999999999999999",
             "magnetDiameter": "6.5",
