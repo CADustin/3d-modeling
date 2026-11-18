@@ -1,11 +1,24 @@
 {
     "fileFormatVersion": "1",
     "parameterSets": {
-        "New set 1": {
-            "$boxColumnSpacing": "8",
-            "$boxDepth": "35",
-            "$boxRowSpacing": "8",
-            "$boxWidth": "13",
+        "SS226": {
+            "$boxColumnSpacing": "6",
+            "$boxDepth": "33",
+            "$boxRowSpacing": "3",
+            "$boxWidth": "21",
+            "$boxsDeep": "1",
+            "$boxsWide": "4",
+            "$pegPlateColumns": "4",
+            "$pegPlateMode": "back",
+            "$pegPlateRows": "2",
+            "$totalHeight": "50",
+            "$wallThickness": "2"
+        },
+        "GL17": {
+            "$boxColumnSpacing": "6",
+            "$boxDepth": "34",
+            "$boxRowSpacing": "4",
+            "$boxWidth": "23",
             "$boxsDeep": "2",
             "$boxsWide": "4",
             "$pegPlateColumns": "4",
