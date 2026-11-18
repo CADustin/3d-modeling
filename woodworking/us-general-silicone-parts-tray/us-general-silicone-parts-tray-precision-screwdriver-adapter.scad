@@ -8,7 +8,7 @@ hexagonAcrossCorners = 7.1;
 hexagonHeight = 15;
 
 // Gap between the facing flat edges of adjacent hexagons, in millimeters.
-hexagonGap = 3.1;
+hexagonGap = 3.4;
 
 // Through-bore diameter in millimeters; must be positive and at least 1 mm less than the hexagon diameter.
 boreDiameter = 3.5;
